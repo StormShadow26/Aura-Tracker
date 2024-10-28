@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
     trim: true,
     minlength: 3,
     maxlength: 50,
@@ -24,26 +23,22 @@ const userSchema = new mongoose.Schema({
   },
   yearOfStudy: {
     type: String,
-    required: true,
-    enum: ['1', '2', '3', '4', '5'], // Enum to limit options to valid years
+    enum: ['1', '2', '3', '4', '5'],
   },
   department: {
     type: String,
-    required: true,
     trim: true,
     minlength: 2,
     maxlength: 50,
   },
   college: {
     type: String,
-    required: true,
     trim: true,
     minlength: 2,
     maxlength: 100,
   },
   phone: {
     type: String,
-    required: true,
     unique: true,
     match: [/^\d{10}$/, 'Please enter a valid 10-digit phone number'],
   },
@@ -51,6 +46,85 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  assignments: {
+    done: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    total: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+  },
+  classes: {
+    attended: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    total: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+  },
+  weeksclasses: {
+    attended: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    total: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+  },
+  projects: {
+    completed: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+    total: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+  },
+  timetable: [
+    {
+      day: {
+        type: String,
+        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        required: true,
+      },
+      classes: [
+        {
+          subject: {
+            type: String,
+            required: true,
+          },
+          time: {
+            start: {
+              type: String, // You can use Date for a full timestamp or String for just time (e.g., '09:00 AM')
+              required: true,
+            },
+            end: {
+              type: String,
+              required: true,
+            },
+          },
+          location: {
+            type: String,
+            required: true,
+          },
+        },
+      ],
+    },
+  ],
 });
 
 module.exports = mongoose.model('User', userSchema);
