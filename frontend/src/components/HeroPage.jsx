@@ -1,8 +1,12 @@
 import React from 'react';
 import { Sparkles, Brain, Zap } from 'lucide-react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const HeroPage = () => {
   return (
+    <div>
+        <Navbar/>
     <div className="relative min-h-screen bg-gradient-to-b from-black via-gray-900 to-black overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -55,6 +59,8 @@ const HeroPage = () => {
           </div>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };
