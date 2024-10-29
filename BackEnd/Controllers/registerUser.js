@@ -1,22 +1,11 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/userSchema'); // Adjust path as needed
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+require('dotenv').config(); // Load environment variables from .env file
 
-// Register Controller
 const registerUser = async (req, res) => {
-  const { 
-    name, 
-    email, 
-    password, 
-    yearOfStudy, 
-    department, 
-    college, 
-    phone, 
-    assignments, 
-    classes, 
-    weeksclasses, 
-    projects, 
-    timetable 
-  } = req.body;
+  const { name, email, password, yearOfStudy, department, college, phone, assignments, classes, weeksclasses, projects, timetable } = req.body;
 
   try {
     // Check if user already exists
@@ -28,7 +17,11 @@ const registerUser = async (req, res) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user with either provided values or defaults
+    // Generate OTP
+    const otp = crypto.randomInt(100000, 999999).toString();
+    const otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000); // OTP expires in 10 minutes
+
+    // Create new user with OTP and unverified status
     const newUser = new User({
       name: name || "Anonymous",
       email,
@@ -41,14 +34,35 @@ const registerUser = async (req, res) => {
       classes: classes || { attended: 0, total: 0 },
       weeksclasses: weeksclasses || { attended: 0, total: 0 },
       projects: projects || { completed: 0, total: 0 },
-      timetable: timetable || []
+      timetable: timetable || [],
+      otp,
+      otpExpiresAt,
+      isVerified: false
     });
 
-    // Save user to database
     await newUser.save();
-    res.status(201).json({ message: 'Registration successful!', userid: newUser._id, email: newUser.email });
+
+    // Configure email transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail', // Use 'gmail' for Gmail service
+      auth: {
+        user: process.env.EMAIL_USER, // Environment variable for email user
+        pass: process.env.EMAIL_PASS  // Environment variable for email password
+      }
+    });
+
+    // Send OTP via email
+    await transporter.sendMail({
+      from: `"Aura-Tracker" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: 'Your OTP Code',
+      text: `Your OTP code is ${otp}. It will expire in 10 minutes.`
+    });
+
+    res.status(201).json({ message: 'OTP sent to your email. Verify to complete registration.', userid: newUser._id });
 
   } catch (error) {
+    console.error('Error during registration:', error); // Log detailed error
     res.status(500).json({ message: 'Registration failed.', error: error.message });
   }
 };
