@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({onSuccess}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,7 +14,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('http://localhost:4000/api/v1/register', {
         method: 'POST',
@@ -31,20 +31,22 @@ const Register = () => {
           phone,
         }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
-        // Redirect to login page upon successful registration
-        navigate('/login');
+        // Navigate to OTP verification page upon successful registration
+        console.log("Registering email (in register.jsx):", email);
+        onSuccess(email); // This should pass the email correctly
+        navigate(`/verify-otp?email=${encodeURIComponent(email)}`);
       } else {
-        // Show error message if registration fails
         setError(data.message || 'Registration failed, please try again');
       }
     } catch (error) {
       setError('An error occurred. Please try again later.');
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black/90 text-white">

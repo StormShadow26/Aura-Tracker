@@ -3,15 +3,12 @@ const router = express.Router();
 const registerUser = require('../Controllers/registerUser');
 const loginUser=require('../Controllers/loginUser');
 const {getDashboardData}=require('../Controllers/getDashboardData');
-const {addAssignment}=require('../Controllers/addAssignment');
-const  {getAssignmentsByEmail}=require('../Controllers/getAssignmentsByEmail');
-
+const verifyOtp = require('../Controllers/verifyOtp');
 
 
 router.post('/register', registerUser);
 router.post('/login',loginUser);
 router.get('/dashboard/:email',getDashboardData);
-router.post('/assignment', addAssignment);
-router.get('/assignment/:email', getAssignmentsByEmail);
+router.post('/verify-otp',verifyOtp);
 
 module.exports = router;
