@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Assignment from './components/Assignment';
+import Project from './components/Project';
 
 
 import VerifyOtp from './components/VerifyOtp';
@@ -30,6 +31,9 @@ function App() {
         <Route path='/verify-otp' element={<VerifyOtp email={email}></VerifyOtp>}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/assignments/:email" element={<Assignment/>} />
+        <Route path="/projects/:email" element={<Project/>} />
+        
+
         
 
         </Routes>

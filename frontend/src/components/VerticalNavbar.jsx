@@ -12,7 +12,7 @@ const VerticalNavbar = () => {
   const handleDashboard = () => navigate(`/dashboard?email=${encodeURIComponent(email)}`);
   const handleAttendance = () => navigate(`/attendance?email=${encodeURIComponent(email)}`);
   const handleAssignments = () => navigate(`/assignments/${encodeURIComponent(email)}`);
-  const handleProjects = () => navigate(`/projects?email=${encodeURIComponent(email)}`);
+  const handleProjects = () => navigate(`/projects/${encodeURIComponent(email)}`);
   const handleTimetable = () => navigate(`/timetable?email=${encodeURIComponent(email)}`);
 
   return (
