@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EmailContext } from "../contexts/EmailContext";
-import { useContext } from 'react';// Import the Email Context
 
 const Login = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const {setEmails}=useContext(EmailContext); // Access email and setEmail from context
+  const { setEmail: setEmails } = useContext(EmailContext); // Access setEmail from context
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -26,6 +25,7 @@ const Login = () => {
 
       if (response.ok) {
         setEmails(email); // Set the email in context
+        localStorage.setItem('userEmail', email); // Save email to local storage
         navigate('/dashboard');
       } else {
         setError(data.message || 'Login failed, please try again');
@@ -51,7 +51,7 @@ const Login = () => {
               type="email"
               id="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)} // Update context directly
+              onChange={(e) => setEmail(e.target.value)} // Update email state
               required
               className="w-full px-4 py-2 mt-1 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
             />
