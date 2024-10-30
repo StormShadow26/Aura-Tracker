@@ -31,6 +31,7 @@ const getDashboardData = async (req, res) => {
         total: user.projects.total,
       },
       timetable: user.timetable,
+      auraPoints:user.auraPoints,
     };
 
     return res.status(200).json(dashboardData);

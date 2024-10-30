@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
+import { FaBookOpen } from 'react-icons/fa';
 import { EmailContext } from '../contexts/EmailContext';
 
-const Dashboard = () => {
+const Timetable = () => {
   const [dashboardData, setDashboardData] = useState(null);
   const { email } = useContext(EmailContext);
 
@@ -19,60 +20,41 @@ const Dashboard = () => {
     fetchDashboardData();
   }, [email]);
 
-  const handleMarkAttendance = (day, subject) => {
-    console.log(`Marking attendance for ${subject} on ${day}`);
-    // Additional logic for marking attendance can go here
-  };
-
-  if (!dashboardData) return <p>Loading...</p>;
+  if (!dashboardData) return <p className="text-center text-gray-500">Loading...</p>;
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-8">Weekly Timetable</h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-blue-600">
+        <FaBookOpen className="inline-block mr-2" />
+        Weekly Timetable
+      </h2>
 
       <div className="overflow-x-auto">
-        <table className="w-full table-auto border-collapse border border-gray-200 shadow-lg rounded-lg">
-          <thead>
+        <table className="w-full table-auto border-collapse border border-gray-300 shadow-lg rounded-lg">
+          <thead className="bg-blue-600 text-white">
             <tr>
-              <th className="p-4 bg-blue-500 text-white text-left">Day</th>
-              <th className="p-4 bg-blue-500 text-white text-left">Class Details</th>
+              <th className="p-4 text-left">Day</th>
+              <th className="p-4 text-left">Class Details</th>
             </tr>
           </thead>
           <tbody>
             {dashboardData.timetable.map((daySchedule, index) => (
-              <tr key={index} className="odd:bg-gray-100 even:bg-gray-50">
-                <td className="p-4 font-semibold text-gray-700 border border-gray-200">{daySchedule.day}</td>
-                <td className="p-4 border border-gray-200">
-                  {daySchedule.classes.map((classInfo, idx) => (
-                    <div
-                      key={idx}
-                      className="flex justify-between p-2 mb-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-white rounded-lg shadow-md"
-                    >
-                      <div>
-                        <h5 className="text-sm font-bold">{classInfo.subject}</h5>
-                        <p className="text-xs">{classInfo.location}</p>
+              daySchedule.classes.length > 0 && ( // Only render if there are classes
+                <tr key={index} className="odd:bg-blue-50 even:bg-yellow-100">
+                  <td className="p-4 font-semibold text-blue-700 border border-gray-300">{daySchedule.day}</td>
+                  <td className="p-4 border border-gray-300">
+                    {daySchedule.classes.map((classInfo, idx) => (
+                      <div key={idx} className="mb-2 p-4 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-lg shadow-md">
+                        <h5 className="text-lg font-bold">{classInfo.subject}</h5>
+                        <p className="text-sm">{classInfo.location}</p>
+                        <p className="text-sm">
+                          {classInfo.time.start} - {classInfo.time.end}
+                        </p>
                       </div>
-                      <p className="text-xs font-medium">
-                        {classInfo.time.start} - {classInfo.time.end}
-                      </p>
-                      <div className="text-right">
-                        {classInfo.status === 'ongoing' ? (
-                          <button
-                            onClick={() => handleMarkAttendance(daySchedule.day, classInfo.subject)}
-                            className="px-2 py-1 bg-green-500 hover:bg-green-700 text-white text-xs rounded"
-                          >
-                            Mark Attendance
-                          </button>
-                        ) : classInfo.status === 'missed' ? (
-                          <span className="text-red-500 text-xs">Missed</span>
-                        ) : (
-                          <span className="text-blue-300 text-xs">Upcoming</span>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </td>
-              </tr>
+                    ))}
+                  </td>
+                </tr>
+              )
             ))}
           </tbody>
         </table>
@@ -81,4 +63,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Timetable;

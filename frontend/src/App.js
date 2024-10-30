@@ -12,6 +12,7 @@ import Project from './components/Project';
 import VerifyOtp from './components/VerifyOtp';
 import { useState } from 'react';
 import Timetable from './components/TimeTable';
+import BuildProfile from './components/BuildProfile';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -34,6 +35,7 @@ function App() {
         <Route path="/assignments/:email" element={<Assignment/>} />
         <Route path="/projects/:email" element={<Project/>} />
         <Route path="/timetable/:email" element={<Timetable/>} />
+        <Route path="/profile" element={<BuildProfile/>} />
 
         
 
