@@ -11,6 +11,8 @@ const {submitAssignment}=require('../Controllers/submitAssignment');
 const {addProject} =require('../Controllers/addProject')
 const {getProjectsByEmail} =require('../Controllers/getProjectsByEmail')
 const {submitProject}=require('../Controllers/submitProject')
+const {updateTimetable}=require('../Controllers/updateTimetable');
+const {getTimeTable}=require('../Controllers/getTimeTable')
 
 router.post('/register', registerUser);
 router.post('/login',loginUser);
@@ -19,6 +21,8 @@ router.post('/verify-otp',verifyOtp);
 router.post('/assignment',addAssignment )
 router.get('/assignment/:email',getAssignmentsByEmail);
 router.post('/submit', submitAssignment)
+router.put('/timetable/:email',updateTimetable);
+router.get('/gettimetable/:email',getTimeTable);
 
 // project wala
 router.post('/project',addProject)

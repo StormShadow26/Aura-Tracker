@@ -11,6 +11,7 @@ import Project from './components/Project';
 
 import VerifyOtp from './components/VerifyOtp';
 import { useState } from 'react';
+import Timetable from './components/TimeTable';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -32,7 +33,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/assignments/:email" element={<Assignment/>} />
         <Route path="/projects/:email" element={<Project/>} />
-        
+        <Route path="/timetable/:email" element={<Timetable/>} />
 
         
 

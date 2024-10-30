@@ -21,7 +21,7 @@ const submitProject = async (req, res) => {
     // Increment the projects.done for the user
     await User.findOneAndUpdate(
       { email: email },
-      { $inc: { 'projects.done': 1 } }
+      { $inc: { 'projects.completed': 1 } }
     );
 
     res.status(200).json({ message: 'Project submitted successfully', project });

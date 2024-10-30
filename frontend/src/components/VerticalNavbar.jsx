@@ -13,7 +13,7 @@ const VerticalNavbar = () => {
   const handleAttendance = () => navigate(`/attendance?email=${encodeURIComponent(email)}`);
   const handleAssignments = () => navigate(`/assignments/${encodeURIComponent(email)}`);
   const handleProjects = () => navigate(`/projects/${encodeURIComponent(email)}`);
-  const handleTimetable = () => navigate(`/timetable?email=${encodeURIComponent(email)}`);
+  const handleTimetable = () => navigate(`/timetable/${encodeURIComponent(email)}`);
 
   return (
     <div className="bg-gray-700 text-white w-48 h-full fixed top-16 flex flex-col space-y-4 p-4">
