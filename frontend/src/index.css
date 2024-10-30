@@ -16,5 +16,19 @@ code {
     monospace;
 }
 
+@keyframes fadeInAndSlideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fadeInAndSlideUp {
+  animation: fadeInAndSlideUp 0.3s ease-out forwards;
+}
 
 
