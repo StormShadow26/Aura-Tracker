@@ -53,10 +53,10 @@ const registerUser = async (req, res) => {
 
     // Send OTP via email
     await transporter.sendMail({
-      from: `"Aura-Tracker" <${process.env.EMAIL_USER}>`,
+      from: `"Aura-Tracker Services" <${process.env.EMAIL_USER}>`,
       to: email,
-      subject: 'Your OTP Code',
-      text: `Your OTP code is ${otp}. It will expire in 10 minutes.`
+      subject: 'Aura-Tracker OTP Code',
+      text: `Your OTP code is ${otp} for successful registration. NOTE: It will expire in 10 minutes.`
     });
 
     res.status(201).json({ message: 'OTP sent to your email. Verify to complete registration.', userid: newUser._id });
