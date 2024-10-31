@@ -1,4 +1,3 @@
-// src/components/Dashboard.js
 import React, { useEffect, useState, useContext } from 'react';
 import { EmailContext } from '../contexts/EmailContext';
 import HorizontalNavbar from './HorizontalNavbar';
@@ -24,25 +23,29 @@ const Dashboard = () => {
     assignments: { done: 0, total: 0 },
     projects: { completed: 0, total: 0 },
     timetable: [],
+    auraPoints: 0,
   });
-  const { email } = useContext(EmailContext); // Access email from context
+  const { email } = useContext(EmailContext);
+  const [refresh, setRefresh] = useState(false); // Add refresh state
 
   useEffect(() => {
     const fetchData = async () => {
       if (!email) {
         console.error('Email is not available. User may not be logged in.');
-        return; // Early return if email is not available
+        return;
       }
 
       try {
         const response = await fetch(`http://localhost:4000/api/v1/dashboard/${email}`);
         const result = await response.json();
+        console.log(result, "result hun main");
         if (response.ok) {
           setData({
             classes: result.classes,
             assignments: result.assignments,
             projects: result.projects,
             timetable: result.timetable,
+            auraPoints: result.auraPoints,
           });
         } else {
           console.error('Error fetching dashboard data:', result.message);
@@ -52,8 +55,14 @@ const Dashboard = () => {
       }
     };
 
-    fetchData(); // Fetch data when component mounts
-  }, [email]); // Dependency on email
+    fetchData();
+  }, [email, refresh]); // Add refresh to the dependency array
+
+  const handleRefresh = () => {
+    setRefresh(!refresh); // Toggle refresh state to trigger fetch
+  };
+
+  console.log(data);
 
   const COLORS = ['#4caf50', '#d9534f'];
 
@@ -64,10 +73,16 @@ const Dashboard = () => {
 
       <div className="flex flex-col flex-grow ml-48 px-8">
         {/* Horizontal Navbar */}
-        <HorizontalNavbar />
+        <HorizontalNavbar handleRefresh={handleRefresh} /> {/* Pass refresh handler */}
 
         <div className="dashboard-container">
           <h1 className="dashboard-title text-3xl mb-6">Dashboard</h1>
+
+          {/* Aura Points Display */}
+          <div className="aura-points-display mb-6 text-center">
+            <h2 className="text-2xl font-bold">Aura Points</h2>
+            <p className="text-4xl text-indigo-600 font-semibold">{data.auraPoints}</p>
+          </div>
 
           {/* Classes Chart */}
           <div className='flex justify-around'>

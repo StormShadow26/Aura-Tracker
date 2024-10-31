@@ -105,31 +105,34 @@ const userSchema = new mongoose.Schema({
         {
           subject: {
             type: String,
-            required: true,
+            
           },
           time: {
             start: {
               type: String, // You can use Date for a full timestamp or String for just time (e.g., '09:00 AM')
-              required: true,
+            
             },
             end: {
               type: String,
-              required: true,
+              
             },
           },
           location: {
             type: String,
-            required: true,
+            
           },
         },
       ],
     },
   ],
-
+  auraPoints: {
+    type: Number,
+    default: 0,
+    min: 0,
+  },
   otp: String,
   otpExpiresAt: Date,
-  isVerified: { type: Boolean, default: false }
-  
+  isVerified: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model('User', userSchema);
