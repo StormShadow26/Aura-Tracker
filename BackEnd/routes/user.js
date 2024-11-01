@@ -18,6 +18,7 @@ const {updateProfile}=require('../Controllers/updateProfile')
 const {addSyllabus}=require('../Controllers/addSyllabus');
 const syllabusController = require('../Controllers/syllabusController');
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
+const {getLeaderboard}=require('../Controllers/getLeaderboard')
 
 router.post('/register', registerUser);
 router.post('/login',loginUser);
@@ -36,6 +37,7 @@ router.post('/submitproject', submitProject);
 router.post('/syllabus',addSyllabus);
 router.post('/increment-aura-points', incrementAuraPoints);
 router.use('/api', syllabusController);
+router.get('/leaderboard',getLeaderboard);
 
 
 module.exports = router;
