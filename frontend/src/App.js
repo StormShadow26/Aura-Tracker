@@ -15,6 +15,8 @@ import Timetable from './components/TimeTable';
 import BuildProfile from './components/BuildProfile';
 import StudyMaterials from './components/StudyMaterials';
 import Details from './components/Details';
+import Leaderboard from './components/Leaderboard'
+import QuizPage from './components/QuizPage';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -40,6 +42,8 @@ function App() {
         <Route path="/profile" element={<BuildProfile/>} />
         <Route path="/studymaterials" element={<StudyMaterials/>} />
         <Route path="/details" element={<Details email={email}></Details>}></Route>
+        <Route path="/leaderboard" element={<Leaderboard/>} />
+        <Route path="/quiz" element={<QuizPage/>} />
 
         
 
