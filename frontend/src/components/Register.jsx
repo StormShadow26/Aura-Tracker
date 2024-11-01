@@ -12,6 +12,9 @@ const Register = ({onSuccess}) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const loginWithgoogle=()=>{
+    window.open("http://localhost:4000/auth/google/callback","_self")
+  }
   const handleRegister = async (e) => {
     e.preventDefault();
   
@@ -156,6 +159,10 @@ const Register = ({onSuccess}) => {
             Register
           </button>
         </form>
+
+        <button  onClick={ loginWithgoogle} className="w-full py-3 font-medium text-white bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg hover:scale-105 transform transition-all duration-300">
+          Continue With Google
+        </button>
 
         <p className="text-center text-gray-400">
           Already have an account?{' '}

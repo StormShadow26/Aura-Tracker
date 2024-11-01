@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { FaBookOpen } from 'react-icons/fa';
+import { FaBookOpen } from 'react-icons/fa6';
 import { EmailContext } from '../contexts/EmailContext';
 
 const Timetable = () => {
