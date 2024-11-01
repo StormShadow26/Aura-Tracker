@@ -14,6 +14,7 @@ import { useState } from 'react';
 import Timetable from './components/TimeTable';
 import BuildProfile from './components/BuildProfile';
 import StudyMaterials from './components/StudyMaterials';
+import Details from './components/Details';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -38,6 +39,7 @@ function App() {
         <Route path="/timetable/:email" element={<Timetable/>} />
         <Route path="/profile" element={<BuildProfile/>} />
         <Route path="/studymaterials" element={<StudyMaterials/>} />
+        <Route path="/details" element={<Details email={email}></Details>}></Route>
 
         
 

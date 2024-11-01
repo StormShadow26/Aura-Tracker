@@ -23,7 +23,7 @@ const VerifyOtp = ({ email }) => {
       
       if (response.ok) {
         // Redirect to login page upon successful OTP verification
-        navigate("/login");
+        navigate("/details");
       } else {
         // Show error message if OTP verification fails
         setError(data.message || "Verification failed, please try again");

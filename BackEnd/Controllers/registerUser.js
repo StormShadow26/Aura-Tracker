@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config(); // Load environment variables from .env file
 
 const registerUser = async (req, res) => {
-  const { name, email, password, yearOfStudy, department, college, phone, assignments, classes, weeksclasses, projects, timetable } = req.body;
+  const { email, password} = req.body;
 
   try {
     // Check if user already exists
@@ -23,18 +23,18 @@ const registerUser = async (req, res) => {
 
     // Create new user with OTP and unverified status
     const newUser = new User({
-      name: name || "Anonymous",
+      name: "Anonymous",
       email,
       password: hashedPassword,
-      yearOfStudy: yearOfStudy || "1",
-      department: department || "General Studies",
-      college: college || "Unknown College",
-      phone: phone || null,
-      assignments: assignments || { done: 0, total: 0 },
-      classes: classes || { attended: 0, total: 0 },
-      weeksclasses: weeksclasses || { attended: 0, total: 0 },
-      projects: projects || { completed: 0, total: 0 },
-      timetable: timetable || [],
+      yearOfStudy: "1",
+      department:"General Studies",
+      college:"Unknown College",
+      phone: null,
+      assignments: { done: 0, total: 0 },
+      classes: { attended: 0, total: 0 },
+      weeksclasses: { attended: 0, total: 0 },
+      projects: { completed: 0, total: 0 },
+      timetable: [],  
       otp,
       otpExpiresAt,
       isVerified: false

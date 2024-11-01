@@ -1,15 +1,39 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import React from 'react';
+const HorizontalNavbar = () => {
+  const [userdata, setUserdata] = useState({});
 
-const HorizontalNavbar = () => (
-  <nav className="bg-gray-800 p-4 text-white flex justify-between">
-    <div className="text-xl font-bold">Dashboard</div>
-    <div className="space-x-4">
-      <a href="/profile" className="hover:text-gray-300">Profile</a>
-      <a href="/studymaterials" className="hover:text-gray-300">Study Materials</a>
-      <a href="#" className="hover:text-gray-300">Settings</a>
-    </div>
-  </nav>
-);
+  const getUser = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/register/sucess", {
+        withCredentials: true,
+      });
+      console.log("response:", response);
+      setUserdata(response.data.user);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  return (
+    
+      <nav className="bg-gray-800 p-4 text-white flex justify-between">
+        <div className="text-xl font-bold">Dashboard</div>
+        <div className="space-x-4">
+          <a href="/profile" className="hover:text-gray-300">Profile</a>
+          <a href="/studymaterials" className="hover:text-gray-300">Study Materials</a>
+          <a href="#" className="hover:text-gray-300">Settings</a>
+        </div>
+        <img src={userdata.image} style={{width:"50px",borderRadius:"50%"}}></img>
+      </nav> 
+    
+  );
+};
 
 export default HorizontalNavbar;

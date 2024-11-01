@@ -1,18 +1,18 @@
-import React from 'react';
-import { Menu, X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const navigate=useNavigate();
-  function LoginHandler(){  
-    navigate('/login');
-
+  const navigate = useNavigate();
+  function LoginHandler() {
+    navigate("/login");
   }
 
-  function RegisterHandler(){
 
-    navigate('/register');
+  function RegisterHandler() {
+    navigate("/register");
   }
 
   return (
@@ -24,18 +24,24 @@ const Navbar = () => {
               Aura-Tracker
             </h1>
           </div>
-          
+
           <div className="hidden md:block">
             <div className="flex items-center space-x-4">
-              <button onClick={LoginHandler} className="px-6 py-2 text-sm font-medium text-white border-2 border-pink-500 rounded-lg hover:bg-pink-500/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:scale-105">
+              <button
+                onClick={LoginHandler}
+                className="px-6 py-2 text-sm font-medium text-white border-2 border-pink-500 rounded-lg hover:bg-pink-500/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:scale-105"
+              >
                 Login
               </button>
-              <button onClick={RegisterHandler} className="px-6 py-2 text-sm font-medium text-white border-2 border-blue-500 rounded-lg hover:bg-blue-500/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:scale-105">
+              <button
+                onClick={RegisterHandler}
+                className="px-6 py-2 text-sm font-medium text-white border-2 border-blue-500 rounded-lg hover:bg-blue-500/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:scale-105"
+              >
                 Register
               </button>
             </div>
           </div>
-          
+
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
