@@ -17,7 +17,7 @@ const {getTimeTable}=require('../Controllers/getTimeTable')
 const {updateProfile}=require('../Controllers/updateProfile')
 const {addSyllabus}=require('../Controllers/addSyllabus');
 const syllabusController = require('../Controllers/syllabusController');
-const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints');
+
 
 const submitUserDetails=require("../Controllers/SubmitUserDetails");
 
