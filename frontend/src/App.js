@@ -17,6 +17,9 @@ import StudyMaterials from './components/StudyMaterials';
 import Details from './components/Details';
 import Leaderboard from './components/Leaderboard'
 import QuizPage from './components/QuizPage';
+import Room from  './components/Room';
+import VideoCall from './components/VideoCall'
+
 
 function App() {
   const [email, setEmail] = useState('');
@@ -44,6 +47,8 @@ function App() {
         <Route path="/details" element={<Details email={email}></Details>}></Route>
         <Route path="/leaderboard" element={<Leaderboard/>} />
         <Route path="/quiz" element={<QuizPage/>} />
+        <Route path="/room" element={<Room/>} />
+        <Route path="/room/:roomId" element={<VideoCall/>} />
 
         
 
