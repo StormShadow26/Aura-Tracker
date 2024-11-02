@@ -1,0 +1,84 @@
+/* Navbar.css */
+
+/* Main Navbar Container */
+#navbar-container {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 50;
+    padding: 0.5rem 0;
+  }
+  
+  /* Navbar Content Wrapper */
+  #navbar-content {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  
+  /* Logo Styling */
+  #navbar-logo {
+    font-size: 1.875rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ec4899, #3b82f6, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  #navbar-logo:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Desktop Menu Buttons */
+  #navbar-buttons {
+    display: flex;
+    gap: 1rem;
+    align-content: center;
+    justify-content: center;
+  }
+  
+  .navbar-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: white;
+    border-radius: 0.7rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    width: 10vw;
+    margin-bottom: 2.5vh;
+ 
+  }
+  
+  #login-button {
+    border-color: #ec4899;
+    color: black;
+    height: 7vh;
+    /* width: 10vw; */
+    margin-top: 3vh;
+  }
+  
+  #login-button:hover {
+    background-color: rgba(186, 217, 233, 0.118);
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+    transform: scale(1.05);
+    color: white;
+  }
+  
+  #register-button {
+    border-color: #3b82f6;
+  }
+  
+  #register-button:hover {
+    background-color: rgba(191, 209, 239, 0.2);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    transform: scale(1.05);
+  }
+  

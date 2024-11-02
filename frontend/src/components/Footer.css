@@ -1,0 +1,288 @@
+/* Basic Footer Styles */
+#footer {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #ffffff;
+    padding: 2rem 0;
+    position: relative;
+    text-align: center;
+  }
+  
+  #footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  #footer .social-icons,
+  #footer .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  #footer .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Social Icon Styles */
+  #social-icons a {
+    color: #ccc;
+    font-size: 1.25rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #social-icons a:hover {
+    color: #ff5e99;
+    transform: scale(1.1);
+  }
+  
+  /* Footer Links */
+  #footer .footer-links a {
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #footer .footer-links a:hover {
+    color: #6a9afe;
+    transform: scale(1.1);
+  }
+  
+  /* Copyright Text */
+  #footer .copyright {
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  /* Modal Styling */
+  #footer-modal {
+    background: #242424;
+    color: #fff;
+    padding: 2rem;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease forwards;
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  
+  #footer-modal .modal-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff5e99;
+    margin-bottom: 1rem;
+  }
+  
+  #footer-modal .modal-content {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.6;
+  }
+  
+  #footer-modal .close-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  #footer-modal .close-btn:hover {
+    background: #555;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (min-width: 768px) {
+    #footer {
+      text-align: left;
+    }
+  
+    #footer .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    #footer .social-icons {
+      order: 1;
+    }
+  
+    #footer .footer-links {
+      order: 2;
+    }
+  
+    #footer .copyright {
+      order: 3;
+    }
+  }
+  /* Basic Footer Styles */
+#footer {
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    color: #ffffff;
+    padding: 2rem 0;
+    position: relative;
+    text-align: center;
+  }
+  
+  #footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  #footer .social-icons,
+  #footer .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  #footer .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+   
+  }
+  #footer .footer-links button {
+    background: linear-gradient(90deg, #ff5e99, #6a9afe);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    transform: translateY(-0.5vh);
+  }
+  
+  #footer .footer-links button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(90deg, #6a9afe, #ff5e99);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Social Icon Styles */
+  #social-icons a {
+    color: #ccc;
+    font-size: 1.25rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #social-icons a:hover {
+    color: #ff5e99;
+    transform: scale(1.1);
+  }
+  
+  /* Footer Links */
+  #footer .footer-links a {
+    color: #ccc;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  #footer .footer-links a:hover {
+    color: #6a9afe;
+    transform: scale(1.1);
+  }
+  
+  /* Copyright Text */
+  #footer .copyright {
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  /* Modal Styling */
+  #footer-modal {
+    background: #242424;
+    color: #fff;
+    padding: 2rem;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s ease forwards;
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  
+  #footer-modal .modal-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff5e99;
+    margin-bottom: 1rem;
+  }
+  
+  #footer-modal .modal-content {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.6;
+  }
+  
+  #footer-modal .close-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  #footer-modal .close-btn:hover {
+    background: #555;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (min-width: 768px) {
+    #footer {
+      text-align: left;
+    }
+  
+    #footer .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    #footer .social-icons {
+      order: 1;
+    }
+  
+    #footer .footer-links {
+      order: 2;
+    }
+  
+    #footer .copyright {
+      order: 3;
+    }
+  }
+  

@@ -1,11 +1,19 @@
+<<<<<<< Updated upstream
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+=======
+import React from 'react';
+import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import './Navbar.css';
+>>>>>>> Stashed changes
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const navigate = useNavigate();
+<<<<<<< Updated upstream
   function LoginHandler() {
     navigate("/login");
   }
@@ -50,22 +58,32 @@ const Navbar = () => {
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
+=======
+
+  const LoginHandler = () => navigate('/login');
+  const RegisterHandler = () => navigate('/register');
+
+  return (
+    <nav id="navbar-container">
+      <div id="navbar-content">
+        <div id="navbar-logo" onClick={() => navigate('/')}>
+          Aura-Tracker
+>>>>>>> Stashed changes
         </div>
+
+        {/* Desktop Menu */}
+        <div id="navbar-buttons" className="hidden md:flex">
+          <button id="login-button" className="navbar-button" onClick={LoginHandler}>
+            Login
+          </button>
+          <button id="register-button" className="navbar-button" onClick={RegisterHandler}>
+            Register
+          </button>
+        </div>
+
       </div>
 
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/90 backdrop-blur-sm">
-            <button className="w-full px-6 py-2 text-sm font-medium text-white border-2 border-pink-500 rounded-lg hover:bg-pink-500/20 transition-all duration-300">
-              Login
-            </button>
-            <button className="w-full px-6 py-2 text-sm font-medium text-white border-2 border-blue-500 rounded-lg hover:bg-blue-500/20 transition-all duration-300">
-              Register
-            </button>
-          </div>
-        </div>
-      )}
+     
     </nav>
   );
 };
