@@ -1,6 +1,6 @@
 // controllers/projectController.js
 const Project = require('../models/projectSchema');
-const User = require('../models/userSchema'); // Ensure this path is correct
+const User = require('../models/userSchema'); 
 
 // Create a new project
 exports.addProject = async (req, res) => {
