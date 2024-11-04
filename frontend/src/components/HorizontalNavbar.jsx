@@ -31,6 +31,7 @@ const HorizontalNavbar = () => {
           <a href="/quiz" className="hover:text-gray-300">QuizPage</a>
           <a href="/leaderboard" className="hover:text-gray-300">Leaderboard</a>
           <a href="/room" className="hover:text-gray-300">Join Room</a>
+          <a href="/mentors" className="hover:text-gray-300">Have Doubt?</a>
         </div>
         <img src={userdata.image} style={{width:"50px",borderRadius:"50%"}}></img>
       </nav> 
