@@ -19,6 +19,7 @@ import Leaderboard from './components/Leaderboard'
 import QuizPage from './components/QuizPage';
 import Room from  './components/Room';
 import VideoCall from './components/VideoCall'
+import Mentors from './components/Mentors'
 
 
 function App() {
@@ -49,6 +50,8 @@ function App() {
         <Route path="/quiz" element={<QuizPage/>} />
         <Route path="/room" element={<Room/>} />
         <Route path="/room/:roomId" element={<VideoCall/>} />
+        <Route path="/mentors" element={<Mentors/>} />
+
 
         
 
