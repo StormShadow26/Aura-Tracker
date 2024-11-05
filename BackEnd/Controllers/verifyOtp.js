@@ -12,8 +12,8 @@ const verifyOtp = async (req, res) => {
 
     // Mark user as verified
     user.isVerified = true;
-    user.otp = undefined; // Clear OTP
-    user.otpExpiresAt = undefined; // Clear expiration
+    user.otp = undefined; 
+    user.otpExpiresAt = undefined; 
     await user.save();
 
     res.status(200).json({ message: "OTP verified successfully!" });

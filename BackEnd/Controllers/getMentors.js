@@ -1,15 +1,16 @@
-const Mentor = require('../models/mentorSchema'); // Adjust the path if needed
+// step 1
+const Mentor = require('../models/mentorSchema'); 
 
-// Function to get all mentor data
 const getMentors = async (req, res) => {
   try {
-    // Retrieve all mentors from the database
+    
+    // step 2
     const mentors = await Mentor.find();
 
-    // Respond with the retrieved mentor data
+    // step -3
     res.status(200).json({ mentors });
   } catch (error) {
-    // Handle errors
+    // error aagya guyss
     res.status(500).json({ message: 'Error retrieving mentor data', error: error.message });
   }
 };

@@ -1,25 +1,25 @@
 const bcrypt = require('bcryptjs');
-const User = require('../models/userSchema'); // Adjust path as needed
+const User = require('../models/userSchema'); 
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config(); 
 
 const registerUser = async (req, res) => {
   const { email, password} = req.body;
 
   try {
-    // Check if user already exists
+    //checking if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already registered.' });
     }
 
-    // Hash password
+    // hashing the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Generate OTP
     const otp = crypto.randomInt(100000, 999999).toString();
-    const otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000); // OTP expires in 10 minutes
+    const otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000); 
 
     // Create new user with OTP and unverified status
     const newUser = new User({

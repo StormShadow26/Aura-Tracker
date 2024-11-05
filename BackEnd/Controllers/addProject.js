@@ -1,29 +1,31 @@
-// controllers/projectController.js
+//step 1-Import the required schema
 const Project = require('../models/projectSchema');
 const User = require('../models/userSchema'); 
 
-// Create a new project
+// step-2 getting necessary data and checking all are present 
 exports.addProject = async (req, res) => {
   const { email, projectNumber, title, topic, deadline, supervisorName, description } = req.body;
-
   try {
-    // Validate required fields
+    
     if (!email || !projectNumber || !title || !topic || !deadline || !supervisorName || !description) {
       return res.status(400).json({ error: 'Missing required fields.' });
     }
 
-    // Find the user by email and increment the projects.total
+
+
+  // step -3 findin the req user by email & incre prj cnt
     const user = await User.findOneAndUpdate(
       { email: email },
-      { $inc: { 'projects.total': 1 } }, // Increment the total projects count
-      { new: true } // Return the updated document
+      { $inc: { 'projects.total': 1 } }, 
+      { new: true } 
     );
 
     if (!user) {
       return res.status(404).json({ error: 'User not found.' });
     }
 
-    // Create new project
+
+    //step 4 Create new project
     const newProject = new Project({
       email,
       projectNumber,
@@ -36,9 +38,9 @@ exports.addProject = async (req, res) => {
       createdAt: new Date(),
     });
 
-    // Save project to database
-    const savedProject = await newProject.save();
 
+    //step 5- Save project to database & send successful message
+    const savedProject = await newProject.save();
     res.status(201).json({
       message: 'Project created successfully, and total count incremented.',
       project: savedProject,

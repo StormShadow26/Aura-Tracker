@@ -1,6 +1,9 @@
+
+// step -1
 const User = require('../models/userSchema'); 
 
-// Controller function to fetch user data for the dashboard
+
+// step 2
 const getDashboardData = async (req, res) => {
   const { email } = req.params;
 
@@ -9,14 +12,15 @@ const getDashboardData = async (req, res) => {
   }
 
   try {
-    // Fetch the user data from the database using the email
+    // step -3
     const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    // Construct the data to send back to the frontend
+    
+    // step -4  constructing the data/object to be sent in frontend
     const dashboardData = {
       classes: {
         attended: user.classes.attended,
@@ -34,6 +38,7 @@ const getDashboardData = async (req, res) => {
       auraPoints:user.auraPoints,
     };
 
+    // step 5
     return res.status(200).json(dashboardData);
   } catch (error) {
     console.error('Error fetching dashboard data:', error);

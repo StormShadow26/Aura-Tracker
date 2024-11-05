@@ -1,9 +1,11 @@
-// controllers/assignmentController.js
-const Assignment = require('../models/assignmentSchema');
-const User = require('../models/userSchema'); // Make sure this path is correct
 
-// Add a new assignment
+// importing necesarry schema for acessing databse
+const Assignment = require('../models/assignmentSchema');
+const User = require('../models/userSchema'); 
+
+
 const addAssignment = async (req, res) => {
+  // collecting necessary data
   try {
     const {
       assignmentNumber,
@@ -15,23 +17,23 @@ const addAssignment = async (req, res) => {
       email,
     } = req.body;
 
-    // Validate required fields
+    // checking if data is present or not
     if (!assignmentNumber || !subject || !chapter || !deadline || !professorName || !email) {
       return res.status(400).json({ error: 'Missing required fields.' });
     }
 
-    // Find the user by email and increment the assignments.total
+    //increase total assignment in field of user by 1
     const user = await User.findOneAndUpdate(
       { email: email },
       { $inc: { 'assignments.total': 1 } },
-      { new: true } // Return the updated document
+      { new: true }
     );
 
     if (!user) {
       return res.status(404).json({ error: 'User not found.' });
     }
 
-    // Create new assignment
+    // creating a newassignment object
     const newAssignment = new Assignment({
       assignmentNumber,
       subject,
@@ -44,7 +46,7 @@ const addAssignment = async (req, res) => {
       createdAt: new Date(),
     });
 
-    // Save assignment to database
+    // final step
     const savedAssignment = await newAssignment.save();
 
     res.status(201).json({
@@ -52,6 +54,7 @@ const addAssignment = async (req, res) => {
       assignment: savedAssignment,
     });
   } catch (error) {
+    // In case of error
     console.error('Error adding assignment:', error);
     res.status(500).json({ error: 'Server error. Could not add assignment.' });
   }
