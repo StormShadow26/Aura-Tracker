@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { EmailContext } from '../contexts/EmailContext';
+import './BuildProfile.css';
 
 const BuildProfile = () => {
   const { email } = useContext(EmailContext);
-
   const [formData, setFormData] = useState({
     name: '',
     yearOfStudy: '',
@@ -16,12 +16,9 @@ const BuildProfile = () => {
       { day: 'Wednesday', classes: [{ subject: '', time: { start: '', end: '' }, location: '' }], open: false },
       { day: 'Thursday', classes: [{ subject: '', time: { start: '', end: '' }, location: '' }], open: false },
       { day: 'Friday', classes: [{ subject: '', time: { start: '', end: '' }, location: '' }], open: false },
-      { day: 'Saturday', classes: [{ subject: '', time: { start: '', end: '' }, location: '' }], open: false },
-      { day: 'Sunday', classes: [{ subject: '', time: { start: '', end: '' }, location: '' }], open: false },
     ],
   });
 
-  // Toggle visibility of each day's classes
   const toggleDayOpen = (dayIndex) => {
     setFormData((prevData) => {
       const updatedTimetable = prevData.timetable.map((day, index) =>
@@ -88,120 +85,58 @@ const BuildProfile = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-      <h1 className="text-4xl font-semibold text-center mb-8 text-gray-700">Build Profile</h1>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* User Basic Details */}
-        <div>
-          <label className="block text-gray-600">Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-            required
-          />
-        </div>
+    <div id="back">
+    <div id="build-profile-container10">
+      <h1 id="page-title10">Build Profile</h1>
+      <form id="profile-form10" onSubmit={handleSubmit}>
+        <label className="label10" htmlFor="name10">Name:</label>
+        <input className="input10" id="name10" name="name" value={formData.name} onChange={handleChange} required />
+        
+        <label className="label10" htmlFor="yearOfStudy10">Year:</label>
+        <input className="input10" id="yearOfStudy10" name="yearOfStudy" value={formData.yearOfStudy} onChange={handleChange} required />
 
-        <div>
-          <label className="block text-gray-600">Year of Study:</label>
-          <select
-            name="yearOfStudy"
-            value={formData.yearOfStudy}
-            onChange={handleChange}
-            className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-            required
-          >
-            <option value="" disabled>Select Year</option>
-            <option value="1">1st Year</option>
-            <option value="2">2nd Year</option>
-            <option value="3">3rd Year</option>
-            <option value="4">4th Year</option>
-            <option value="5">5th Year</option>
-          </select>
-        </div>
+        <label className="label10" htmlFor="department10">Department:</label>
+        <input className="input10" id="department10" name="department" value={formData.department} onChange={handleChange} required />
 
-        {/* Timetable for the week */}
-        <h2 className="text-xl font-semibold mt-8 text-gray-600">Weekly Timetable</h2>
-        {formData.timetable.map((day, dayIndex) => (
-          <div key={dayIndex} className="mt-4 bg-gray-50 p-4 rounded-md">
-            <div
-              onClick={() => toggleDayOpen(dayIndex)}
-              className="cursor-pointer flex justify-between items-center"
-            >
-              <h3 className="text-lg font-semibold text-gray-700">{day.day}</h3>
-              <span className="text-blue-500">{day.open ? '▼' : '►'}</span>
+        <label className="label10" htmlFor="college10">College:</label>
+        <input className="input10" id="college10" name="college" value={formData.college} onChange={handleChange} required />
+
+        <label className="label10" htmlFor="phone10">Phone:</label>
+        <input className="input10" id="phone10" name="phone" value={formData.phone} onChange={handleChange} required />
+
+        <div id="timetable-container10">
+          <h2>Timetable</h2>
+          {formData.timetable.map((day, dayIndex) => (
+            <div key={day.day}>
+              <div className="day-toggle10"  onClick={() => toggleDayOpen(dayIndex)}>{day.day}</div>
+              {day.open && day.classes.map((classInfo, classIndex) => (
+                <div className="class-info10" key={classIndex}>
+                  <label className="label10" id="baigan" htmlFor={`subject${dayIndex}-${classIndex}`}>Subject:</label>
+                  <input className="input10" id={`subject${dayIndex}-${classIndex}`} value={classInfo.subject}
+                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'subject', e.target.value)} required />
+
+                  <label className="label10" id="baigan"htmlFor={`time-start${dayIndex}-${classIndex}`}>Start Time:</label>
+                  <input className="input10" id={`time-start${dayIndex}-${classIndex}`} type="time" value={classInfo.time.start}
+                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'time.start', e.target.value)} required />
+
+                  <label className="label10" id="baigan"htmlFor={`time-end${dayIndex}-${classIndex}`}>End Time:</label>
+                  <input className="input10" id={`time-end${dayIndex}-${classIndex}`} type="time" value={classInfo.time.end}
+                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'time.end', e.target.value)} required />
+
+                  <label className="label10" id="baigan"htmlFor={`location${dayIndex}-${classIndex}`}>Location:</label>
+                  <input className="input10" id={`location${dayIndex}-${classIndex}`} value={classInfo.location}
+                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'location', e.target.value)} required />
+
+                  <button type="button" className="remove-class-button10" onClick={() => removeClass(dayIndex, classIndex)}>Remove Class</button>
+                </div>
+              ))}
+              <button type="button" className="add-class-button10" onClick={() => addClass(dayIndex)}>Add Class</button>
             </div>
-            {day.open && (
-              <div className="mt-4">
-                {day.classes.map((classInfo, classIndex) => (
-                  <div key={classIndex} className="mt-4 space-y-2">
-                    <label className="block text-gray-600">Subject:</label>
-                    <input
-                      type="text"
-                      value={classInfo.subject}
-                      onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'subject', e.target.value)}
-                      className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-                      required
-                    />
-
-                    <label className="block text-gray-600">Start Time:</label>
-                    <input
-                      type="time"
-                      value={classInfo.time.start}
-                      onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'time.start', e.target.value)}
-                      className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-                      required
-                    />
-
-                    <label className="block text-gray-600">End Time:</label>
-                    <input
-                      type="time"
-                      value={classInfo.time.end}
-                      onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'time.end', e.target.value)}
-                      className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-                      required
-                    />
-
-                    <label className="block text-gray-600">Location:</label>
-                    <input
-                      type="text"
-                      value={classInfo.location}
-                      onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'location', e.target.value)}
-                      className="mt-2 p-2 w-full border border-gray-300 rounded-md"
-                      required
-                    />
-
-                    <button
-                      type="button"
-                      onClick={() => removeClass(dayIndex, classIndex)}
-                      className="mt-2 text-red-500 hover:underline"
-                    >
-                      Remove Class
-                    </button>
-                  </div>
-                ))}
-                <button
-                  type="button"
-                  onClick={() => addClass(dayIndex)}
-                  className="mt-4 text-blue-500 hover:underline"
-                >
-                  Add Class
-                </button>
-              </div>
-            )}
-          </div>
-        ))}
-
-        <button
-          type="submit"
-          className="mt-6 w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600"
-        >
-          Save Profile
-        </button>
+          ))}
+        </div>
+        <button type="submit" className="submit-button10">Submit</button>
       </form>
-    </div>
+    </div></div>
   );
 };
 

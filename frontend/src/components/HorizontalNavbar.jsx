@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './HorizontalNavbar.css';
+import user from './user.png';
 
 const HorizontalNavbar = () => {
   const [userdata, setUserdata] = useState({});
@@ -11,7 +13,6 @@ const HorizontalNavbar = () => {
       });
       console.log("response:", response);
       setUserdata(response.data.user);
-      
     } catch (error) {
       console.log(error);
     }
@@ -22,6 +23,17 @@ const HorizontalNavbar = () => {
   }, []);
 
   return (
+    <div>
+    <nav id="horizontal-navbar5" className="navbar5">
+      <div id="navbar-title5" className="navbar-title5">Dashboard</div>
+      <div id="button-container5" className="button-container5">
+        <a id="profile-button5" href="/profile" className="navbar-button5">Profile</a>
+        <a id="study-materials-button5" href="/studymaterials" className="navbar-button5">Study Materials</a>
+        <a id="settings-button5" href="#" className="navbar-button5">Settings</a>
+      </div>
+      {/* <img id="user-image" src={userdata.image} alt="User" className="user-image" /> */}
+      <img src={user} alt="user" className="user-logo" />
+    </nav>
     
       <nav className="bg-gray-800 p-4 text-white flex justify-between">
         <div className="text-xl font-bold">Dashboard</div>
@@ -34,7 +46,7 @@ const HorizontalNavbar = () => {
           <a href="/mentors" className="hover:text-gray-300">Have Doubt?</a>
           <a href="/compete" className="hover:text-gray-300">Challenge</a>
         </div>
-      </nav> 
+      </nav> </div>
     
   );
 };

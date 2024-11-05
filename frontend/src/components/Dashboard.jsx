@@ -26,7 +26,7 @@ const Dashboard = () => {
     auraPoints: 0,
   });
   const { email } = useContext(EmailContext);
-  const [refresh, setRefresh] = useState(false); // Add refresh state
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +38,6 @@ const Dashboard = () => {
       try {
         const response = await fetch(`http://localhost:4000/api/v1/dashboard/${email}`);
         const result = await response.json();
-        console.log(result, "result hun main");
         if (response.ok) {
           setData({
             classes: result.classes,
@@ -56,44 +55,38 @@ const Dashboard = () => {
     };
 
     fetchData();
-  }, [email, refresh]); // Add refresh to the dependency array
+  }, [email, refresh]);
 
   const handleRefresh = () => {
-    setRefresh(!refresh); // Toggle refresh state to trigger fetch
+    setRefresh(!refresh);
   };
 
-  console.log(data);
-
-  const COLORS = ['#4caf50', '#d9534f'];
+  const COLORS = ['#ff7f50', '#6a5acd'];
 
   return (
-    <div className="flex">
-      {/* Vertical Navbar */}
+    <div id="dashboard-main9">
       <VerticalNavbar />
 
-      <div className="flex flex-col flex-grow ml-48 px-8">
-        {/* Horizontal Navbar */}
-        <HorizontalNavbar handleRefresh={handleRefresh} /> {/* Pass refresh handler */}
+      <div id="dashboard-content9">
+        <HorizontalNavbar handleRefresh={handleRefresh} />
 
-        <div className="dashboard-container">
-          <h1 className="dashboard-title text-3xl mb-6">Dashboard</h1>
+        <div id="dashboard-container9">
+          <h1 id="dashboard-title">Dashboard</h1>
 
-          {/* Aura Points Display */}
-          <div className="aura-points-display mb-6 text-center">
-            <h2 className="text-2xl font-bold">Aura Points</h2>
-            <p className="text-4xl text-indigo-600 font-semibold">{data.auraPoints}</p>
+          <div id="aura-points9">
+            <h2 id="aura-points-title9">Aura Points</h2>
+            <p>{data.auraPoints}</p>
           </div>
 
-          {/* Classes Chart */}
-          <div className='flex justify-around'>
-            <div className="dashboard-chart w-1/3">
+          <div id="charts-container9">
+            <div className="chart-section9">
               <h2>Attendance</h2>
               <ResponsiveContainer width="95%" height={300}>
                 <PieChart>
                   <Pie
-                    data={[
+                    data={[ 
                       { name: 'Attended', value: data.classes.attended },
-                      { name: 'Total', value: data.classes.total }
+                      { name: 'Remaining', value: data.classes.total - data.classes.attended },
                     ]}
                     dataKey="value"
                     innerRadius={60}
@@ -108,15 +101,14 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </div>
 
-            {/* Assignments Chart */}
-            <div className="dashboard-chart w-1/3">
+            <div className="chart-section9">
               <h2>Assignments</h2>
               <ResponsiveContainer width="95%" height={300}>
                 <PieChart>
                   <Pie
-                    data={[
+                    data={[ 
                       { name: 'Done', value: data.assignments.done },
-                      { name: 'Remaining', value: data.assignments.total - data.assignments.done }
+                      { name: 'Remaining', value: data.assignments.total - data.assignments.done },
                     ]}
                     dataKey="value"
                     innerRadius={60}
@@ -130,40 +122,39 @@ const Dashboard = () => {
                 </PieChart>
               </ResponsiveContainer>
             </div>
+
+            <div className="chart-section9">
+              <h2>Projects Progress</h2>
+              <ResponsiveContainer width="95%" height={300}>
+                <BarChart
+                  data={[{ name: 'Projects', Completed: data.projects.completed, Remaining: data.projects.total - data.projects.completed }]}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="Completed" fill="#00c853" />
+                  <Bar dataKey="Remaining" fill="#d32f2f" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
-          {/* Projects Chart */}
-          <div className="dashboard-chart mt-6">
-            <h2>Projects Progress</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart
-                data={[{ name: 'Projects', Completed: data.projects.completed, Remaining: data.projects.total - data.projects.completed }]}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="Completed" fill="#82ca9d" />
-                <Bar dataKey="Remaining" fill="#ff7300" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-
-          {/* Timetable - Day Wise Display */}
-          <h2 className="timetable-title mt-6">Weekly Timetable</h2>
-          <div className="timetable-container">
-            {data.timetable.map((day, index) => (
-              <div className="timetable-day" key={index}>
-                <h3 className="day-title">{day.day}</h3>
-                {day.classes.map((classItem, i) => (
-                  <div className="class-item" key={i}>
-                    <p><strong>Subject:</strong> {classItem.subject}</p>
-                    <p><strong>Time:</strong> {classItem.time.start} - {classItem.time.end}</p>
-                  </div>
-                ))}
-              </div>
-            ))}
+          <div id="timetable-section9">
+            <h2 id="timetable-title9">Weekly Timetable</h2>
+            <div id="timetable-container9">
+              {data.timetable.map((day, index) => (
+                <div className="timetable-day9" key={index}>
+                  <h3>{day.day}</h3>
+                  {day.classes.map((classItem, i) => (
+                    <div className="class-item9" key={i}>
+                      <p><strong>Subject:</strong> {classItem.subject}</p>
+                      <p><strong>Time:</strong> {classItem.time.start} - {classItem.time.end}</p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

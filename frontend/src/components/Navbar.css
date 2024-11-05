@@ -59,15 +59,17 @@
   
   #login-button {
     border-color: #ec4899;
+    background-color: white;
     color: black;
     height: 7vh;
     /* width: 10vw; */
     margin-top: 3vh;
+    align-items: centre;
   }
   
   #login-button:hover {
     background-color: rgba(186, 217, 233, 0.118);
-    box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+    box-shadow: 0 0 15px white;
     transform: scale(1.05);
     color: white;
   }

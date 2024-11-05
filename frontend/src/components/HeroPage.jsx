@@ -33,15 +33,15 @@ const HeroPage = () => {
         </div>
 
         {/* Main Content */}
-        <div id="content-container">
-          <div id="text-content">
-            <h1 id="hero-title">Level Up Your College Game</h1>
-            <p id="hero-description">
+        <div id="content-container2">
+          <div id="text-content2">
+            <h1 id="hero-title2">Level Up Your College Game</h1>
+            <p id="hero-description2">
               Track your productivity, manage your time, and crush your academic goals with the coolest student productivity tool.
             </p>
-            <div id="button-container">
-              <button id="start-trial-button" onClick={handleStartTrialClick}>Start Free Trial</button>
-              <button id="watch-demo-button" onClick={handleWatchDemoClick}>Watch Demo</button>
+            <div id="button-container2">
+              <button id="start-trial-button2" onClick={handleStartTrialClick}>Start Free Trial</button>
+              <button id="watch-demo-button2" onClick={handleWatchDemoClick}>Watch Demo</button>
             </div>
           </div>
 

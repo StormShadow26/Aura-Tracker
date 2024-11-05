@@ -1,72 +1,198 @@
-/* Dashboard.css */
+/* Base colors and gradients */
+.primary-bg {
+  background-color: #14141a;
+}
 
-.dashboard-container {
-    padding: 20px;
-    max-width: 1500px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    border-radius: 10px;
-  }
-  
-  .dashboard-title {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    color: #333;
-  }
-  
-  .dashboard-chart {
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-chart h2 {
-    font-size: 1.25rem;
-    color: #555;
-    text-align: center;
-  }
-  
-  .timetable-title {
-    font-size: 1.5rem;
-    text-align: center;
-    color: #333;
-    margin: 20px 0 10px;
-  }
-  
-  .timetable-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .timetable-day {
-    flex: 1 1 200px;
-    background: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-  }
-  
-  .day-title {
-    font-weight: bold;
-    color: #4caf50;
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-    text-align: center;
-  }
-  
-  .class-item {
-    font-size: 0.9rem;
-    color: #333;
-    margin-bottom: 10px;
-    background: #f7f7f7;
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
+.card-bg {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.highlight {
+  color: #ff6f91;
+}
+
+.text-main {
+  color: #ffffff;
+}
+
+.text-secondary {
+  color: #b3b3b3;
+}
+
+.box-shadow {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.gradient-primary {
+  background: linear-gradient(90deg, #6a5acd, #ff6f91);
+}
+
+.button-gradient {
+  background: linear-gradient(90deg, #ff6f91, #6a5acd);
+}
+
+/* Main container */
+#dashboard-main9 {
+  display: flex;
+  min-height: 100vh;
+  background-color: #14141a;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Dashboard content */
+#dashboard-content9 {
+  flex-grow: 1;
+  padding: 2rem;
+  margin-left: 240px;
+}
+
+/* Dashboard container */
+#dashboard-container9 {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+
+/* Title styles */
+#dashboard-title9 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff6f91;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #6a5acd, #ff6f91);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+/* Aura points container */
+#aura-points9 {
+  background: linear-gradient(90deg, #6a5acd, #ff6f91);
+  color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 89%;
+}
+
+#aura-points-title9 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#aura-points9 p {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Charts container */
+#charts-container9 {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.chart-section9 {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  flex: 1;
+  min-width: 300px;
+}
+
+.chart-section9 h2 {
+  font-size: 1.3rem;
+  color: #ff6f91;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+/* Timetable section */
+#timetable-section9 {
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+#timetable-title9 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(90deg, #6a5acd, #ff6f91);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+#timetable-container9 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.timetable-day9 {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.timetable-day9 h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0.5px 0.5px black;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.class-item9 {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.6rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.timetable-day9:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px white;
+}
+
+/* Button styling */
+.button9 {
+  background: linear-gradient(90deg, #ff6f91, #6a5acd);
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.button9:hover {
+  background: linear-gradient(90deg, #6a5acd, #ff6f91);
+}

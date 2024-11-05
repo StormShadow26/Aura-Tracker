@@ -21,6 +21,7 @@ import Room from  './components/Room';
 import VideoCall from './components/VideoCall'
 import Mentors from './components/Mentors'
 import ChallengeForm from './components/ChallengeForm';
+import CodeEditor from './components/CodeEditor';
 
 
 function App() {
@@ -59,6 +60,9 @@ function App() {
         <Route path="/quiz" element={<QuizPage/>} />
         <Route path="/room" element={<Room/>} />
         <Route path="/room/:roomId" element={<VideoCall/>} />
+        <Route path="/mentors" element={<Mentors/>} />
+        <Route path="/coder" element={<CodeEditor/>} />
+
 
         
 

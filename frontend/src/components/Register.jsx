@@ -74,18 +74,17 @@ const Register = ({ onSuccess }) => {
   };
 
   return (
-    <div id="register-container" className={isLoading ? 'blur' : ''}>
+    <div id="register-container6" className={isLoading ? 'blur' : ''}>
       <Tire isVisible={isLoading} direction={direction} />
-      <div id="register-card">
-        <h2 id="register-title">Register</h2>
+      <div id="register-card6">
+        <h2 id="register-title6">Register</h2>
 
-        {error && <p id="error-message">{error}</p>}
+        {error && <p id="error-message6">{error}</p>}
 
-        <form id="register-form" onSubmit={handleRegister}>
+        <form id="register-form6" onSubmit={handleRegister}>
           {/* Left Column */}
-
           <div className="column-left">
-           {/* <div className="form-group">
+            <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -94,7 +93,7 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-            </div> */}
+            </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -105,7 +104,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            {/* <div className="form-group">
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -114,8 +113,8 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </div> */}
-            {/* <div className="form-group">
+            </div>
+            <div className="form-group">
               <label htmlFor="year">Year of Study</label>
               <select
                 id="year"
@@ -135,7 +134,7 @@ const Register = ({ onSuccess }) => {
 
           {/* Right Column */}
           <div className="column-right">
-            {/* <div className="form-group">
+            <div className="form-group">
               <label htmlFor="department">Department</label>
               <input
                 type="text"
@@ -144,8 +143,8 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setDepartment(e.target.value)}
                 required
               />
-            </div> */}
-            {/* <div className="form-group">
+            </div>
+            <div className="form-group">
               <label htmlFor="college">College Name</label>
               <input
                 type="text"
@@ -154,8 +153,8 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setCollege(e.target.value)}
                 required
               />
-            </div> */}
-            {/* <div className="form-group">
+            </div>
+            <div className="form-group">
               <label htmlFor="phone">Phone Number</label>
               <input
                 type="tel"
