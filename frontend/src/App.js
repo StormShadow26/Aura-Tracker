@@ -20,6 +20,7 @@ import QuizPage from './components/QuizPage';
 import Room from  './components/Room';
 import VideoCall from './components/VideoCall'
 import Mentors from './components/Mentors'
+import ChallengeForm from './components/ChallengeForm';
 
 
 function App() {
@@ -30,6 +31,14 @@ function App() {
     console.log("Registered Email(in app.js):", userEmail);
     setEmail(userEmail);
     setIsRegistered(true);
+  };
+
+  const handleChallengeCreate = async (challengeData) => {
+    await fetch("http://localhost:4000/api/v1/challenges/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(challengeData),
+    });
   };
   return (
 
@@ -50,8 +59,6 @@ function App() {
         <Route path="/quiz" element={<QuizPage/>} />
         <Route path="/room" element={<Room/>} />
         <Route path="/room/:roomId" element={<VideoCall/>} />
-        <Route path="/mentors" element={<Mentors/>} />
-
 
         
 

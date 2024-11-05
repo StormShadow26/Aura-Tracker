@@ -51,7 +51,7 @@ const Details = ({ email: propEmail }) => {
 
       if (response.ok) {
         alert("User created successfully!");
-        navigate("/dashboard");
+        navigate("/login");
       } else {
         const errorData = await response.json();
         console.error("Error creating user:", errorData);

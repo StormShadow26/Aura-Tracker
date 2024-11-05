@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const registerUser = require('../Controllers/registerUser');
 const loginUser=require('../Controllers/loginUser');
 const {getDashboardData}=require('../Controllers/getDashboardData');
@@ -22,6 +21,7 @@ const {getMentors}=require('../Controllers/getMentors')
 
 
 const submitUserDetails=require("../Controllers/SubmitUserDetails");
+
 
 router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
