@@ -1,9 +1,9 @@
-// src/components/Assignment.js
 import React, { useEffect, useState, useContext } from 'react';
 import { EmailContext } from '../contexts/EmailContext';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import AddAssignmentForm from './AddAssignmentForm';
+import './Assignment.css';
 
 const Assignment = () => {
   const [assignments, setAssignments] = useState([]);
@@ -37,8 +37,6 @@ const Assignment = () => {
         email: emailFromQuery,
         assignmentNumber: assignmentNumber,
       });
-
-      // Refresh assignments after submission
       fetchAssignments();
     } catch (error) {
       console.error('Error submitting assignment:', error);
@@ -50,78 +48,72 @@ const Assignment = () => {
   }, [emailFromQuery]);
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen text-white bg-gray-900">Loading assignments...</div>;
+    return <div id="loading14">Loading assignments...</div>;
   }
 
   return (
-    <div className="min-h-screen" style={{ background: 'black', paddingBottom: '50px' }}>
-      <div className="assignment-list p-6 max-w-screen-lg mx-auto">
-        <h1 className="text-5xl font-extrabold text-center mb-6 text-pink-400 drop-shadow-lg">Assignments</h1>
+    <div id="mainContainer14">
+      <div id="assignmentList14">
+        <h1 id="title14">Assignments</h1>
 
-        <div className="border-t-4 border-pink-500 my-8 mx-auto w-2/3"></div>
+        <div id="divider14"></div>
 
-        <div className="mb-10">
+        <div id="addAssignmentPanel14">
           <AddAssignmentForm refreshAssignments={fetchAssignments} />
         </div>
 
-        <div className="relative flex flex-col items-center mt-6 space-y-12">
-          <div className="absolute w-2 bg-gradient-to-b from-pink-500 via-purple-600 to-blue-500 h-full left-1/2 transform -translate-x-1/2" />
-
+        <div id="assignmentsContainer14">
           {assignments.length > 0 ? (
             assignments.map((assignment, index) => {
               const deadline = new Date(assignment.deadline);
               const now = new Date();
               const isDeadlinePassed = deadline < now;
-
-              const gradientClass = index % 2 === 0
-                ? 'bg-gradient-to-r from-pink-500 to-blue-500'
-                : 'bg-gradient-to-r from-blue-500 to-pink-500';
+              const isLeftAligned = Math.floor(index / 2) % 2 === 0;
 
               return (
                 <div
                   key={assignment.assignmentNumber}
-                  className={`relative flex flex-col items-center w-64 p-6 rounded-xl shadow-2xl transition-all transform hover:scale-105 ${gradientClass}`}
-                  style={{
-                    transform: `translateX(${index % 2 === 0 ? '-50%' : '50%'})`,
-                  }}
+                  className={`assignmentTile14 ${isLeftAligned ? 'left14' : 'right14'}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div
-                    className={`absolute -top-7 w-12 h-12 rounded-full flex items-center justify-center font-extrabold text-white text-lg shadow-md ${
-                      assignment.submitted ? 'bg-green-600' : 'bg-red-600'
-                    }`}
-                  >
+                  <div className={`assignmentNumber14 ${assignment.submitted ? 'submitted14' : 'notSubmitted14'}`}>
                     {index + 1}
                   </div>
 
-                  <h2 className="text-xl font-bold text-white mb-2 text-center">
+                  <h2 className="assignmentTitle14">
                     {assignment.subject} - Chapter: {assignment.chapter}
                   </h2>
-                  <p className="text-sm text-gray-300">
+                  <p className="assignmentDetail14">
                     <strong>Deadline:</strong> {deadline.toLocaleString()}
                   </p>
-                  <p className="text-sm text-gray-300">
+                  <p className="assignmentDetail14">
                     <strong>Submitted:</strong> {assignment.submitted ? 'Yes' : 'No'}
                   </p>
-                  <p className="text-sm text-gray-300">
+                  <p className="assignmentDetail14">
                     <strong>Professor:</strong> {assignment.professorName}
                   </p>
-                  <p className="text-sm text-gray-300 mb-3">
+                  <p className="assignmentDescription14">
                     <strong>Description:</strong> {assignment.description}
                   </p>
 
                   {!assignment.submitted && !isDeadlinePassed && (
                     <button
-                      className="bg-pink-500 text-white p-2 mt-2 rounded-md hover:bg-pink-600 transition-colors"
+                      className="submitButton14"
                       onClick={() => handleSubmitAssignment(assignment.assignmentNumber)}
                     >
                       Submit Now
                     </button>
                   )}
+
+                  {/* Connecting Line */}
+                  {index < assignments.length - 1 && (
+                    <div className={`connectorLine14 ${isLeftAligned ? 'toRight14' : 'toLeft14'}`} />
+                  )}
                 </div>
               );
             })
           ) : (
-            <div className="text-white text-xl">No assignments found.</div>
+            <div id="noAssignments14">No assignments found.</div>
           )}
         </div>
       </div>

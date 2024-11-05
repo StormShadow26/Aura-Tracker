@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import './HeroPage.css';
 import googleLogo from './google.png';
-import teamImage from './team.jpeg'; // Ensure this path is correct
+import teamImage from './team.jpeg'; 
 
 const HeroPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

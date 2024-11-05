@@ -1,0 +1,83 @@
+/* Outer container for the Verify OTP page */
+#verify-container12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Box container with neon pink hover shadow */
+  #verify-box12 {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(28, 28, 28, 0.8);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Neon pink shadow effect on hover */
+  #verify-box12:hover {
+    box-shadow: 0 0 20px 5px #ff00ff;
+  }
+  
+  /* Title text styling */
+  #title12 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff00ff, #00ffff, #00ff00);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  /* Error message styling */
+  #error-message12 {
+    color: #ff4d4d;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  /* OTP input field styling */
+  #input-group12 label {
+    display: block;
+    color: #cccccc;
+    font-size: 1.2rem;
+    margin: 2vh;
+    text-align: center;
+    margin-top: 4vh;
+  }
+  
+  #otp12 {
+    width: 80%;
+    padding:0.5rem 1rem;
+    margin-top: 0.25rem;
+    border-radius: 0.5rem;
+    color: #000;
+    outline: none;
+    transition: border-color 0.2s;
+    margin: 3vh;
+  }
+  
+  #otp12:focus {
+    border: 2px solid #00ff00;
+  }
+  
+  /* Verify button styling */
+  #verify-button12 {
+    width: 100%;
+    padding: 0.75rem;
+    font-weight: medium;
+    background: linear-gradient(to right, #ff00ff, #00ffff);
+    border-radius: 0.5rem;
+    color: white;
+    transition: transform 0.3s;
+  }
+  
+  #verify-button12:hover {
+    transform: scale(1.05);
+  }
+  

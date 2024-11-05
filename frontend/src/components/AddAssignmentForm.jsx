@@ -1,4 +1,4 @@
-// src/components/AddAssignmentForm.js
+
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { EmailContext } from '../contexts/EmailContext';
@@ -32,7 +32,7 @@ const AddAssignmentForm = ({ refreshAssignments }) => {
           'Content-Type': 'application/json'
         }
       });
-      refreshAssignments(); // Refresh the assignment list after adding
+      refreshAssignments(); 
 
       // Reset form
       setAssignmentData({

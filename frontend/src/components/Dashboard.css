@@ -1,4 +1,4 @@
-/* Base colors and gradients */
+
 .primary-bg {
   background-color: #14141a;
 }
@@ -31,7 +31,7 @@
   background: linear-gradient(90deg, #ff6f91, #6a5acd);
 }
 
-/* Main container */
+
 #dashboard-main9 {
   display: flex;
   min-height: 100vh;
@@ -40,14 +40,14 @@
   font-family: 'Roboto', sans-serif;
 }
 
-/* Dashboard content */
+
 #dashboard-content9 {
   flex-grow: 1;
   padding: 2rem;
   margin-left: 240px;
 }
 
-/* Dashboard container */
+
 #dashboard-container9 {
   margin-top: 150px;
   display: flex;
@@ -59,7 +59,7 @@
   align-items: center;
 }
 
-/* Title styles */
+
 #dashboard-title9 {
   font-size: 2.5rem;
   font-weight: bold;
@@ -72,7 +72,7 @@
   text-align: center;
 }
 
-/* Aura points container */
+
 #aura-points9 {
   background: linear-gradient(90deg, #6a5acd, #ff6f91);
   color: #ffffff;
@@ -96,7 +96,7 @@
   margin: 0;
 }
 
-/* Charts container */
+
 #charts-container9 {
   display: flex;
   gap: 2rem;
@@ -121,7 +121,7 @@
   text-transform: uppercase;
 }
 
-/* Timetable section */
+
 #timetable-section9 {
   margin-top: 2rem;
   background-color: rgba(255, 255, 255, 0.05);
@@ -181,7 +181,7 @@
   box-shadow: 0 4px 20px white;
 }
 
-/* Button styling */
+
 .button9 {
   background: linear-gradient(90deg, #ff6f91, #6a5acd);
   color: #ffffff;

@@ -2,61 +2,61 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1f1c2c; /* Primary background */
+  background: #1f1c2c; 
   padding: 1rem 2rem;
-  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); Box shadow color */
+ 
   height: 9vh;
-  border-radius: 0; /* Remove border-radius to span the full width */
-  width: 95vw; /* Full viewport width */
-  margin: 0; /* Remove any default margin */
-  position: fixed; /* Keep navbar at the top on scroll */
+  border-radius: 0; 
+  width: 95vw; 
+  margin: 0; 
+  position: fixed; 
   top: 0;
   left: 0;
-  z-index: 10; /* Ensures navbar stays above other content */
+  z-index: 10; 
 }
 
 #navbar-title5 {
   font-size: 1.8rem;
   font-weight: bold;
-  background: linear-gradient(45deg, #ff6f91, #ff9671, #ffc75f); /* Highlight gradient */
+  background: linear-gradient(45deg, #ff6f91, #ff9671, #ffc75f); 
   -webkit-background-clip: text;
   color: transparent;
-  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.4); /* Text shadow */
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.4); 
 }
 
-/* Center the button container without transform */
+
 #button-container5 {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  transform: translateX(25vw);
+  
 }
 
 .navbar-button5 {
-  width: 7vw;
+  width: 5vw;
   padding: 1rem;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: bold;
   text-align: center;
   color: #fff;
-  background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a); /* Button gradient */
+  background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a); 
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .navbar-button5:hover {
   transform: scale(1.05);
-  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2); /* Hover shadow effect */
+  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2); 
 }
 
 #user-image5 {
   width: 50px;
   border-radius: 50%;
-  border: 2px solid #ff6f91; /* Highlight border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Box shadow color */
+  border: 2px solid #ff6f91; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); 
 }
 .user-logo {
-  width: 40px; /* Set width of the logo */
-  height: 40px; /* Set height of the logo */
-  margin-right: 10px; /* Space between logo and text */
+  width: 40px; 
+  height: 40px; 
+  margin-right: 10px;
 }

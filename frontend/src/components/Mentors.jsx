@@ -8,7 +8,7 @@ const MentorList = () => {
   const [chatInput, setChatInput] = useState('');
   const [chatMessages, setChatMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const genAI = new GoogleGenerativeAI("YOUR_API_KEY");
+  const genAI = new GoogleGenerativeAI("AIzaSyBQdsSOFFJrI9Ote5Q293y1npisCLWdC3o");
   const navigate = useNavigate();
 
   useEffect(() => {
