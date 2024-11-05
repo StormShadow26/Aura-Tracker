@@ -23,7 +23,7 @@ const VerifyOtp = ({ email }) => {
       console.log("data is:", data);
 
       if (response.ok) {
-        navigate("/details"); // Redirect on success
+        navigate("/details"); 
       } else {
         setError(data.message || "Verification failed, please try again");
       }

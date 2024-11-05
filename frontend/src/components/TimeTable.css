@@ -1,4 +1,4 @@
-/* Container and overall styling */
+
 .container13 {
     display: flex;
     flex-direction: column;
@@ -22,13 +22,13 @@
     margin-right: 8px;
   }
   
-  /* Loading state */
+  
   .loading13 {
     text-align: center;
     color: #ccc;
   }
   
-  /* Grid for timetable */
+ 
   .timetable-grid13 {
     display: grid;
     gap: 20px;
@@ -37,7 +37,7 @@
     max-width: 1200px;
   }
   
-  /* Individual day tiles */
+  
   .day-tile13 {
     background-color: #1a1a1a;
     border-radius: 8px;
@@ -59,7 +59,7 @@
     color: transparent;
   }
   
-  /* Classes within each day tile */
+  
   .class-info13 {
     background-color: #31316e;
     padding: 15px;
@@ -84,7 +84,7 @@
     margin: 5px 0;
   }
   
-  /* Subject-specific color schemes */
+  
   .math13 {
     background-color: #303a52;
   }
