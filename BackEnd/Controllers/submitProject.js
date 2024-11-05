@@ -1,13 +1,13 @@
-// controllers/projectController.js
+// step 1
 const Project = require('../models/projectSchema');
-const User = require('../models/userSchema'); // Ensure this path is correct
+const User = require('../models/userSchema'); 
 
-// Mark project as submitted
+// step 2
 const submitProject = async (req, res) => {
   try {
     const { email, projectNumber } = req.body;
 
-    // Find the project and update its submitted status
+    // step 3
     const project = await Project.findOneAndUpdate(
       { email: email, projectNumber: projectNumber },
       { submitted: true },
@@ -18,7 +18,7 @@ const submitProject = async (req, res) => {
       return res.status(404).json({ error: 'Project not found.' });
     }
 
-    // Increment the projects.done for the user
+    // step 4
     await User.findOneAndUpdate(
       { email: email },
       { $inc: { 'projects.completed': 1 } }

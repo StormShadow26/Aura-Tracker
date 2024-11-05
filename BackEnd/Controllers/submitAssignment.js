@@ -1,13 +1,13 @@
-// controllers/assignmentController.js
+// step 1 get nesecarry schema
 const Assignment = require('../models/assignmentSchema');
-const User = require('../models/userSchema'); // Ensure this path is correct
+const User = require('../models/userSchema'); 
 
-// Mark assignment as submitted
+// get assignment number and email
 const submitAssignment = async (req, res) => {
   try {
     const { email, assignmentNumber } = req.body;
 
-    // Find the assignment and update its submitted status
+    // step 3 find on basis of number and email
     const assignment = await Assignment.findOneAndUpdate(
       { email: email, assignmentNumber: assignmentNumber },
       { submitted: true },
@@ -18,7 +18,7 @@ const submitAssignment = async (req, res) => {
       return res.status(404).json({ error: 'Assignment not found.' });
     }
 
-    // Increment the assignments.done for the user
+    // step 4 Increment the assignments.done for the user
     await User.findOneAndUpdate(
       { email: email },
       { $inc: { 'assignments.done': 1 } }

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const registerUser = require('../Controllers/registerUser');
 const loginUser=require('../Controllers/loginUser');
 const {getDashboardData}=require('../Controllers/getDashboardData');
@@ -17,9 +16,11 @@ const {getTimeTable}=require('../Controllers/getTimeTable')
 const {updateProfile}=require('../Controllers/updateProfile')
 const {addSyllabus}=require('../Controllers/addSyllabus');
 const syllabusController = require('../Controllers/syllabusController');
-
-
+const {addMentor}=require('../Controllers/addMentor');
+const {getMentors}=require('../Controllers/getMentors')
+const {compileCode}=require('../Controllers/compilerController.js');
 const submitUserDetails=require("../Controllers/SubmitUserDetails");
+
 
 router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
@@ -44,5 +45,8 @@ router.post('/increment-aura-points', incrementAuraPoints);
 router.use('/api', syllabusController);
 router.get('/leaderboard',getLeaderboard);
 
+router.post('/addMentor',addMentor);
+router.get('/getMentors',getMentors);
+router.post("/compile", compileCode);
 
 module.exports = router;

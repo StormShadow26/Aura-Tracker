@@ -1,18 +1,19 @@
-// controllers/projectController.js
+// step 1
 const Project = require('../models/projectSchema');
 
-// Get projects by email
+// step 2 get email
 const getProjectsByEmail = async (req, res) => {
   try {
     const { email } = req.params;
 
-    // Find all projects associated with the given email
+    // step 3 find projects 
     const projects = await Project.find({ email });
 
     if (!projects.length) {
       return res.status(404).json({ message: 'No projects found for this email.' });
     }
 
+    // step 4 return the data 
     res.status(200).json(projects);
   } catch (error) {
     console.error('Error fetching projects by email:', error);

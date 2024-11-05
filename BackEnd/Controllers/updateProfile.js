@@ -1,13 +1,13 @@
-// controllers/userController.js
+// step 1
 const User = require('../models/userSchema'); 
 
-// Update user profile by email
+// step 2
 const updateProfile = async (req, res) => {
   const { email } = req.params;
   const { name, yearOfStudy, timetable } = req.body;
 
   try {
-    // Find the user by email and update their profile
+    // step 3 -this may require further changes
     const updatedUser = await User.findOneAndUpdate(
       { email: email },
       {
@@ -25,6 +25,7 @@ const updateProfile = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    // step 4
     res.status(200).json({ message: 'Profile updated successfully', user: updatedUser });
   } catch (error) {
     console.error('Error updating profile:', error);

@@ -17,6 +17,15 @@ import StudyMaterials from './components/StudyMaterials';
 import Details from './components/Details';
 import Leaderboard from './components/Leaderboard'
 import QuizPage from './components/QuizPage';
+import Room from  './components/Room';
+import VideoCall from './components/VideoCall'
+import Mentors from './components/Mentors'
+<<<<<<< Updated upstream
+import ChallengeForm from './components/ChallengeForm';
+=======
+import CodeEditor from './components/CodeEditor';
+>>>>>>> Stashed changes
+
 
 function App() {
   const [email, setEmail] = useState('');
@@ -26,6 +35,14 @@ function App() {
     console.log("Registered Email(in app.js):", userEmail);
     setEmail(userEmail);
     setIsRegistered(true);
+  };
+
+  const handleChallengeCreate = async (challengeData) => {
+    await fetch("http://localhost:4000/api/v1/challenges/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(challengeData),
+    });
   };
   return (
 
@@ -44,6 +61,14 @@ function App() {
         <Route path="/details" element={<Details email={email}></Details>}></Route>
         <Route path="/leaderboard" element={<Leaderboard/>} />
         <Route path="/quiz" element={<QuizPage/>} />
+        <Route path="/room" element={<Room/>} />
+        <Route path="/room/:roomId" element={<VideoCall/>} />
+<<<<<<< Updated upstream
+=======
+        <Route path="/mentors" element={<Mentors/>} />
+        <Route path="/coder" element={<CodeEditor/>} />
+
+>>>>>>> Stashed changes
 
         
 

@@ -1,17 +1,18 @@
+// step 1 import the schema
 const Branch = require('../models/branchSchema');
 
-// Function to add a new branch with nested data
+// step 2 collect required data
 const addSyllabus = async (req, res) => {
   try {
     const { branchName, semesters } = req.body;
 
-    // Creating a new branch document with nested semesters, subjects, chapters, and resources
+    // step 3- create a new object to add in db
     const newBranch = new Branch({
       branchName,
       semesters,
     });
 
-    // Save the branch to the database
+    //step 4- Save & send success message 
     await newBranch.save();
 
     res.status(201).json({

@@ -1,18 +1,17 @@
 const bcrypt = require('bcryptjs');
-const User = require("../models/userSchema"); // Adjust path as needed
+const User = require("../models/userSchema"); 
 
 const submitUserDetails = async (req, res) => {
   const { email, name, yearOfStudy, department, college, phone, password } = req.body;
 
   try {
-    // Hash password if provided
+
     const hashedPassword = password ? await bcrypt.hash(password, 10) : undefined;
 
-    // Check if a user with the provided email exists
     let user = await User.findOne({ email });
 
     if (!user) {
-      // If no user is found, create a new user with default values
+
       user = new User({
         name: name || "Anonymous",
         email,
@@ -32,7 +31,7 @@ const submitUserDetails = async (req, res) => {
       return res.status(201).json({ message: "New user created successfully!" });
     }
 
-    // Check if the phone number already exists for another user
+   
     const existingUser = await User.findOne({ phone });
     if (existingUser && existingUser.email !== email) {
       return res.status(409).json({

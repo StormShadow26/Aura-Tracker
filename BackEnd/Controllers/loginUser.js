@@ -1,4 +1,4 @@
-const User = require('../models/userSchema'); // Assuming the model is in the models folder
+const User = require('../models/userSchema');
 const bcrypt = require('bcryptjs');
 
 const loginUser = async (req, res) => {

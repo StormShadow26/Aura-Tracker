@@ -33,6 +33,20 @@ const HorizontalNavbar = () => {
       {/* <img id="user-image" src={userdata.image} alt="User" className="user-image" /> */}
       <img src={user} alt="user" className="user-logo" />
     </nav>
+    
+      <nav className="bg-gray-800 p-4 text-white flex justify-between">
+        <div className="text-xl font-bold">Dashboard</div>
+        <div className="space-x-4">
+          <a href="/profile" className="hover:text-gray-300">Profile</a>
+          <a href="/studymaterials" className="hover:text-gray-300">Study Materials</a>
+          <a href="/quiz" className="hover:text-gray-300">QuizPage</a>
+          <a href="/leaderboard" className="hover:text-gray-300">Leaderboard</a>
+          <a href="/room" className="hover:text-gray-300">Join Room</a>
+          <a href="/mentors" className="hover:text-gray-300">Have Doubt?</a>
+          <a href="/compete" className="hover:text-gray-300">Challenge</a>
+        </div>
+      </nav> 
+    
   );
 };
 

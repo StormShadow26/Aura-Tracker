@@ -3,12 +3,6 @@ const app = express();
 var cors = require("cors");
 const userdb = require("./models/googleSchema");
 
-//changed h ye
-// app.use(
-//     cors({
-//       origin: "*",
-//     })
-//   );
 
 app.use(
   cors({
@@ -128,3 +122,11 @@ app.get(
 app.get("/register/sucess", async (req, res) => {
   console.log("reqqq-", req.user);
 });
+
+
+try {
+  const challengeRoutes = require("./routes/challenge");
+  app.use("/challenges", challengeRoutes);
+} catch (error) {
+  console.error("Error loading challenge routes:", error);
+}
