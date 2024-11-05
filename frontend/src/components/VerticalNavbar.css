@@ -1,0 +1,34 @@
+#vertical-navbar4 {
+  background: #1f1c2c;
+  color: #ffecb3;
+  width: 200px; /* Adjust width as needed */
+  height: 100vh; /* Full height */
+  position: fixed; /* Fixed position */
+  top: 16%; /* Adjust based on header height */
+  left: 0; /* Align to the left */
+  display: flex;
+  flex-direction: column; /* Vertical layout */
+  padding: 1rem; /* Padding */
+  margin-top: -3vh;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); /* Right shadow */
+}
+
+.navbar-button4 {
+  border-color: #ec4899;
+  background-color: white;
+  color: black;
+  height: 7vh;
+  width: 10vw;
+  margin: 0.5vh;
+  align-items: center;
+  border-radius: 19px;
+}
+
+.navbar-button4:hover {
+  background-color: rgba(186, 217, 233, 0.118);
+  box-shadow: 0 0 15px white;
+  transform: scale(1.05);
+  color: white;
+}
+
+/* Additional responsive styles can be added if necessary */

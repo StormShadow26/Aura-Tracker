@@ -1,0 +1,62 @@
+#horizontal-navbar5 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1f1c2c; /* Primary background */
+  padding: 1rem 2rem;
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); Box shadow color */
+  height: 9vh;
+  border-radius: 0; /* Remove border-radius to span the full width */
+  width: 95vw; /* Full viewport width */
+  margin: 0; /* Remove any default margin */
+  position: fixed; /* Keep navbar at the top on scroll */
+  top: 0;
+  left: 0;
+  z-index: 10; /* Ensures navbar stays above other content */
+}
+
+#navbar-title5 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6f91, #ff9671, #ffc75f); /* Highlight gradient */
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.4); /* Text shadow */
+}
+
+/* Center the button container without transform */
+#button-container5 {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  transform: translateX(25vw);
+}
+
+.navbar-button5 {
+  width: 7vw;
+  padding: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a); /* Button gradient */
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.navbar-button5:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2); /* Hover shadow effect */
+}
+
+#user-image5 {
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #ff6f91; /* Highlight border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Box shadow color */
+}
+.user-logo {
+  width: 40px; /* Set width of the logo */
+  height: 40px; /* Set height of the logo */
+  margin-right: 10px; /* Space between logo and text */
+}

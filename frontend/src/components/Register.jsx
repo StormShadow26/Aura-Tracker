@@ -74,17 +74,17 @@ const Register = ({ onSuccess }) => {
   };
 
   return (
-    <div id="register-container" className={isLoading ? 'blur' : ''}>
+    <div id="register-container6" className={isLoading ? 'blur' : ''}>
       <Tire isVisible={isLoading} direction={direction} />
-      <div id="register-card">
-        <h2 id="register-title">Register</h2>
+      <div id="register-card6">
+        <h2 id="register-title6">Register</h2>
 
-        {error && <p id="error-message">{error}</p>}
+        {error && <p id="error-message6">{error}</p>}
 
-        <form id="register-form" onSubmit={handleRegister}>
+        <form id="register-form6" onSubmit={handleRegister}>
           {/* Left Column */}
-          <div className="column-left">
-            <div className="form-group">
+          <div className="column-left6">
+            <div className="form-group6">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -94,7 +94,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group6">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -104,7 +104,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group6">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -114,7 +114,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group6">
               <label htmlFor="year">Year of Study</label>
               <select
                 id="year"
@@ -133,8 +133,8 @@ const Register = ({ onSuccess }) => {
           </div>
 
           {/* Right Column */}
-          <div className="column-right">
-            <div className="form-group">
+          <div className="column-right6">
+            <div className="form-group6">
               <label htmlFor="department">Department</label>
               <input
                 type="text"
@@ -144,7 +144,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group6">
               <label htmlFor="college">College Name</label>
               <input
                 type="text"
@@ -154,7 +154,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group">
+            <div className="form-group6">
               <label htmlFor="phone">Phone Number</label>
               <input
                 type="tel"

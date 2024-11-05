@@ -1,0 +1,167 @@
+/* Background and main container */
+#back{
+    background: url('bg1.jpg') no-repeat center center/cover;
+    padding: 5vh;
+}
+#build-profile-container10 {
+    max-width: 60%;
+    margin: 0vh auto;
+    padding: 3rem;
+    background-color: #252423;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffecb3; /* Text color matching theme */
+}
+#build-profile-container10:hover {
+    box-shadow: 0 4px 30px white;
+}
+
+/* Page title */
+#page-title10 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ff6f91;
+    background: linear-gradient(45deg, #ff6f91, #ff9671, #ffc75f);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 8px rgba(255, 255, 255, 0.4);
+    margin-bottom: 2rem;
+}
+
+/* Form styling */
+#profile-form10 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Reduced gap for compactness */
+    color: #fefefe;
+}
+
+/* Labels */
+.label10 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff9671;
+    margin-bottom: 0.2rem; /* Reduced margin */
+}
+
+/* Input fields */
+.input10, .select10 {
+    width: 80%;
+    padding: 1rem;
+    background: white; /* Set background to white */
+    color: #333; /* Dark text color for contrast */
+    border: 1px solid #5d50f5;
+    border-radius: 8px;
+    transition: border 0.3s ease;
+    margin-left: 3vh;
+     
+}
+
+.input10:focus, .select10:focus {
+    border: 1px solid #ff6f91;
+    outline: none;
+    box-shadow: 0 0 8px rgba(245, 66, 145, 0.5);
+}
+
+/* Timetable container */
+#timetable-container10 {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: rgba(31, 28, 44, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Timetable day toggle */
+.day-toggle10 {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #47eb9a;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: rgba(255, 215, 135, 0.1);
+    border-radius: 8px;
+}
+
+.day-toggle10:hover {
+    color: #ff6f91;
+    background-color: rgba(255, 215, 135, 0.2);
+}
+
+/* Class information */
+.class-info10 {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    background: rgba(31, 28, 44, 0.9);
+    border: 1px solid #ffc75f;
+    border-radius: 8px;
+    color: #ffecb3;
+    transition: background 0.3s ease;
+}
+
+/* Class input fields */
+.class-info10 .input10 {
+    margin-top: 0.5rem;
+    background: rgba(255, 215, 135, 0.1);
+    border: 1px solid #5d50f5;
+    color: white;
+}
+
+.class-info10 .input10:focus {
+    border-color: #ff6f91;
+    box-shadow: 0 0 8px rgba(255, 111, 145, 0.5);
+}
+
+/* Buttons */
+.button10 {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button10:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Add/Remove class buttons */
+.add-class-button10, .remove-class-button10 {
+    padding: 0.5rem 1rem;
+    color: #ff9671;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    margin: 3vh;
+    border-radius: 10px;
+}
+
+.add-class-button10:hover, .remove-class-button10:hover {
+    color: #ff6f91;
+}
+
+/* Submit button */
+.submit-button10 {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.submit-button10:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.3);
+}

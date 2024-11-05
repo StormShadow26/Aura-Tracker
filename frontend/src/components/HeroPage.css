@@ -66,7 +66,7 @@ body, html {
   }
   
   /* Content Container */
-  #content-container {
+  #content-container2 {
     margin-top: 10vh;
     position: relative;
     z-index: 10;
@@ -76,7 +76,7 @@ body, html {
   }
   
   /* Hero Title */
-  #hero-title {
+  #hero-title2{
     font-size: 3rem;
     font-weight: bold;
     color: transparent;
@@ -87,21 +87,21 @@ body, html {
   }
   
   /* Hero Description */
-  #hero-description {
+  #hero-description2 {
     font-size: 1.25rem;
     color: #d1d5db;
     margin-bottom: 2.5rem;
   }
   
   /* Buttons */
-  #button-container {
+  #button-container2 {
     display: flex;
     gap: 1rem;
     justify-content: center;
     margin-bottom: 4rem;
   }
   
-  #start-trial-button, #watch-demo-button {
+  #start-trial-button2, #watch-demo-button2 {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: medium;
@@ -109,26 +109,26 @@ body, html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  #start-trial-button {
+  #start-trial-button2 {
     background: linear-gradient(90deg, #ff007a, #8a00ff);
     color: white;
     border: none;
     cursor: pointer;
   }
   
-  #start-trial-button:hover {
+  #start-trial-button2:hover {
     transform: scale(1.05);
     box-shadow: 0px 0px 15px rgba(255, 0, 122, 0.4);
   }
   
-  #watch-demo-button {
+  #watch-demo-button2 {
     background: none;
     color: #0077ff;
     border: 2px solid #0077ff;
     cursor: pointer;
   }
   
-  #watch-demo-button:hover {
+  #watch-demo-button2:hover {
     background: rgba(0, 119, 255, 0.1);
     transform: scale(1.05);
     box-shadow: 0px 0px 15px rgba(0, 119, 255, 0.4);
