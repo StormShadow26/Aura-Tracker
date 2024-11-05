@@ -23,6 +23,7 @@ const HorizontalNavbar = () => {
   }, []);
 
   return (
+    <div>
     <nav id="horizontal-navbar5" className="navbar5">
       <div id="navbar-title5" className="navbar-title5">Dashboard</div>
       <div id="button-container5" className="button-container5">
@@ -45,7 +46,7 @@ const HorizontalNavbar = () => {
           <a href="/mentors" className="hover:text-gray-300">Have Doubt?</a>
           <a href="/compete" className="hover:text-gray-300">Challenge</a>
         </div>
-      </nav> 
+      </nav> </div>
     
   );
 };
