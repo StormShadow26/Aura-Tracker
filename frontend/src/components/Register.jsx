@@ -83,8 +83,9 @@ const Register = ({ onSuccess }) => {
 
         <form id="register-form" onSubmit={handleRegister}>
           {/* Left Column */}
+
           <div className="column-left">
-            <div className="form-group">
+           {/* <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -93,7 +94,7 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setName(e.target.value)}
                 required
               />
-            </div>
+            </div> */}
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -104,7 +105,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -113,8 +114,8 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </div>
-            <div className="form-group">
+            </div> */}
+            {/* <div className="form-group">
               <label htmlFor="year">Year of Study</label>
               <select
                 id="year"
@@ -129,12 +130,12 @@ const Register = ({ onSuccess }) => {
                 <option value="4">4th Year</option>
                 <option value="5">5th Year</option>
               </select>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column */}
           <div className="column-right">
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="department">Department</label>
               <input
                 type="text"
@@ -143,8 +144,8 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setDepartment(e.target.value)}
                 required
               />
-            </div>
-            <div className="form-group">
+            </div> */}
+            {/* <div className="form-group">
               <label htmlFor="college">College Name</label>
               <input
                 type="text"
@@ -153,8 +154,8 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setCollege(e.target.value)}
                 required
               />
-            </div>
-            <div className="form-group">
+            </div> */}
+            {/* <div className="form-group">
               <label htmlFor="phone">Phone Number</label>
               <input
                 type="tel"
@@ -164,8 +165,9 @@ const Register = ({ onSuccess }) => {
                 required
                 pattern="[0-9]{10}"
               />
-            </div>
-          </div>
+            </div> */}
+          </div> 
+          
         </form>
 
         <button type="submit" id="register-button" onClick={handleRegister}>

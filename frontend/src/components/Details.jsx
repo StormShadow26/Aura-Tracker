@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const Details = ({ email: propEmail }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   // Extract email from URL if propEmail is not provided
   const [email, setEmail] = useState(propEmail || "");
 
@@ -80,19 +80,17 @@ const Details = ({ email: propEmail }) => {
             />
           </div>
 
-          {email && !formData.password && (
-            <div style={styles.formGroup}>
-              <label style={styles.label}>Password:</label>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                style={styles.input}
-              />
-            </div>
-          )}
+          <div style={styles.formGroup}>
+            <label style={styles.label}>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              style={styles.input}
+            />
+          </div>
 
           <div style={styles.formGroup}>
             <label style={styles.label}>Year of Study:</label>
@@ -153,7 +151,9 @@ const Details = ({ email: propEmail }) => {
             />
           </div>
 
-          <button type="submit" style={styles.button}>Submit</button>
+          <button type="submit" style={styles.button}>
+            Submit
+          </button>
         </form>
       </div>
     </div>
@@ -220,4 +220,3 @@ const styles = {
     transition: "background-color 0.3s ease",
   },
 };
-
