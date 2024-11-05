@@ -18,8 +18,7 @@ const {addSyllabus}=require('../Controllers/addSyllabus');
 const syllabusController = require('../Controllers/syllabusController');
 const {addMentor}=require('../Controllers/addMentor');
 const {getMentors}=require('../Controllers/getMentors')
-
-
+const {compileCode}=require('../Controllers/compilerController.js');
 const submitUserDetails=require("../Controllers/SubmitUserDetails");
 
 
@@ -48,5 +47,6 @@ router.get('/leaderboard',getLeaderboard);
 
 router.post('/addMentor',addMentor);
 router.get('/getMentors',getMentors);
+router.post("/compile", compileCode);
 
 module.exports = router;

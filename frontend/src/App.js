@@ -20,7 +20,11 @@ import QuizPage from './components/QuizPage';
 import Room from  './components/Room';
 import VideoCall from './components/VideoCall'
 import Mentors from './components/Mentors'
+<<<<<<< Updated upstream
 import ChallengeForm from './components/ChallengeForm';
+=======
+import CodeEditor from './components/CodeEditor';
+>>>>>>> Stashed changes
 
 
 function App() {
@@ -59,6 +63,12 @@ function App() {
         <Route path="/quiz" element={<QuizPage/>} />
         <Route path="/room" element={<Room/>} />
         <Route path="/room/:roomId" element={<VideoCall/>} />
+<<<<<<< Updated upstream
+=======
+        <Route path="/mentors" element={<Mentors/>} />
+        <Route path="/coder" element={<CodeEditor/>} />
+
+>>>>>>> Stashed changes
 
         
 
