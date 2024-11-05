@@ -4,6 +4,7 @@ import { EmailContext } from '../contexts/EmailContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+
 function QuizPage() {
     const [questions, setQuestions] = useState([]);
     const [category, setCategory] = useState('');

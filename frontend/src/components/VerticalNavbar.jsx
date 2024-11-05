@@ -15,6 +15,8 @@ const VerticalNavbar = () => {
   const handleAssignments = () => navigate(`/assignments/${encodeURIComponent(email)}`);
   const handleProjects = () => navigate(`/projects/${encodeURIComponent(email)}`);
   const handleTimetable = () => navigate(`/timetable/${encodeURIComponent(email)}`);
+  const handleProblemset=()=>navigate('/question');
+  
 
   return (
     <div id="vertical-navbar4" className="navbar-container4">
@@ -23,6 +25,7 @@ const VerticalNavbar = () => {
       <button id="assignments-button4" onClick={handleAssignments} className="navbar-button4">Assignments</button>
       <button id="projects-button4" onClick={handleProjects} className="navbar-button4">Projects</button>
       <button id="timetable-button4" onClick={handleTimetable} className="navbar-button4">Timetable</button>
+      <button id="-button4" onClick={handleProblemset} className="navbar-button4">Problemset</button>
     </div>
   );
 };
