@@ -5,13 +5,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { EmailProvider } from './contexts/EmailContext';
+import { OutputProvider } from './contexts/OutputContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <EmailProvider>
+  <OutputProvider>
+  
   
     <App />
- 
+
+    
+  </OutputProvider>
   </EmailProvider>
 );
 
