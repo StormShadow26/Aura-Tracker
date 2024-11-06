@@ -28,6 +28,7 @@ import PomodoroPage from './components/PomodoroPage';
 
 
 function App() {
+
   const [email, setEmail] = useState('');
   const [isRegistered, setIsRegistered] = useState(false);
 
@@ -70,7 +71,7 @@ function App() {
         <Route path="/pd"  element={<PomodoroPage/>} />'
        
 
-
+        <Route path="/classDashBoard" element={<ProffDashBoard/>} />
         
 
         </Routes>

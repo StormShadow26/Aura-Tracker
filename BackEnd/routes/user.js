@@ -28,6 +28,8 @@ const { createContest, getContests } = require('../controllers/contestController
 router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
 const {getLeaderboard}=require('../Controllers/getLeaderboard')
+
+router.post('/welcome', submitUserDetails);
 router.post('/register', registerUser);
 router.post('/login',loginUser);
 router.get('/dashboard/:email',getDashboardData);
