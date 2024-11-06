@@ -4,7 +4,6 @@ import { EmailContext } from '../contexts/EmailContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-
 function QuizPage() {
     const [questions, setQuestions] = useState([]);
     const [category, setCategory] = useState('');
@@ -13,6 +12,10 @@ function QuizPage() {
     const [userAnswers, setUserAnswers] = useState({});
     const [score, setScore] = useState(null);
     const { email } = useContext(EmailContext);
+    
+    // Timer states
+    const [timeLeft, setTimeLeft] = useState(0);
+    const [timerStarted, setTimerStarted] = useState(false);
 
     const fetchQuestions = async () => {
         try {
@@ -20,10 +23,32 @@ function QuizPage() {
                 `https://quizapi.io/api/v1/questions?apiKey=n0rkfZHQ4nMZblRBODKOUSWv3sp4nv2udtfDOX9s&limit=${limit}&category=${category}&difficulty=${difficulty}`
             );
             setQuestions(response.data);
+
+            // Start the timer based on the number of questions (e.g., 30 seconds per question)
+            const totalTime = limit * 30; // 30 seconds per question
+            setTimeLeft(totalTime);
+            setTimerStarted(true); // Start the timer
         } catch (error) {
             Swal.fire('Error', 'Failed to fetch questions. Please try again.', 'error');
         }
     };
+
+    useEffect(() => {
+        if (!timerStarted || timeLeft <= 0) return;
+
+        const timerInterval = setInterval(() => {
+            setTimeLeft((prevTime) => {
+                if (prevTime <= 1) {
+                    clearInterval(timerInterval);
+                    calculateScore(); // Auto-submit when timer reaches zero
+                    return 0;
+                }
+                return prevTime - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(timerInterval);
+    }, [timerStarted, timeLeft]);
 
     const handleAnswerSelect = (questionId, answer) => {
         setUserAnswers((prev) => ({ ...prev, [questionId]: answer }));
@@ -109,6 +134,11 @@ function QuizPage() {
                 >
                     Start Quiz
                 </button>
+            </div>
+
+            {/* Display the timer */}
+            <div className="timer-display mt-4 text-2xl font-semibold text-red-400">
+                Time Left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? '0' : ''}{timeLeft % 60}
             </div>
 
             <div className="questions-container w-full max-w-2xl mt-8 space-y-6">

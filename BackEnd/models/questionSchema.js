@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// Define the schema for a single question
 const questionSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -57,5 +58,40 @@ const questionSchema = new mongoose.Schema({
   }
 });
 
+// Define the schema for the CP contest
+const contestSchema = new mongoose.Schema({
+  contestTitle: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  contestDate: {
+    type: Date,
+    required: true // Contest date and time
+  },
+  duration: {
+    type: Number,
+    required: true, // Duration in minutes
+  },
+  questions: [questionSchema],  // Embedded question schema
+  totalQuestions: {
+    type: Number,
+    default: 0
+  },
+  isActive: {
+    type: Boolean,
+    default: true // Whether the contest is ongoing or completed
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 const Question = mongoose.model('Question', questionSchema);
-module.exports = Question;
+const Contest = mongoose.model('Contest', contestSchema);
+
+module.exports = { Question, Contest };

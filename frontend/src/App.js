@@ -24,6 +24,7 @@ import ChallengeForm from './components/ChallengeForm';
 import CodeEditor from './components/CodeEditor';
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetails';
+import PomodoroPage from './components/PomodoroPage';
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
         <Route path="/coder" element={<CodeEditor/>} />
         <Route path="/question/:id" element={<QuestionDetail/>} />
         <Route path="/question"  element={<QuestionList/>} />
+        <Route path="/pd"  element={<PomodoroPage/>} />'
        
 
 

@@ -20,6 +20,13 @@ const QuestionList = () => {
     fetchQuestions();
   }, []);
 
+  // Function to check if the question was created today
+  const isDailyChallenge = (createdAt) => {
+    const today = new Date();
+    const createdDate = new Date(createdAt);
+    return today.toDateString() === createdDate.toDateString();
+  };
+
   return (
     <div className="container mx-auto p-4">
       <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg">
@@ -43,6 +50,9 @@ const QuestionList = () => {
               <Link to={`/question/${question._id}`} className="text-blue-400 hover:underline">
                 {question.title}
               </Link>
+              {isDailyChallenge(question.createdAt) && (
+                <span className="ml-2 text-sm text-yellow-400">Daily Challenge</span>
+              )}
             </div>
             <div>
               <FaLock className="text-purple-500 cursor-pointer" />
