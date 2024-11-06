@@ -4,7 +4,6 @@ import Tire from './Tire'; // Import the Tire component
 import './Register.css'; // Import styles for the Register component
 import googleLogo from './google.png';
 
-
 const Register = ({ onSuccess }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -129,7 +128,7 @@ const Register = ({ onSuccess }) => {
                 <option value="4">4th Year</option>
                 <option value="5">5th Year</option>
               </select>
-            </div> */}
+            </div> 
           </div>
 
           {/* Right Column */}
@@ -164,14 +163,13 @@ const Register = ({ onSuccess }) => {
                 required
                 pattern="[0-9]{10}"
               />
-            </div> */}
+            </div>
           </div> 
           
+          <button type="submit" id="register-button">
+            Register
+          </button>
         </form>
-
-        <button type="submit" id="register-button" onClick={handleRegister}>
-          Register
-        </button>
         
         <button onClick={loginWithGoogle} id="google-button" className="google-button">
           <img src={googleLogo} alt="Google Logo" className="google-logo" />

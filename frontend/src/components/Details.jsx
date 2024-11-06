@@ -18,15 +18,16 @@ const Details = ({ email: propEmail }) => {
     }
   }, [propEmail, location.search]);
 
-  console.log("Email aayi h:", email);
-
   const [formData, setFormData] = useState({
     name: "",
     password: "",
     yearOfStudy: "",
+    semester: "",
     department: "",
     college: "",
     phone: "",
+    role: "",
+    identifier: "",
   });
 
   const handleChange = (e) => {
@@ -93,22 +94,59 @@ const Details = ({ email: propEmail }) => {
           </div>
 
           <div style={styles.formGroup}>
-            <label style={styles.label}>Year of Study:</label>
+            <label style={styles.label}>Role:</label>
             <select
-              name="yearOfStudy"
-              value={formData.yearOfStudy}
+              name="role"
+              value={formData.role}
               onChange={handleChange}
               required
               style={styles.select}
             >
-              <option value="">Select</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
+              <option value="">Select Role</option>
+              <option value="Student">Student</option>
+              <option value="Professor">Professor</option>
             </select>
           </div>
+
+          {formData.role === "Student" && (
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Year of Study:</label>
+              <select
+                name="yearOfStudy"
+                value={formData.yearOfStudy}
+                onChange={handleChange}
+                required
+                style={styles.select}
+              >
+                <option value="">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          )}
+
+          {formData.role === "Professor" && (
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Semester:</label>
+              <select
+                name="semester"
+                value={formData.semester}
+                onChange={handleChange}
+                required
+                style={styles.select}
+              >
+                <option value="">Select Semester</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="1">3</option>
+                <option value="2">4</option>
+                <option value="1">5</option>
+              </select>
+            </div>
+          )}
 
           <div style={styles.formGroup}>
             <label style={styles.label}>Department:</label>
@@ -150,6 +188,34 @@ const Details = ({ email: propEmail }) => {
               style={styles.input}
             />
           </div>
+
+          {formData.role === "Student" && (
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Student Roll Number:</label>
+              <input
+                type="text"
+                name="identifier"
+                value={formData.identifier}
+                onChange={handleChange}
+                required
+                style={styles.input}
+              />
+            </div>
+          )}
+
+          {formData.role === "Professor" && (
+            <div style={styles.formGroup}>
+              <label style={styles.label}>Professional Identity Number:</label>
+              <input
+                type="text"
+                name="identifier"
+                value={formData.identifier}
+                onChange={handleChange}
+                required
+                style={styles.input}
+              />
+            </div>
+          )}
 
           <button type="submit" style={styles.button}>
             Submit

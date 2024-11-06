@@ -22,9 +22,11 @@ import VideoCall from './components/VideoCall'
 import Mentors from './components/Mentors'
 import ChallengeForm from './components/ChallengeForm';
 import CodeEditor from './components/CodeEditor';
+import ProffDashBoard from './components/ProffDashBoard';
 
 
 function App() {
+
   const [email, setEmail] = useState('');
   const [isRegistered, setIsRegistered] = useState(false);
 
@@ -63,7 +65,7 @@ function App() {
         <Route path="/mentors" element={<Mentors/>} />
         <Route path="/coder" element={<CodeEditor/>} />
 
-
+        <Route path="/classDashBoard" element={<ProffDashBoard/>} />
         
 
         </Routes>
