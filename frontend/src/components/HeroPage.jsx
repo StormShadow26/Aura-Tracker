@@ -4,7 +4,10 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import './HeroPage.css';
 import googleLogo from './google.png';
-import teamImage from './team.jpeg'; // Ensure this path is correct
+import teamImage from './team.jpeg'; 
+import aryan from './aryan.jpeg';
+import tanishq from './tansihq.jpeg';
+import ashish from './ashish.jpeg';
 
 const HeroPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -81,23 +84,23 @@ const HeroPage = () => {
             {/* Team Member 1 */}
             <div className="team-member">
               <img src={googleLogo} alt="Google Logo" className="google-logo" />
-              <h3>Tanishq Gupta</h3>
+              <h3>Tanishk Gupta</h3>
               <p>Founder (CEO)</p>
-              <p>Graduated from Stanford University with a degree in Computer Science...</p>
+              <p>Graduating from MNNIT ALLAHBAD with a degree in Computer Science</p>
             </div>
             {/* Team Member 2 */}
             <div className="team-member">
-              <img src={googleLogo} alt="Google Logo" className="google-logo" />
+              <img src={aryan} alt="Google Logo" className="google-logo" />
               <h3>Aryan Sharma</h3>
-              <p>Co-Founder Technical Director (CTO)</p>
-              <p>Graduated from Columbia University with a degree in Software Engineering...</p>
+              <p>Founder (CEO)</p>
+              <p>Graduating from MNNIT ALLAHBAD with a degree in Computer Science</p>
             </div>
             {/* Team Member 3 */}
             <div className="team-member">
-              <img src={googleLogo} alt="Google Logo" className="google-logo" />
+              <img src={ashish} alt="Google Logo" className="google-logo" />
               <h3>Ashish Jha</h3>
-              <p>Public Relations Manager</p>
-              <p>Graduated from National University of Singapore, Tier 1 investor...</p>
+              <p>Founder (CEO)</p>
+              <p>Graduating from MNNIT ALLAHBAD with a degree in Computer Science.</p>
             </div>
           </div>
         </section>

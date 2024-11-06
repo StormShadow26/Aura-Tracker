@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const Details = ({ email: propEmail }) => {
   const navigate = useNavigate();
   const location = useLocation();
-
+  
   // Extract email from URL if propEmail is not provided
   const [email, setEmail] = useState(propEmail || "");
 

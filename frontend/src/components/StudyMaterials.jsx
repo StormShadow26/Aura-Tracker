@@ -3,7 +3,7 @@ import { EmailContext } from '../contexts/EmailContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import tireImage from './Tire.png'; // Adjust the path to your image
+import tireImage from './Tire.png';
 import './StudyMaterials.css';
 
 const StudyMaterials = () => {

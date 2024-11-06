@@ -1,4 +1,4 @@
-/* General Styling */
+
 body, html {
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
@@ -8,7 +8,7 @@ body, html {
     overflow-x: scroll;
   }
   
-  /* Hero Container */
+  
   #hero-container {
     position: relative;
     min-height: 100vh;
@@ -19,7 +19,7 @@ body, html {
     background: linear-gradient(180deg, #000000, #1a1a1a, #000000);
   }
   
-  /* Animated Background */
+  
   #animated-background {
     position: absolute;
     inset: 0;
@@ -65,7 +65,7 @@ body, html {
     50% { transform: scale(1.2); }
   }
   
-  /* Content Container */
+ 
   #content-container2 {
     margin-top: 10vh;
     position: relative;
@@ -75,7 +75,7 @@ body, html {
     padding: 4rem 2rem;
   }
   
-  /* Hero Title */
+ 
   #hero-title2{
     font-size: 3rem;
     font-weight: bold;
@@ -86,14 +86,14 @@ body, html {
     margin-bottom: 1.5rem;
   }
   
-  /* Hero Description */
+  
   #hero-description2 {
     font-size: 1.25rem;
     color: #d1d5db;
     margin-bottom: 2.5rem;
   }
   
-  /* Buttons */
+  
   #button-container2 {
     display: flex;
     gap: 1rem;
@@ -134,7 +134,7 @@ body, html {
     box-shadow: 0px 0px 15px rgba(0, 119, 255, 0.4);
   }
   
-  /* Features */
+  
   #features-container {
     display: flex;
     flex-direction: column;
@@ -177,7 +177,7 @@ body, html {
     color: #d1d5db;
   }
   
-  /* Modal */
+  
   #modal-overlay {
     position: fixed;
     inset: 0;
@@ -214,7 +214,7 @@ body, html {
 
 
   
-  /* Team Section */
+  
 .team-section {
   
   padding: 50px 0;
@@ -235,7 +235,7 @@ body, html {
   gap: 30px;
 }
 
-/* Team Member Card */
+
 .team-member {
   background: linear-gradient(black,black);
   color: #fff;
@@ -271,10 +271,10 @@ body, html {
   padding: 10px;
 }
 
-/* Hover Effect */
+
 .team-member:hover {
   transform: translateY(-10px);
-  border-right: 5px solid #ff007a; /* Green right border */
+  border-right: 5px solid #ff007a; 
 }
 
 
@@ -295,8 +295,8 @@ body, html {
 }
 
 .team-background {
-  font-size: 6rem; /* Large text */
-  color: rgba(200, 43, 206, 0.341); /* Light green color with transparency */
+  font-size: 6rem; 
+  color: rgba(200, 43, 206, 0.341); 
   text-transform: uppercase;
   letter-spacing: 5px;
   position: relative;
@@ -304,20 +304,20 @@ body, html {
 }
 
 .team-foreground {
-  font-size: 2rem; /* Smaller text */
+  font-size: 2rem; 
   font-weight: bold;
   color: #ffffff;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the text */
+  transform: translate(-50%, -50%); 
   z-index: 2;
   text-transform: uppercase;
   letter-spacing: 2px;
-  white-space: nowrap; /* Prevent the text from wrapping */
+  white-space: nowrap; 
 }
 
-/* Optional: Line Below Text */
+
 .team-heading:after {
   content: '';
   display: block;
@@ -328,15 +328,15 @@ body, html {
   top: 110%;
   left: 0;
 }
-/* Parallax Image Section */
+
 .parallax-image {
-  height: 300px; /* Adjust height as necessary */
-  background-attachment: fixed; /* Create the parallax effect */
+  height: 300px; 
+  background-attachment: fixed; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(0.8); /* Darken the image for better text visibility */
-  margin-top: 20px; /* Optional margin for spacing */
+  filter: brightness(0.8); 
+  margin-top: 20px;
   max-width: 100vw;
 }
 

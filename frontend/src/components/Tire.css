@@ -1,4 +1,4 @@
-/* Tire.css */
+
 .tire-container {
     position: fixed;
     top: 50%;
@@ -6,7 +6,7 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 0.3s ease;
-    pointer-events: none; /* Prevent clicks when not visible */
+    pointer-events: none; 
   }
   
   .tire-container.visible {
@@ -14,7 +14,7 @@
   }
   
   .tire {
-    width: 100px; /* Adjust size as necessary */
+    width: 100px;
     animation: rotate 1s forwards;
   }
   
@@ -27,7 +27,7 @@
     }
   }
   
-  /* Move tire to left when navigating back */
+  
   .tire-container.to-left {
     animation: move-left 0.5s forwards;
   }
@@ -38,7 +38,7 @@
     }
   }
   
-  /* Move tire to right when navigating forward */
+ 
   .tire-container.to-right {
     animation: move-right 0.5s forwards;
   }

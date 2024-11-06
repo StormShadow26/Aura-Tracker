@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Tire from './Tire'; // Import the Tire component
-import './Register.css'; // Import styles for the Register component
+import Tire from './Tire'; 
+import './Register.css'; 
 import googleLogo from './google.png';
 
 const Register = ({ onSuccess }) => {
@@ -121,12 +121,12 @@ const Register = ({ onSuccess }) => {
                 onChange={(e) => setYearOfStudy(e.target.value)}
                 required
               >
-                <option value="">Select Year</option>
-                <option value="1">1st Year</option>
-                <option value="2">2nd Year</option>
-                <option value="3">3rd Year</option>
-                <option value="4">4th Year</option>
-                <option value="5">5th Year</option>
+                <option className  ="pintu" value="">Select Year</option>
+                <option className  ="pintu" value="1">1st Year</option>
+                <option className  ="pintu" value="2">2nd Year</option>
+                <option className  ="pintu"value="3">3rd Year</option>
+                <option className  ="pintu" value="4">4th Year</option>
+                <option className  ="pintu" value="5">5th Year</option>
               </select>
             </div> 
           </div>

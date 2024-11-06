@@ -1,6 +1,6 @@
-// Tire.jsx
+
 import React from 'react';
-import './Tire.css'; // Import styles for the Tire component
+import './Tire.css'; 
 
 const Tire = ({ isVisible, direction }) => {
   return (

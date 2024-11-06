@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './VerifyOtp.css';
 
 const VerifyOtp = ({ email }) => {
   const [otp, setOtp] = useState("");
@@ -20,12 +21,10 @@ const VerifyOtp = ({ email }) => {
       console.log("Response status:", response.status);
       const data = await response.json();
       console.log("data is:", data);
-      
+
       if (response.ok) {
-        // Redirect to login page upon successful OTP verification
-        navigate("/details");
+        navigate("/details"); 
       } else {
-        // Show error message if OTP verification fails
         setError(data.message || "Verification failed, please try again");
       }
     } catch (error) {
@@ -34,25 +33,20 @@ const VerifyOtp = ({ email }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black/90 text-white">
-      <div className="w-full max-w-lg p-8 space-y-6 bg-black/80 rounded-lg shadow-lg">
-        <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 text-transparent bg-clip-text">
+    <div id="verify-container12" className="flex12 items-center12 justify-center12 min-h-screen12 bg-black/90 text-white">
+      <div id="verify-box12" className="w-full max-w-lg p-8 space-y-6 bg-black/80 rounded-lg shadow-lg hover12:shadow-neon-pink12 transition-shadow12 duration-300">
+        <h2 id="title12" className="text-4xl font-bold text-center12 bg-gradient-to-r from-pink-500 via-blue-500 to-green-500 text-transparent bg-clip-text">
           Verify OTP
         </h2>
 
-        {error && <p className="text-red-500 text-center">{error}</p>}
+        {error && <p id="error-message12" className="text-red-500 text-center12">{error}</p>}
 
         <form onSubmit={handleVerifyOtp} className="space-y-6">
-          <div>
-            <label
-              htmlFor="otp"
-              className="block text-sm font-medium text-gray-300"
-            >
-              Enter OTP
-            </label>
+          <div id="input-group12">
+            <label htmlFor="otp" className="block text-sm font-medium text-gray-300">Enter OTP</label>
             <input
               type="text"
-              id="otp"
+              id="otp12"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
               required
@@ -63,6 +57,7 @@ const VerifyOtp = ({ email }) => {
 
           <button
             type="submit"
+            id="verify-button12"
             className="w-full py-3 font-medium text-white bg-gradient-to-r from-pink-500 to-blue-500 rounded-lg hover:scale-105 transform transition-all duration-300"
           >
             Verify OTP

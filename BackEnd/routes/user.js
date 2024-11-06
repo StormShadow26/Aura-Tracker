@@ -20,6 +20,9 @@ const {addMentor}=require('../Controllers/addMentor');
 const {getMentors}=require('../Controllers/getMentors')
 const {compileCode}=require('../Controllers/compilerController.js');
 const submitUserDetails=require("../Controllers/SubmitUserDetails");
+
+
+router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
 const {getLeaderboard}=require('../Controllers/getLeaderboard')
 
@@ -46,5 +49,10 @@ router.get('/leaderboard',getLeaderboard);
 router.post('/addMentor',addMentor);
 router.get('/getMentors',getMentors);
 router.post("/compile", compileCode);
+router.post("/addquest",addQuestion);
+
+
+router.get('/getquest', getQuestion.getAllQuestions);
+router.get('/getquest/:id', getQuestion.getQuestionById);
 
 module.exports = router;

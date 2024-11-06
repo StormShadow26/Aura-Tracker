@@ -1,6 +1,4 @@
-/* Navbar.css */
 
-/* Main Navbar Container */
 #navbar-container {
     position: fixed;
     width: 100%;
@@ -10,7 +8,7 @@
     padding: 0.5rem 0;
   }
   
-  /* Navbar Content Wrapper */
+
   #navbar-content {
     max-width: 1120px;
     margin: 0 auto;
@@ -21,7 +19,7 @@
     height: 64px;
   }
   
-  /* Logo Styling */
+  
   #navbar-logo {
     font-size: 1.875rem;
     font-weight: bold;
@@ -36,7 +34,7 @@
     transform: scale(1.05);
   }
   
-  /* Desktop Menu Buttons */
+  
   #navbar-buttons {
     display: flex;
     gap: 1rem;
@@ -62,7 +60,7 @@
     background-color: white;
     color: black;
     height: 7vh;
-    /* width: 10vw; */
+    
     margin-top: 3vh;
     align-items: centre;
   }

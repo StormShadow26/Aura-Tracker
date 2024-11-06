@@ -1,9 +1,9 @@
-// Filename: controllers/compilerController.js
+
 
 const Axios = require("axios");
 
 exports.compileCode = (req, res) => {
-    // Extract the code, language, and input from the request body
+    
     const { code, language, input } = req.body;
 
     // Supported languages and their respective versions
@@ -42,7 +42,7 @@ exports.compileCode = (req, res) => {
         data: data
     };
 
-    // Calling the code compilation API
+    
     Axios(config)
         .then(response => {
             res.json(response.data.run);  // Send the run object directly

@@ -22,7 +22,6 @@ import VideoCall from './components/VideoCall'
 import Mentors from './components/Mentors'
 import ChallengeForm from './components/ChallengeForm';
 import CodeEditor from './components/CodeEditor';
-import ProffDashBoard from './components/ProffDashBoard';
 
 
 function App() {
@@ -64,6 +63,9 @@ function App() {
         <Route path="/room/:roomId" element={<VideoCall/>} />
         <Route path="/mentors" element={<Mentors/>} />
         <Route path="/coder" element={<CodeEditor/>} />
+        <Route path="/question/:id" element={<QuestionDetail/>} />
+        <Route path="/question"  element={<QuestionList/>} />
+       
 
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
         

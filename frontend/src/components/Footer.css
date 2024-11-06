@@ -1,4 +1,4 @@
-/* Basic Footer Styles */
+
 #footer {
     background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
     color: #ffffff;
@@ -28,7 +28,7 @@
     justify-content: center;
   }
   
-  /* Social Icon Styles */
+  
   #social-icons a {
     color: #ccc;
     font-size: 1.25rem;
@@ -40,7 +40,7 @@
     transform: scale(1.1);
   }
   
-  /* Footer Links */
+  
   #footer .footer-links a {
     color: #ccc;
     font-size: 1rem;
@@ -54,13 +54,13 @@
     transform: scale(1.1);
   }
   
-  /* Copyright Text */
+  
   #footer .copyright {
     font-size: 0.875rem;
     color: #666;
   }
   
-  /* Modal Styling */
+  
   #footer-modal {
     background: #242424;
     color: #fff;
@@ -109,7 +109,7 @@
     }
   }
   
-  /* Responsive Adjustments */
+ 
   @media (min-width: 768px) {
     #footer {
       text-align: left;
@@ -132,7 +132,7 @@
       order: 3;
     }
   }
-  /* Basic Footer Styles */
+  
 #footer {
     background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
     color: #ffffff;
@@ -181,7 +181,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
-  /* Social Icon Styles */
+ 
   #social-icons a {
     color: #ccc;
     font-size: 1.25rem;
@@ -193,7 +193,7 @@
     transform: scale(1.1);
   }
   
-  /* Footer Links */
+  
   #footer .footer-links a {
     color: #ccc;
     font-size: 1rem;
@@ -207,13 +207,13 @@
     transform: scale(1.1);
   }
   
-  /* Copyright Text */
+ 
   #footer .copyright {
     font-size: 0.875rem;
     color: #666;
   }
   
-  /* Modal Styling */
+  
   #footer-modal {
     background: #242424;
     color: #fff;
@@ -262,7 +262,7 @@
     }
   }
   
-  /* Responsive Adjustments */
+  
   @media (min-width: 768px) {
     #footer {
       text-align: left;
