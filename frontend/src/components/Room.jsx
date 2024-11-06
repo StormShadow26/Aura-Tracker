@@ -8,7 +8,7 @@ const Room = () => {
     const handleCreateRoom = useCallback(() => {
         console.log(value);
         navigate(`/room/${value}`);
-    }, [navigate, value]); // Add 'value' and 'navigate' as dependencies
+    }, [navigate, value]);
 
     return (
         <div>

@@ -1,4 +1,4 @@
-// src/Leaderboard.js
+
 import React, { useEffect, useState } from 'react';
 
 function Leaderboard() {
@@ -6,7 +6,7 @@ function Leaderboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Fetch leaderboard data
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -23,7 +23,7 @@ function Leaderboard() {
         fetchData();
     }, []);
 
-    // Loading and error state
+  
     if (loading) return <p className="text-center text-gray-500">Loading leaderboard...</p>;
     if (error) return <p className="text-center text-red-500">Error: {error}</p>;
 

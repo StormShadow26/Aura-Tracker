@@ -1,16 +1,16 @@
 #vertical-navbar4 {
   background: #1f1c2c;
   color: #ffecb3;
-  width: 200px; /* Adjust width as needed */
-  height: 100vh; /* Full height */
-  position: fixed; /* Fixed position */
-  top: 16%; /* Adjust based on header height */
-  left: 0; /* Align to the left */
+  width: 200px; 
+  height: 100vh; 
+  position: fixed; 
+  top: 16%; 
+  left: 0; 
   display: flex;
-  flex-direction: column; /* Vertical layout */
-  padding: 1rem; /* Padding */
+  flex-direction: column; 
+  padding: 1rem;
   margin-top: -3vh;
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6); /* Right shadow */
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.6);
 }
 
 .navbar-button4 {
@@ -31,4 +31,4 @@
   color: white;
 }
 
-/* Additional responsive styles can be added if necessary */
+

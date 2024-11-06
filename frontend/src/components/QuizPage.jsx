@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import { EmailContext } from '../contexts/EmailContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -43,14 +43,14 @@ function QuizPage() {
         setScore(currentScore);
 
         try {
-            const incrementValue = ( currentScore-(questions.length / 2) );
+            const incrementValue = currentScore - questions.length / 2;
             await axios.post('http://localhost:4000/api/v1/increment-aura-points', {
                 email: email,
                 incrementValue: incrementValue,
             });
             Swal.fire(
                 'Success!',
-                `You gained  ${incrementValue}.`,
+                `You gained ${incrementValue} aura points.`,
                 'success'
             );
         } catch (error) {
@@ -150,7 +150,6 @@ function QuizPage() {
                 </p>
             )}
 
-            {/* Back to Dashboard button */}
             <Link to="/dashboard" className="back-btn mt-8 px-6 py-3 bg-blue-600 rounded-lg text-lg font-semibold text-white shadow-md">
                 Back to Dashboard
             </Link>

@@ -1,15 +1,15 @@
-// src/components/VerticalNavbar.js
+
 import React, { useContext } from 'react';
 import { EmailContext } from '../contexts/EmailContext';
 import { useNavigate } from 'react-router-dom';
-import './VerticalNavbar.css'; // Import the CSS file
+import './VerticalNavbar.css'; 
 
 const VerticalNavbar = () => {
   const navigate = useNavigate();
-  const { email } = useContext(EmailContext); // Get the email from context
+  const { email } = useContext(EmailContext); 
   console.log(email, "= navbar wala");
 
-  // Handler functions for navigation
+
   const handleDashboard = () => navigate(`/dashboard?email=${encodeURIComponent(email)}`);
   const handleAttendance = () => navigate(`/attendance?email=${encodeURIComponent(email)}`);
   const handleAssignments = () => navigate(`/assignments/${encodeURIComponent(email)}`);
