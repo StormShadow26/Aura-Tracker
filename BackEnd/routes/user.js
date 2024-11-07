@@ -23,6 +23,7 @@ const submitUserDetails=require("../Controllers/SubmitUserDetails");
 const {addQuestion}=require("../Controllers/addQuestion.js");
 const getQuestion = require('../Controllers/getQuestions.js');
 const { createContest, getContests } = require('../controllers/contestController'); 
+const {  getContestById } = require('../controllers/contestController');
 
 
 router.post('/welcome', submitUserDetails);
@@ -54,6 +55,8 @@ router.post("/addquest",addQuestion);
 router.get('/getquest', getQuestion.getAllQuestions);
 router.get('/getquest/:id', getQuestion.getQuestionById);
 router.post('/createcontest', createContest);
-router.get('/getcontest', getContests);
+router.get('/getcontests', getContests);
+router.get('/getcontests/:id', getContestById);
+
 
 module.exports = router;

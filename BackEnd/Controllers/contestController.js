@@ -52,8 +52,7 @@ const createContest = async (req, res) => {
 
 
 
-// Controller to get contests (populate questions if referenced)
-const { Contest } = require('../models/questionSchema');  // Import the Contest model
+// Import the Contest model
 
 // Controller to get all contests
 const getContests = async (req, res) => {

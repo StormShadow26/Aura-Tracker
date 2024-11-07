@@ -7,8 +7,6 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Assignment from './components/Assignment';
 import Project from './components/Project';
-
-
 import VerifyOtp from './components/VerifyOtp';
 import { useState } from 'react';
 import Timetable from './components/TimeTable';
@@ -25,6 +23,11 @@ import CodeEditor from './components/CodeEditor';
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetails';
 import PomodoroPage from './components/PomodoroPage';
+import ProffDashBoard from './proffcomponents/ProffDashBoard';
+import AllContest from './components/AllContest'
+import ContestDetails from './components/ContestDetails';
+import ContestQuestionPage from  './components/ContestQuestionPage';
+
 
 
 function App() {
@@ -68,8 +71,10 @@ function App() {
         <Route path="/coder" element={<CodeEditor/>} />
         <Route path="/question/:id" element={<QuestionDetail/>} />
         <Route path="/question"  element={<QuestionList/>} />
-        <Route path="/pd"  element={<PomodoroPage/>} />'
-       
+        <Route path="/pd"  element={<PomodoroPage/>} />
+        <Route path="/contest" element={<AllContest/>} />
+        <Route path="/contest/:contestId" element={<ContestDetails/>} />
+        <Route path="/contest/:contestId/:id" element={<ContestQuestionPage/>} />
 
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
         

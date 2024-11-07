@@ -40,6 +40,7 @@ const Dashboard = () => {
           `http://localhost:4000/api/v1/dashboard/${email}`
         );
         const result = await response.json();
+        console.log(result);
         if (response.ok) {
           setData({
             classes: result.classes,
@@ -65,6 +66,25 @@ const Dashboard = () => {
 
   const COLORS = ["#ff7f50", "#6a5acd"];
 
+  // Badge logic based on auraPoints
+  const getBadge = (auraPoints) => {
+    if (auraPoints > 500) {
+      return "🌟 God Level";
+    } else if (auraPoints > 400) {
+      return "🔥 Crazy";
+    } else if (auraPoints > 250) {
+      return "👏 Wow";
+    } else if (auraPoints > 150) {
+      return "🌟 Standard";
+    } else if (auraPoints > 100) {
+      return "👍 Ok Ok";
+    } else if (auraPoints > 50) {
+      return "🆕 Freshie";
+    } else {
+      return "😅 Newbie";
+    }
+  };
+
   return (
     <div id="dashboard-main9">
       <VerticalNavbar />
@@ -78,6 +98,9 @@ const Dashboard = () => {
           <div id="aura-points9">
             <h2 id="aura-points-title9">Aura Points</h2>
             <p>{data.auraPoints}</p>
+            <p id="badge-display" className="badge">
+              {getBadge(data.auraPoints)}
+            </p>
           </div>
 
           <div id="charts-container9">

@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ['Student', 'Professor'],
-    required: true
+    // required: true
   },
   identifier: {
     type: String, // Update to string to store studentId or professionalId
@@ -51,11 +51,14 @@ const userSchema = new mongoose.Schema({
     attended: Number,
     total: Number
   },
+  auraPoints:{
+    type: Number,
+  },
   projects: {
     completed: Number,
     total: Number
   },
-  timetable: [String], // or an array of objects depending on the structure
+  // timetable: [String], // or an array of objects depending on the structure
 });
 
 module.exports = mongoose.model('User', userSchema);

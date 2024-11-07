@@ -17,6 +17,7 @@ const VerticalNavbar = () => {
   const handleTimetable = () => navigate(`/timetable/${encodeURIComponent(email)}`);
   const handleProblemset=()=>navigate('/question');
   const handlePomodoro=()=>navigate('/pd');
+  const handleContest=()=>navigate('/contest')
   
 
   return (
@@ -28,6 +29,9 @@ const VerticalNavbar = () => {
       <button id="timetable-button4" onClick={handleTimetable} className="navbar-button4">Timetable</button>
       <button onClick={handleProblemset} className="navbar-button4">Problemset</button>
       <button  onClick={handlePomodoro} className="navbar-button4">Need To Focus?</button>
+      <button  onClick={handleContest} className="navbar-button4">Contest</button>
+
+      
     </div>
   );
 };

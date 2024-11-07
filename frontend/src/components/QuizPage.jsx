@@ -56,7 +56,7 @@ function QuizPage() {
 
     const calculateScore = async () => {
         let currentScore = 0;
-
+    
         questions.forEach((question) => {
             const correctAnswers = question.correct_answers;
             const userAnswer = userAnswers[question.id];
@@ -64,24 +64,62 @@ function QuizPage() {
                 currentScore += 1;
             }
         });
-
+    
         setScore(currentScore);
-
+    
         try {
             const incrementValue = currentScore - questions.length / 2;
             await axios.post('http://localhost:4000/api/v1/increment-aura-points', {
                 email: email,
                 incrementValue: incrementValue,
             });
-            Swal.fire(
-                'Success!',
-                `You gained ${incrementValue} aura points.`,
-                'success'
-            );
+    
+            if (currentScore > questions.length - 2 && currentScore>5) {
+                Swal.fire({
+                    title: 'Yayyy! 🎉',
+                    text: `Congrats! You scored ${currentScore}. You have a chance to win a referral code!,You gained ${incrementValue} aura points.`,
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonText: 'Generate Referral Code',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Call a function to generate a referral code (this could be an API call or local generation logic)
+                        generateReferralCode();
+                    }
+                });
+            } else {
+                Swal.fire(
+                    'Success!',
+                    `You gained ${incrementValue} aura points.`,
+                    'success'
+                );
+            }
         } catch (error) {
             Swal.fire('Error', 'Failed to update aura points. Please try again.', 'error');
         }
     };
+    
+   
+    const generateReferralCode = () => {
+        // Randomly decide if the user gets a referral code or not
+        const shouldGiveCode = Math.random() < 0.5; // 50% chance
+    
+        if (shouldGiveCode) {
+            const referralCode = `REF-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+            Swal.fire({
+                title: 'Yayyy! Congratulations!',
+                text: `Here is your referral code: ${referralCode}`,
+                icon: 'success',
+            });
+        } else {
+            Swal.fire({
+                title: 'Better Luck Next Time!',
+                text: 'Work harder to get a referral code next time!',
+                icon: 'info',
+            });
+        }
+    };
+    
 
     return (
         <div className="quiz-container bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white min-h-screen p-8 flex flex-col items-center">
