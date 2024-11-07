@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Details = ({ email: propEmail }) => {
+
   const navigate = useNavigate();
   const location = useLocation();
-  
   
   const [email, setEmail] = useState(propEmail || "");
 
   useEffect(() => {
+    
     if (!propEmail) {
       const queryParams = new URLSearchParams(location.search);
       const emailFromUrl = queryParams.get("email");
@@ -80,7 +81,7 @@ const Details = ({ email: propEmail }) => {
             />
           </div>
 
-          {email && !formData.password && (
+          
             <div style={styles.formGroup}>
               <label style={styles.label}>Password:</label>
               <input
@@ -92,7 +93,7 @@ const Details = ({ email: propEmail }) => {
                 style={styles.input}
               />
             </div>
-          )}
+          
 
           <div style={styles.formGroup}>
             <label style={styles.label}>Year of Study:</label>
