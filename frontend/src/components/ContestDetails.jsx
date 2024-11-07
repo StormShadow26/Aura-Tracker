@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { FaCheckCircle, FaCalendarAlt, FaLock } from 'react-icons/fa';
-import { Link } from 'react-router-dom'; 
 import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
 
-const QuestionList = () => {
-  const [questions, setQuestions] = useState([]);
+const ContestDetails = () => {
+  const { contestId } = useParams();
+  const [contest, setContest] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchQuestions = async () => {
+    const fetchContest = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/v1/getquest'); 
-        setQuestions(response.data.data);
-        console.log(response.data.data);
-      } catch (error) {
-        console.error('Error fetching questions:', error);
+        const response = await axios.get(`http://localhost:4000/api/v1/getcontests/${contestId}`);
+        setContest(response.data.contest);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to load contest data');
+        setLoading(false);
       }
     };
 
-    fetchQuestions();
-  }, []);
+    fetchContest();
+  }, [contestId]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  const { contestTitle, questions } = contest;
 
   // Function to check if the question was created today
   const isDailyChallenge = (createdAt) => {
@@ -29,6 +38,8 @@ const QuestionList = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <h2 className="text-3xl font-semibold text-blue-600 mb-4">{contestTitle}</h2>
+      
       <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg">
         <div className="grid grid-cols-5 gap-4 py-2 border-b border-gray-700">
           <div>Status</div>
@@ -37,6 +48,7 @@ const QuestionList = () => {
           <div>Acceptance</div>
           <div>Difficulty</div>
         </div>
+
         {questions.map((question) => (
           <div key={question._id} className="grid grid-cols-5 gap-4 py-4 border-b border-gray-800">
             <div>
@@ -47,7 +59,7 @@ const QuestionList = () => {
               )}
             </div>
             <div className="truncate">
-              <Link to={`/question/${question._id}`} className="text-blue-400 hover:underline">
+              <Link to={`/contest/${contestId}/${question._id}`} className="text-blue-400 hover:underline">
                 {question.title}
               </Link>
               {isDailyChallenge(question.createdAt) && (
@@ -81,4 +93,4 @@ const getDifficultyColor = (difficulty) => {
   }
 };
 
-export default QuestionList;
+export default ContestDetails;

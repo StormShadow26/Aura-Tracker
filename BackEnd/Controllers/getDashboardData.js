@@ -34,9 +34,11 @@ const getDashboardData = async (req, res) => {
         completed: user.projects.completed,
         total: user.projects.total,
       },
-      timetable: user.timetable,
+      // timetable: user.timetable,
       auraPoints:user.auraPoints,
+     
     };
+    console.log(user);
 
     // step 5
     return res.status(200).json(dashboardData);

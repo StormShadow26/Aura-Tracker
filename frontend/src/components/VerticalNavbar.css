@@ -2,8 +2,9 @@
   background: #1f1c2c;
   color: #ffecb3;
   width: 200px; 
-  height: 100vh; 
-  position: fixed; 
+  min-height: 100vh; 
+  /* overflow: scroll; */
+  position: absolute; 
   top: 16%; 
   left: 0; 
   display: flex;

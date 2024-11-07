@@ -124,9 +124,9 @@ app.get("/register/sucess", async (req, res) => {
 });
 
 
-try {
-  const challengeRoutes = require("./routes/challenge");
-  app.use("/challenges", challengeRoutes);
-} catch (error) {
-  console.error("Error loading challenge routes:", error);
-}
+// try {
+//   const challengeRoutes = require("./routes/challenge");
+//   app.use("/challenges", challengeRoutes);
+// } catch (error) {
+//   console.error("Error loading challenge routes:", error);
+// }

@@ -5,11 +5,13 @@ import CodeEditor from './CodeEditor';
 import { useOutput } from '../contexts/OutputContext';
 
 const QuestionDetail = () => {
-  const { id } = useParams();
+  const {contestId, id } = useParams();
+
+//   console.log(contestId);
   const navigate = useNavigate();
   const [question, setQuestion] = useState(null);
   const { output } = useOutput();
-  const [timeLeft, setTimeLeft] = useState(900);
+
 
   const submitHandler = () => {
     if (question && question.sampleInputs && question.sampleInputs.length > 0) {
@@ -32,19 +34,20 @@ const QuestionDetail = () => {
   useEffect(() => {
     const fetchQuestion = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/v1/getquest/${id}`);
-        setQuestion(response.data.data);
+        const response = await axios.get(`http://localhost:4000/api/v1/getcontests/${contestId}`);
+        
+        
+        for(var i=0;i<5;i++){
+          if(response.data.contest.questions[i]._id === id){
+            console.log(response.data.contest.questions[i]._id);
+            setQuestion(response.data.contest.questions[i]);
+          }
+        }
 
-        const difficultyTimer = {
-          Easy: 300,  
-          Medium: 900,
-          Hard: 1800,  
-        };
+       
 
-        const initialTime = difficultyTimer[response.data.data.difficulty] || 300;
-        console.log(initialTime,"initial hun");
-        setTimeLeft(initialTime);
-        console.log(timeLeft,"timeLeft hun");
+       
+     
       } catch (error) {
         console.error('Error fetching question details:', error);
       }
@@ -53,14 +56,7 @@ const QuestionDetail = () => {
     fetchQuestion();
   }, [id]);
 
-  useEffect(() => {
-    if (timeLeft <= 0) {
-      submitHandler();
-    } else {
-      const timer = setTimeout(() => setTimeLeft(prevTime => prevTime - 1), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [timeLeft]);
+
 
   if (!question) return <div className="text-center text-gray-500 py-10">Loading...</div>;
 
@@ -81,11 +77,6 @@ const QuestionDetail = () => {
         <div className="text-gray-400 text-sm mt-2">
           Difficulty: <span className="text-yellow-500 font-medium">{question.difficulty}</span>
         </div>
-
-        <div className="text-red-500 font-bold text-lg mt-4">
-          Time Left: {formatTime(timeLeft)}
-        </div>
-
         <p className="mt-6 text-gray-300 leading-relaxed">{question.description}</p>
 
         <div className="mt-6 border-t border-gray-700 pt-4">

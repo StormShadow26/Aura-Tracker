@@ -1,9 +1,9 @@
-const Question = require('../models/questionSchema'); 
+const { Question } = require('../models/questionSchema');  // Correct import
 
 
 exports.getAllQuestions = async (req, res) => {
   try {
-    const questions = await Question.find(); // Fetches all questions
+    const questions = await Question.find(); 
 
     res.status(200).json({
       success: true,
@@ -19,7 +19,7 @@ exports.getAllQuestions = async (req, res) => {
   }
 };
 
-
+// Controller to get a single question by ID
 exports.getQuestionById = async (req, res) => {
   try {
     const question = await Question.findById(req.params.id); // Finds question by ID

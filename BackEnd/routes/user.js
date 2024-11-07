@@ -22,12 +22,15 @@ const {compileCode}=require('../Controllers/compilerController.js');
 const submitUserDetails=require("../Controllers/SubmitUserDetails");
 const {addQuestion}=require("../Controllers/addQuestion.js");
 const getQuestion = require('../Controllers/getQuestions.js');
+const { createContest, getContests } = require('../controllers/contestController'); 
+const {  getContestById } = require('../controllers/contestController');
 
 
 router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
 const {getLeaderboard}=require('../Controllers/getLeaderboard')
 
+router.post('/welcome', submitUserDetails);
 router.post('/register', registerUser);
 router.post('/login',loginUser);
 router.get('/dashboard/:email',getDashboardData);
@@ -38,7 +41,6 @@ router.post('/submit', submitAssignment)
 router.put('/timetable/:email',updateTimetable);
 router.get('/gettimetable/:email',getTimeTable);
 router.put('/profile/:email', updateProfile);
-
 router.post('/project',addProject)
 router.get('/project/:email',getProjectsByEmail);
 router.post('/submitproject', submitProject);
@@ -46,14 +48,15 @@ router.post('/syllabus',addSyllabus);
 router.post('/increment-aura-points', incrementAuraPoints);
 router.use('/api', syllabusController);
 router.get('/leaderboard',getLeaderboard);
-
 router.post('/addMentor',addMentor);
 router.get('/getMentors',getMentors);
 router.post("/compile", compileCode);
 router.post("/addquest",addQuestion);
-
-
 router.get('/getquest', getQuestion.getAllQuestions);
 router.get('/getquest/:id', getQuestion.getQuestionById);
+router.post('/createcontest', createContest);
+router.get('/getcontests', getContests);
+router.get('/getcontests/:id', getContestById);
+
 
 module.exports = router;

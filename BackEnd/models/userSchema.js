@@ -1,138 +1,64 @@
+// models/userSchema.js
 const mongoose = require('mongoose');
 
+// Assuming other fields are defined here as well
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    trim: true,
-    minlength: 3,
-    maxlength: 50,
+    required: true
   },
   email: {
     type: String,
     required: true,
-    unique: true,
-    trim: true,
-    lowercase: true,
-    match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address'],
+    unique: true
   },
   password: {
+    type: String
+  },
+  role: {
     type: String,
-    required: true,
-    minlength: 8,
-    // Note: Password should be hashed before storing in production
+    enum: ['Student', 'Professor'],
+    // required: true
+  },
+  identifier: {
+    type: String, // Update to string to store studentId or professionalId
+    required: false
   },
   yearOfStudy: {
-    type: String,
-    enum: ['1', '2', '3', '4', '5'],
+    type: String
+  },
+  semester: {
+    type: String
   },
   department: {
-    type: String,
-    trim: true,
-    minlength: 2,
-    maxlength: 50,
+    type: String
   },
   college: {
-    type: String,
-    trim: true,
-    minlength: 2,
-    maxlength: 100,
+    type: String
   },
   phone: {
-    type: String,
-    unique: true,
-    match: [/^\d{10}$/, 'Please enter a valid 10-digit phone number'],
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+    type: String
   },
   assignments: {
-    done: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
-    total: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
+    done: Number,
+    total: Number
   },
   classes: {
-    attended: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
-    total: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
+    attended: Number,
+    total: Number
   },
   weeksclasses: {
-    attended: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
-    total: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
+    attended: Number,
+    total: Number
+  },
+  auraPoints:{
+    type: Number,
   },
   projects: {
-    completed: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
-    total: {
-      type: Number,
-      default: 0,
-      min: 0,
-    },
+    completed: Number,
+    total: Number
   },
-  timetable: [
-    {
-      day: {
-        type: String,
-        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        required: true,
-      },
-      classes: [
-        {
-          subject: {
-            type: String,
-            
-          },
-          time: {
-            start: {
-              type: String, // You can use Date for a full timestamp or String for just time (e.g., '09:00 AM')
-            
-            },
-            end: {
-              type: String,
-              
-            },
-          },
-          location: {
-            type: String,
-            
-          },
-        },
-      ],
-    },
-  ],
-  auraPoints: {
-    type: Number,
-    default: 0,
-    min: 0,
-  },
-  otp: String,
-  otpExpiresAt: Date,
-  isVerified: { type: Boolean, default: false },
+  // timetable: [String], // or an array of objects depending on the structure
 });
 
 module.exports = mongoose.model('User', userSchema);

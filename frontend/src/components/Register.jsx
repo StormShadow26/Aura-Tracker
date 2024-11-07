@@ -4,7 +4,6 @@ import Tire from './Tire';
 import './Register.css'; 
 import googleLogo from './google.png';
 
-
 const Register = ({ onSuccess }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -83,8 +82,8 @@ const Register = ({ onSuccess }) => {
 
         <form id="register-form6" onSubmit={handleRegister}>
           {/* Left Column */}
-          <div className="column-left6">
-            <div className="form-group6">
+          <div className="column-left">
+            <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -94,7 +93,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group6">
+            <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -104,7 +103,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group6">
+            <div className="form-group">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -114,7 +113,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group6">
+            <div className="form-group">
               <label htmlFor="year">Year of Study</label>
               <select
                 id="year"
@@ -129,12 +128,12 @@ const Register = ({ onSuccess }) => {
                 <option className  ="pintu" value="4">4th Year</option>
                 <option className  ="pintu" value="5">5th Year</option>
               </select>
-            </div>
+            </div> 
           </div>
 
           {/* Right Column */}
-          <div className="column-right6">
-            <div className="form-group6">
+          <div className="column-right">
+            <div className="form-group">
               <label htmlFor="department">Department</label>
               <input
                 type="text"
@@ -144,7 +143,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group6">
+            <div className="form-group">
               <label htmlFor="college">College Name</label>
               <input
                 type="text"
@@ -154,7 +153,7 @@ const Register = ({ onSuccess }) => {
                 required
               />
             </div>
-            <div className="form-group6">
+            <div className="form-group">
               <label htmlFor="phone">Phone Number</label>
               <input
                 type="tel"
@@ -165,12 +164,12 @@ const Register = ({ onSuccess }) => {
                 pattern="[0-9]{10}"
               />
             </div>
-          </div>
+          </div> 
+          
+          <button type="submit" id="register-button">
+            Register
+          </button>
         </form>
-
-        <button type="submit" id="register-button" onClick={handleRegister}>
-          Register
-        </button>
         
         <button onClick={loginWithGoogle} id="google-button" className="google-button">
           <img src={googleLogo} alt="Google Logo" className="google-logo" />
