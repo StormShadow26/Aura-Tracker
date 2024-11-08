@@ -27,6 +27,7 @@ import ProffDashBoard from './proffcomponents/ProffDashBoard';
 import AllContest from './components/AllContest'
 import ContestDetails from './components/ContestDetails';
 import ContestQuestionPage from  './components/ContestQuestionPage';
+import ProffAddAssign from './proffcomponents/ProffAddAssign';
 
 
 
@@ -77,6 +78,7 @@ function App() {
         <Route path="/contest/:contestId/:id" element={<ContestQuestionPage/>} />
 
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
+        <Route path="/proffaddassign" element={<ProffAddAssign/>} />
         
 
         </Routes>

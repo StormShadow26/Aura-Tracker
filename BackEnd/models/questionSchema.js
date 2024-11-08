@@ -31,9 +31,20 @@ const questionSchema = new mongoose.Schema({
     type: [String]
   },
   solvedBy: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'User'
+    type: [
+      {
+        email: {
+          type: String
+        },
+        time: {
+          type: Date,
+          default: Date.now
+        }
+      }
+    ],
+    default: []
   },
+  
   sampleInputs: [
     {
       input: String,
@@ -43,6 +54,10 @@ const questionSchema = new mongoose.Schema({
   submissionCount: {
     type: Number,
     default: 0
+  },
+  output: {
+    type: [Number], // Defines 'output' as an array of numbers
+
   },
   successCount: {
     type: Number,
@@ -76,6 +91,7 @@ const contestSchema = new mongoose.Schema({
     type: Number,
     required: true, // Duration in minutes
   },
+ 
   questions: [questionSchema],  // Embedded question schema
   totalQuestions: {
     type: Number,
