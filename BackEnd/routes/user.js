@@ -25,7 +25,7 @@ const getQuestion = require('../Controllers/getQuestions.js');
 const { createContest, getContests } = require('../controllers/contestController'); 
 const {  getContestById } = require('../controllers/contestController');
 const { addSolvedBy}=require('../Controllers/addSolvedBy.js');
-
+const {addAssignmentProff}=require('../Controllers/addAssignmentProff.js');
 router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
 const {getLeaderboard}=require('../Controllers/getLeaderboard')
@@ -58,5 +58,6 @@ router.post('/createcontest', createContest);
 router.get('/getcontests', getContests);
 router.get('/getcontests/:id', getContestById);
 router.put('/updatequestion/:id', addSolvedBy);
+router.post('/addAssignmentProff',addAssignmentProff)
 
 module.exports = router;

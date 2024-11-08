@@ -2,130 +2,154 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddAssignment = () => {
-  const [formData, setFormData] = useState({
+  const [assignmentData, setAssignmentData] = useState({
     assignmentNumber: '',
     subject: '',
     chapter: '',
     deadline: '',
     professorName: '',
     description: '',
+    branch: '',
+    semester: '',
+    email: '',
   });
-  const [message, setMessage] = useState('');
 
-  // Handle form changes
+  // Predefined branch and semester options
+  const branches = ['CSE', 'ECE', 'Mechanical', 'Civil', 'IT'];
+  const semesters = ['1', '2', '3', '4', '5', '6', '7', '8'];
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setAssignmentData({
+      ...assignmentData,
       [e.target.name]: e.target.value,
     });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const email = `${assignmentData.branch}${assignmentData.semester}@gmail.com`;
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/add-assignment', {
-        ...formData,
-        email: 'branchsemester@gmail.com', // Hardcoded email
+      const response = await axios.post('http://localhost:4000/api/v1/addAssignmentProff', {
+        ...assignmentData,
+        email,
       });
-
-      if (response.status === 201) {
-        setMessage('Assignment created successfully!');
-        setFormData({
-          assignmentNumber: '',
-          subject: '',
-          chapter: '',
-          deadline: '',
-          professorName: '',
-          description: '',
-        });
-      }
+      alert(response.data.message);
     } catch (error) {
-      console.error('Error adding assignment:', error);
-      setMessage('Could not add assignment. Please try again.');
+      alert('Error: Could not add assignment');
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">Add Assignment</h2>
-        
-        {message && <p className="mb-4 text-center text-red-600">{message}</p>}
+    <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold text-center mb-4">Add Assignment</h2>
+      <form onSubmit={handleSubmit}>
+        {/* Branch Dropdown */}
+        <div className="mb-4">
+          <label htmlFor="branch" className="block text-sm font-semibold text-gray-700 mb-2">Branch</label>
+          <select
+            name="branch"
+            value={assignmentData.branch}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          >
+            <option value="">Select Branch</option>
+            {branches.map((branch) => (
+              <option key={branch} value={branch}>{branch}</option>
+            ))}
+          </select>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-gray-700">Assignment Number</label>
-            <input
-              type="text"
-              name="assignmentNumber"
-              value={formData.assignmentNumber}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">Subject</label>
-            <input
-              type="text"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">Chapter</label>
-            <input
-              type="text"
-              name="chapter"
-              value={formData.chapter}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">Deadline</label>
-            <input
-              type="date"
-              name="deadline"
-              value={formData.deadline}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">Professor Name</label>
-            <input
-              type="text"
-              name="professorName"
-              value={formData.professorName}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded mt-1"
-              rows="4"
-              required
-            ></textarea>
-          </div>
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-600 transition duration-200">
-            Add Assignment
-          </button>
-        </form>
-      </div>
+        {/* Semester Dropdown */}
+        <div className="mb-4">
+          <label htmlFor="semester" className="block text-sm font-semibold text-gray-700 mb-2">Semester</label>
+          <select
+            name="semester"
+            value={assignmentData.semester}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          >
+            <option value="">Select Semester</option>
+            {semesters.map((semester) => (
+              <option key={semester} value={semester}>{semester}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Assignment Details */}
+        <div className="mb-4">
+          <input
+            type="text"
+            name="assignmentNumber"
+            value={assignmentData.assignmentNumber}
+            onChange={handleChange}
+            placeholder="Assignment Number"
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="text"
+            name="subject"
+            value={assignmentData.subject}
+            onChange={handleChange}
+            placeholder="Subject"
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="text"
+            name="chapter"
+            value={assignmentData.chapter}
+            onChange={handleChange}
+            placeholder="Chapter"
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="datetime-local"
+            name="deadline"
+            value={assignmentData.deadline}
+            onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            type="text"
+            name="professorName"
+            value={assignmentData.professorName}
+            onChange={handleChange}
+            placeholder="Professor Name"
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <textarea
+            name="description"
+            value={assignmentData.description}
+            onChange={handleChange}
+            placeholder="Assignment Description"
+            className="w-full p-2 border border-gray-300 rounded"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-full py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Add Assignment
+        </button>
+      </form>
     </div>
   );
 };

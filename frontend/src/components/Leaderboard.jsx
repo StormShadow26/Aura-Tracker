@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 
 function Leaderboard() {
@@ -6,7 +5,6 @@ function Leaderboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -23,14 +21,13 @@ function Leaderboard() {
         fetchData();
     }, []);
 
-  
     if (loading) return <p className="text-center text-gray-500">Loading leaderboard...</p>;
     if (error) return <p className="text-center text-red-500">Error: {error}</p>;
 
     return (
         <div className="flex flex-col items-center bg-gradient-to-br from-blue-600 to-indigo-900 min-h-screen text-white px-4 py-8">
             <h1 className="text-5xl font-bold mt-8 mb-10">🏆 Leaderboard 🏆</h1>
-            
+
             <div className="w-full max-w-3xl shadow-2xl rounded-lg overflow-hidden bg-gray-900 bg-opacity-80 backdrop-blur-md">
                 <table className="min-w-full border-collapse border border-gray-700 text-gray-200">
                     <thead>
@@ -56,14 +53,16 @@ function Leaderboard() {
                                 </td>
                                 <td className="py-4 px-6 text-lg font-semibold">{user.name}</td>
                                 <td className="py-4 px-6 text-lg text-right font-bold">
-                                    {user.auraPoints.toLocaleString()}
+                                    {user.auraPoints !== undefined && user.auraPoints !== null
+                                        ? user.auraPoints.toLocaleString()
+                                        : 'N/A'}
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            
+
             <footer className="mt-10 text-gray-400">
                 <p>🌟 Compete. Achieve. Shine. 🌟</p>
             </footer>
