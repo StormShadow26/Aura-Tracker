@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import './Mentors.css';
 
 const MentorList = () => {
   const [mentors, setMentors] = useState([]);
@@ -60,26 +61,26 @@ const MentorList = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row p-6 bg-gray-100 min-h-screen gap-6">
+    <div className="page19">
       {/* Mentor List Section */}
-      <div className="mentor-list-container w-full lg:w-3/4 p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Mentor List</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div id="mentorListContainer19" className="mentor-list-container">
+        <h2 id="mentorListTitle19">Mentor List</h2>
+        <div id="mentorGrid19" className="mentor-grid">
           {mentors.map((mentor) => {
             const startTime = mentor.availability.startTime.slice(11, 16);
             const endTime = mentor.availability.endTime.slice(11, 16);
             const available = isMentorAvailable(startTime, endTime);
 
             return (
-              <div key={mentor._id} className="mentor-card bg-white p-4 border border-gray-200 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300">
-                <h3 className="text-xl font-semibold text-blue-600 mb-2">{mentor.name}</h3>
-                <p className="text-gray-600"><strong>Fields of Interest:</strong> {mentor.fieldsInterested.join(', ')}</p>
-                <p className="text-gray-600"><strong>Availability:</strong> {startTime} - {endTime}</p>
-                <p className="text-gray-600"><strong>Mentor Points:</strong> {mentor.mentorPoints}</p>
+              <div key={mentor._id} id="mentorCard19" className="mentor-card">
+                <h3 className="mentor-name">{mentor.name}</h3>
+                <p className="mentor-details">Fields of Interest: {mentor.fieldsInterested.join(', ')}</p>
+                <p className="mentor-details">Availability: {startTime} - {endTime}</p>
+                <p className="mentor-details">Mentor Points: {mentor.mentorPoints}</p>
                 <button
                   onClick={() => contactMentor(mentor.name)}
                   disabled={!available}
-                  className={`mt-4 px-4 py-2 rounded-lg transition ${available ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:from-indigo-500 hover:to-blue-500' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+                  className={`contact-button ${available ? 'available' : 'unavailable'}`}
                 >
                   Contact Now
                 </button>
@@ -90,36 +91,25 @@ const MentorList = () => {
       </div>
 
       {/* Gemini Chat Box */}
-      <div className="chat-box w-full lg:w-1/4 p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Chat with Gemini</h2>
-        <div className="chat-messages h-80 overflow-y-auto border border-gray-200 p-4 rounded-lg bg-gray-50 mb-4">
+      <div id="chatBox19" className="chat-box">
+        <h2 id="chatTitle19">Chat with Gemini</h2>
+        <div id="chatMessages19" className="chat-messages">
           {chatMessages.map((msg, index) => (
-            <div key={index} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}>
-              <p className={`p-3 rounded-lg ${msg.sender === 'user' ? 'bg-blue-200 text-blue-900' : 'bg-gray-200 text-gray-900'} max-w-xs`}>
-                {msg.text}
-              </p>
+            <div key={index} className={`message ${msg.sender}`}>
+              {msg.text}
             </div>
           ))}
-          {loading && (
-            <div className="text-center mt-2">
-              <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-blue-500"></div>
-            </div>
-          )}
+          {loading && <div className="loading">...</div>}
         </div>
-        <div className="chat-input flex">
+        <div className="chat-input-container">
           <input
             type="text"
             value={chatInput}
             onChange={handleChatInputChange}
             placeholder="Ask me something..."
-            className="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="chat-input"
           />
-          <button
-            onClick={getResponseForGivenPrompt}
-            className="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 transition"
-          >
-            Send
-          </button>
+          <button onClick={getResponseForGivenPrompt} className="send-button">Send</button>
         </div>
       </div>
     </div>

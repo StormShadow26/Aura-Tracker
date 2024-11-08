@@ -11,12 +11,15 @@ const Navbar = () => {
   const LoginHandler = () => navigate('/login');
   const RegisterHandler = () => navigate('/register');
 
+   
+
   return (
     <nav id="navbar-container">
       <div id="navbar-content">
         <div id="navbar-logo" onClick={() => navigate('/')}>
           Aura-Tracker
         </div>
+       
 
         {/* Desktop Menu */}
         <div id="navbar-buttons" className="hidden md:flex">
