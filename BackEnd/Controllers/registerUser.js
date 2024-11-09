@@ -27,6 +27,7 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       yearOfStudy: "1",
+      
       department:"General Studies",
       college:"Unknown College",
       phone: null,

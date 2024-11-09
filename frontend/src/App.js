@@ -28,6 +28,11 @@ import AllContest from './components/AllContest'
 import ContestDetails from './components/ContestDetails';
 import ContestQuestionPage from  './components/ContestQuestionPage';
 import ProffAddAssign from './proffcomponents/ProffAddAssign';
+import ProffTimeTable from './proffcomponents/ProffTimeTable';
+import ProffExam from './proffcomponents/ProffExam'
+import ProffAddProjects from './proffcomponents/ProffAddProjects'
+import Exam from './components/Exam'
+import Attendance from  './components/Attendance'
 
 
 
@@ -79,6 +84,12 @@ function App() {
 
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
         <Route path="/proffaddassign" element={<ProffAddAssign/>} />
+        <Route path="/ProffTimeTable" element={<ProffTimeTable/>} />
+        <Route path="/ProffExam" element={<ProffExam/>} />
+        <Route path="/ProffAddProjects" element={<ProffAddProjects/>} />
+        <Route path="/exam" element={<Exam/>} />
+        <Route path="/attendance/:email" element={<Attendance/>} />
+        
         
 
         </Routes>
