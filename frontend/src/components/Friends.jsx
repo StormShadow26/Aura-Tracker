@@ -1,21 +1,23 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import axios from "axios";
 import { EmailContext } from "../contexts/EmailContext";
-import "./Friends.css"; // Add custom CSS for styling
+import "./Friends.css"; 
 
 const Friends = () => {
   const { email } = useContext(EmailContext);
   const [friends, setFriends] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [problemId, setProblemId] = useState("");
+  const [showPrompt, setShowPrompt] = useState(false);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
+  // Fetch friends (same as before)
   useEffect(() => {
     const fetchFriends = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/v1/friends?email=${encodeURIComponent(
-            email
-          )}`
+          `http://localhost:4000/api/v1/friends?email=${encodeURIComponent(email)}`
         );
         setFriends(response.data.friends);
       } catch (error) {
@@ -25,9 +27,34 @@ const Friends = () => {
         setLoading(false);
       }
     };
-
     fetchFriends();
   }, [email]);
+
+  // Handle Challenge button click
+  const handleChallengeClick = (friend) => {
+    setSelectedFriend(friend);
+    setShowPrompt(true);  // Show the prompt to enter problem ID
+  };
+
+  // Send problem ID to backend and trigger email
+  const sendChallenge = async () => {
+    try {
+      if (problemId.trim()) {
+        const response = await axios.post("http://localhost:4000/api/v1/challenge", {
+          problemId,
+          email: selectedFriend.email,
+        });
+        alert("Challenge sent successfully!");
+        setShowPrompt(false); // Close the prompt
+        setProblemId(""); // Reset problem ID
+      } else {
+        alert("Please enter a valid problem ID.");
+      }
+    } catch (error) {
+      console.error("Error sending challenge:", error);
+      alert("Failed to send challenge");
+    }
+  };
 
   return (
     <div className="friends-container">
@@ -43,18 +70,38 @@ const Friends = () => {
               <div className="friend-info">
                 <p>
                   <strong>Name:</strong> {friend.name}
-                  <br></br>
+                  <br />
                   <strong>Student ID:</strong> {friend.identifier}
-                  <div><button className="challenge-btn">Challenge</button></div>
-                  
+                  <div>
+                    <button
+                      className="challenge-btn"
+                      onClick={() => handleChallengeClick(friend)}
+                    >
+                      Challenge
+                    </button>
+                  </div>
                 </p>
               </div>
-              
             </div>
           ))}
         </div>
       ) : (
         <p>No friends found</p>
+      )}
+
+      {/* Prompt for Problem ID */}
+      {showPrompt && (
+        <div className="challenge-modal">
+          <h3>Enter Problem ID</h3>
+          <input
+            type="text"
+            value={problemId}
+            onChange={(e) => setProblemId(e.target.value)}
+            placeholder="Problem ID"
+          />
+          <button onClick={sendChallenge}>Send Challenge</button>
+          <button onClick={() => setShowPrompt(false)}>Cancel</button>
+        </div>
       )}
     </div>
   );

@@ -16,6 +16,8 @@ const VerticalNavbar = () => {
   const handleProblemset=()=>navigate('/question');
   const handlePomodoro=()=>navigate('/pd');
   const handleContest=()=>navigate('/contest')
+  const handleExam=()=>navigate('/exam')
+  const handleFriend=()=>navigate('/friends')
   
 
   return (
@@ -28,6 +30,7 @@ const VerticalNavbar = () => {
       <button onClick={handleProblemset} className="navbar-button4">Problemset</button>
       <button  onClick={handlePomodoro} className="navbar-button4">Need To Focus?</button>
       <button  onClick={handleContest} className="navbar-button4">Contest</button>
+      <button onClick={handleFriend} className="navbar-button4" >Friends</button>
 
       
     </div>

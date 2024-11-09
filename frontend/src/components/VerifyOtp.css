@@ -1,83 +1,88 @@
+/* Container styling for the background and centering the OTP box */
+#verify-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url('./bg1.jpg') no-repeat center center fixed; /* Same background as Register.css */
+  background-size: cover;
+  text-align: center;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
 
-#verify-container12 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  
-  #verify-box12 {
-    width: 100%;
-    max-width: 500px;
-    padding: 2rem;
-    border-radius: 1rem;
-    background-color: rgba(28, 28, 28, 0.8);
-    transition: box-shadow 0.3s ease-in-out;
-  }
-  
-  
-  #verify-box12:hover {
-    box-shadow: 0 0 20px 5px #ff00ff;
-  }
-  
- 
-  #title12 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    background: linear-gradient(to right, #ff00ff, #00ffff, #00ff00);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  
-  
-  #error-message12 {
-    color: #ff4d4d;
-    text-align: center;
-    font-size: 1rem;
-  }
-  
- 
-  #input-group12 label {
-    display: block;
-    color: #cccccc;
-    font-size: 1.2rem;
-    margin: 2vh;
-    text-align: center;
-    margin-top: 4vh;
-  }
-  
-  #otp12 {
-    width: 80%;
-    padding:0.5rem 1rem;
-    margin-top: 0.25rem;
-    border-radius: 0.5rem;
-    color: #000;
-    outline: none;
-    transition: border-color 0.2s;
-    margin: 3vh;
-  }
-  
-  #otp12:focus {
-    border: 2px solid #00ff00;
-  }
-  
-  
-  #verify-button12 {
-    width: 100%;
-    padding: 0.75rem;
-    font-weight: medium;
-    background: linear-gradient(to right, #ff00ff, #00ffff);
-    border-radius: 0.5rem;
-    color: white;
-    transition: transform 0.3s;
-  }
-  
-  #verify-button12:hover {
-    transform: scale(1.05);
-  }
-  
+/* Styling for the verify box with background blur effect */
+#verify-box {
+  width: 100%;
+  max-width: 450px;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: rgba(28, 28, 28, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for box-shadow */
+#verify-box:hover {
+  box-shadow: 0 8px 25px rgba(255, 0, 255, 0.2);
+}
+
+/* Gradient text for the title */
+#title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #ff00ff, #00ffff, #00ff00);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Styling for error message */
+#error-message {
+  font-size: 1.1rem;
+  color: #ff4d4d;
+  margin-top: 10px;
+}
+
+/* Input styling */
+#input-group {
+  margin-top: 2vh;
+}
+
+#input-group label {
+  font-size: 1rem;
+  color: #cccccc;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+#otp {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: #2e2e2e;
+  color: white;
+  border: 1px solid #444;
+  transition: border-color 0.3s;
+}
+
+#otp:focus {
+  border-color: #00ff00;
+  outline: none;
+}
+
+/* Button styling */
+#verify-button {
+  width: 100%;
+  padding: 1rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #ff00ff, #00ffff);
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#verify-button:hover {
+  transform: scale(1.05);
+  background-color: #ff00ff;
+}
