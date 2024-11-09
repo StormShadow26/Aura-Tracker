@@ -60,3 +60,24 @@
   height: 40px; 
   margin-right: 10px;
 }
+
+.search-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background:blue;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-results {
+  margin-top: 10px;
+}
+
+.search-result {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}

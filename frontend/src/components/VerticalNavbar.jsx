@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import { EmailContext } from '../contexts/EmailContext';
 import { useNavigate } from 'react-router-dom';
@@ -9,29 +8,26 @@ const VerticalNavbar = () => {
   const { email } = useContext(EmailContext); 
   console.log(email, "= navbar wala");
 
-
   const handleDashboard = () => navigate(`/dashboard?email=${encodeURIComponent(email)}`);
   const handleAttendance = () => navigate(`/attendance?email=${encodeURIComponent(email)}`);
   const handleAssignments = () => navigate(`/assignments/${encodeURIComponent(email)}`);
   const handleProjects = () => navigate(`/projects/${encodeURIComponent(email)}`);
   const handleTimetable = () => navigate(`/timetable/${encodeURIComponent(email)}`);
-  const handleProblemset=()=>navigate('/question');
-  const handlePomodoro=()=>navigate('/pd');
-  const handleContest=()=>navigate('/contest')
-  
+  const handleProblemset = () => navigate('/question');
+  const handlePomodoro = () => navigate('/pd');
+  const handleContest = () => navigate('/contest');
+  const handleFriends = () => navigate(`/friends?email=${encodeURIComponent(email)}`); // New handler for friends
 
   return (
     <div id="vertical-navbar4" className="navbar-container4">
-      {/* <button id="dashboard-button" onClick={handleDashboard} className="navbar-button">Dashboard</button> */}
       <button id="attendance-button4" onClick={handleAttendance} className="navbar-button4">Attendance</button>
       <button id="assignments-button4" onClick={handleAssignments} className="navbar-button4">Assignments</button>
       <button id="projects-button4" onClick={handleProjects} className="navbar-button4">Projects</button>
       <button id="timetable-button4" onClick={handleTimetable} className="navbar-button4">Timetable</button>
       <button onClick={handleProblemset} className="navbar-button4">Problemset</button>
-      <button  onClick={handlePomodoro} className="navbar-button4">Need To Focus?</button>
-      <button  onClick={handleContest} className="navbar-button4">Contest</button>
-
-      
+      <button onClick={handlePomodoro} className="navbar-button4">Need To Focus?</button>
+      <button onClick={handleContest} className="navbar-button4">Contest</button>
+      <button onClick={handleFriends} className="navbar-button4">Your Friends</button> {/* New button */}
     </div>
   );
 };

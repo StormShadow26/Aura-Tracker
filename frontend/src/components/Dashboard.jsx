@@ -17,7 +17,7 @@ import {
 } from "recharts";
 import "./Dashboard.css";
 
-const Dashboard = () => {
+const Dashboard = ({mymail}) => {
   const [data, setData] = useState({
     classes: { attended: 0, total: 0 },
     assignments: { done: 0, total: 0 },

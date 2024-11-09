@@ -37,7 +37,10 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   phone: {
-    type: String
+    type: String,
+    required: false,
+    sparse: true, // Allows multiple null values by indexing only non-null values
+    unique: true,
   },
   assignments: {
     done: Number,
@@ -51,14 +54,20 @@ const userSchema = new mongoose.Schema({
     attended: Number,
     total: Number
   },
-  auraPoints:{
+  auraPoints: {
     type: Number,
   },
   projects: {
     completed: Number,
     total: Number
   },
-  // timetable: [String], // or an array of objects depending on the structure
+  // Friends: Array of identifiers (e.g., studentId or professionalId)
+  friends: [{
+    name: String,
+    identifier: String,
+    email: String,
+  }]
+  
 });
 
 module.exports = mongoose.model('User', userSchema);

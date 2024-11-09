@@ -27,6 +27,7 @@ import ProffDashBoard from './proffcomponents/ProffDashBoard';
 import AllContest from './components/AllContest'
 import ContestDetails from './components/ContestDetails';
 import ContestQuestionPage from  './components/ContestQuestionPage';
+import Friends from './components/Friends';
 
 
 
@@ -56,7 +57,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register onSuccess={handleRegistrationSuccess} />} />
         <Route path='/verify-otp' element={<VerifyOtp email={email}></VerifyOtp>}/>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard email={email}/>} />
         <Route path="/assignments/:email" element={<Assignment/>} />
         <Route path="/projects/:email" element={<Project/>} />
         <Route path="/timetable/:email" element={<Timetable/>} />
@@ -75,8 +76,8 @@ function App() {
         <Route path="/contest" element={<AllContest/>} />
         <Route path="/contest/:contestId" element={<ContestDetails/>} />
         <Route path="/contest/:contestId/:id" element={<ContestQuestionPage/>} />
-
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
+        <Route path="/friends" element={<Friends></Friends>}/>
         
 
         </Routes>
