@@ -1,9 +1,7 @@
-
 #register-container6 {
   font-family: 'Poppins', sans-serif;
   background-color: #1a1a1d;
   color: #e0e0e0;
-  overflow: hidden;
   background-image: url('./bg1.jpg'); 
   background-size: cover; 
   background-position: center; 
@@ -13,100 +11,75 @@
   display: flex;
   align-items: center;
   justify-content: center; 
+  overflow: hidden;
 }
 
-
 #register-card6 {
-  width: 100%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 500px;
   padding: 2rem;
   background: linear-gradient(145deg, #212129, #1b1b21);
   border-radius: 12px;
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.8);
-  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  align-items: center;
 }
-
-#register-card6:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
 
 #register-title6 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  color: #fff;
+  color: transparent;
   background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a);
   background-clip: text;
-  color: transparent;
 }
-
 
 #error-message6 {
   color: #ff4d4d;
   text-align: center;
   font-size: 0.875rem;
-  margin-top: -10px;
   padding: 0.5rem;
 }
 
 #register-form6 {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-
-.column-left6,
-.column-right6 {
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.form-group6 {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group6 label {
+.form-group label {
   font-size: 0.875rem;
   color: #a1a1a5;
-  margin-bottom: 5px;
 }
 
-.form-group6 input,
-.form-group6 select {
-  width: 90%;
+.form-group input {
+  width: 100%;
   padding: 0.8rem;
   border-radius: 8px;
   background: #fafafa;
-  border: 2px solid transparent;
+  border: 1px solid #ccc;
   transition: border-color 0.3s;
   outline: none;
 }
 
-.form-group6 input:focus,
-.form-group6 select:focus {
+.form-group input:focus {
   border-color: #6d5dfc;
 }
 
-
 #register-button {
   width: 100%;
-  padding: 1rem;
+  padding: 0.8rem;
   font-size: 1rem;
   font-weight: bold;
-  text-align: center;
   color: #fff;
   background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a);
   border-radius: 8px;
+  border: none;
+  cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  margin-top: 1.5rem;
 }
 
 #register-button:hover {
@@ -114,121 +87,50 @@
   box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2);
 }
 
-
 #google-button {
   width: 100%;
-  padding: 1rem;
+  padding: 0.8rem;
   font-size: 1rem;
   font-weight: bold;
-  color: #fff;
-  background: linear-gradient(90deg, #f54291, #5d50f5);
+  color: #4285F4;
+  background-color: white;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-top: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 #google-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.2);
+  background-color: #f8f8f8;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
 
+.google-logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
 
 #register-footer {
   text-align: center;
   font-size: 0.875rem;
   color: #a0a0a5;
-  margin-top: 1.5rem;
 }
 
-#register-footer a {
+#register-footer span {
   color: #f54291;
-  text-decoration: none;
+  cursor: pointer;
   font-weight: bold;
 }
 
-#register-footer a:hover {
+#register-footer span:hover {
   text-decoration: underline;
 }
 
 .blur {
   filter: blur(4px);
   transition: filter 0.3s ease;
-}
-
-
-.tire-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none; 
-}
-
-.tire-container.visible {
-  opacity: 1;
-}
-
-.tire {
-  width: 100px; 
-  animation: rotate 1s forwards;
-}
-
-@keyframes rotate {
-  0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-
-.tire-container.to-left {
-  animation: move-left 0.5s forwards;
-}
-
-@keyframes move-left {
-  to {
-      transform: translate(-150%, -50%) rotate(360deg);
-  }
-}
-
-.tire-container.to-right {
-  animation: move-right 0.5s forwards;
-}
-
-@keyframes move-right {
-  to {
-      transform: translate(50%, -50%) rotate(360deg);
-  }
-}
-
-.google-button {
-  background-color: white;
-  color: #4285F4; 
-  border: 1px solid #ccc; 
-  border-radius: 4px; 
-  padding: 10px 20px; 
-  font-size: 16px; 
-  font-weight: bold;
-  cursor: pointer; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  transition: background-color 0.2s ease; 
-}
-
-.google-button:hover {
-  background-color: #f8f8f8; 
-}
-
-.google-logo {
-  width: 20px; 
-  height: 20px;
-  margin-right: 10px; 
-}
-.pintu{
-  color: black;
 }
