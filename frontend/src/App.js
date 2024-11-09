@@ -72,12 +72,12 @@ function App() {
         <Route path="/question/:id" element={<QuestionDetail/>} />
         <Route path="/question"  element={<QuestionList/>} />
         <Route path="/pd"  element={<PomodoroPage/>} />
-        <Route path="/contest" element={<AllContest/>} />
+        <Route path="/contest" element={<AllContest/>} /> 
         <Route path="/contest/:contestId" element={<ContestDetails/>} />
         <Route path="/contest/:contestId/:id" element={<ContestQuestionPage/>} />
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
         
-
+ 
         </Routes>
         
     </Router>

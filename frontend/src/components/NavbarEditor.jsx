@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import './NavbarEditor.css';
 
 const Navbar = ({ userLang, setUserLang, userTheme, setUserTheme, fontSize, setFontSize }) => {
     const languages = [
@@ -15,32 +16,32 @@ const Navbar = ({ userLang, setUserLang, userTheme, setUserTheme, fontSize, setF
     ];
 
     return (
-        <div className="bg-gray-800 text-white px-6 py-2 flex items-center justify-between shadow-lg">
-            <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-1">
-                    <label className="text-sm font-medium">Language:</label>
+        <div id="navbar-container24" className="navbar-container24">
+            <div id="navbar-items24" className="navbar-items24">
+                <div id="language-select-container24" className="select-container24">
+                    <label id="language-label24" className="label24">Language:</label>
                     <Select
                         options={languages}
                         value={languages.find(lang => lang.value === userLang)}
                         onChange={(e) => setUserLang(e.value)}
-                        className="w-28 text-gray-800"
+                        className="select24"
                         placeholder="Select Language"
                     />
                 </div>
 
-                <div className="flex items-center space-x-1">
-                    <label className="text-sm font-medium">Theme:</label>
+                <div id="theme-select-container24" className="select-container24">
+                    <label id="theme-label24" className="label24">Theme:</label>
                     <Select
                         options={themes}
                         value={themes.find(theme => theme.value === userTheme)}
                         onChange={(e) => setUserTheme(e.value)}
-                        className="w-28 text-gray-800"
+                        className="select24"
                         placeholder="Select Theme"
                     />
                 </div>
 
-                <div className="flex items-center space-x-1">
-                    <label className="text-sm font-medium">Font Size:</label>
+                <div id="font-size-container24" className="font-size-container24">
+                    <label id="font-size-label24" className="label24">Font Size:</label>
                     <input
                         type="range"
                         min="18"
@@ -48,9 +49,9 @@ const Navbar = ({ userLang, setUserLang, userTheme, setUserTheme, fontSize, setF
                         value={fontSize}
                         step="2"
                         onChange={(e) => setFontSize(e.target.value)}
-                        className="w-16 h-2"
+                        className="font-size-slider24"
                     />
-                    <span className="text-sm">{fontSize}px</span>
+                    <span id="font-size-value24" className="font-size-value24">{fontSize}px</span>
                 </div>
             </div>
         </div>

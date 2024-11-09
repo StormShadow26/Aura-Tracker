@@ -1,0 +1,104 @@
+/* Ensure the container occupies the full screen */
+.container21 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+  min-width: 100vw; /* Full viewport width */
+  background: linear-gradient(135deg, #1e1e2f, #252540); /* Dark, street-style gradient */
+  font-family: 'Montserrat', sans-serif;
+  color: #e1e1f5; /* Soft off-white for text */
+  padding: 0; /* Remove padding so container fills the entire screen */
+  margin: 0; /* Ensure no margin is added around the container */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Title styling */
+#title21 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #4b84e2; /* Soft vibrant blue */
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px #4b84e2; /* Neon glow */
+}
+
+/* Contest card container */
+.contestCard21 {
+  width: 100%;
+  max-width: 600px;
+  background: #252540; /* Dark purple background */
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contestCard21:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px 5px #ff007f; /* Neon pink shadow on hover */
+}
+
+/* Contest title styling */
+#contestTitle21 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff007f; /* Neon pink to pop out */
+  margin-bottom: 0.5rem;
+}
+
+/* Info icon and text */
+.infoIcon21 {
+  display: inline-block;
+  color: #4b84e2;
+  margin-right: 0.4rem;
+}
+
+.infoText21 {
+  font-size: 1rem;
+  color: #e1e1f5;
+}
+
+/* Button styling */
+#enterButton21 {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #28a745, #1a237e); /* Green and dark blue gradient */
+  transition: background 0.3s ease;
+}
+
+#enterButton21:hover {
+  background: linear-gradient(45deg, #1a237e, #28a745);
+}
+
+#enterButton21:disabled {
+  background: #666;
+  cursor: not-allowed;
+}
+
+/* Dynamic animation */
+@keyframes bgAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Additional styling for flex layout */
+.flexRow21 {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+/* Adding padding and spacing */
+.paddingLeft21 {
+  padding-left: 0.5rem;
+}

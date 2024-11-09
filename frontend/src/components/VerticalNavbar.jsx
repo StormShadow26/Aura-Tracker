@@ -16,6 +16,7 @@ const VerticalNavbar = () => {
   const handleProblemset=()=>navigate('/question');
   const handlePomodoro=()=>navigate('/pd');
   const handleContest=()=>navigate('/contest')
+  const handleExam=()=>navigate('/exam');
   
 
   return (

@@ -104,19 +104,17 @@ const Dashboard = ({mymail}) => {
   // Badge logic based on auraPoints
   const getBadge = (auraPoints) => {
     if (auraPoints > 500) {
-      return "🌟 God Level";
+      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
     } else if (auraPoints > 400) {
-      return "🔥 Crazy";
+      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
     } else if (auraPoints > 250) {
-      return "👏 Wow";
+      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
     } else if (auraPoints > 150) {
-      return "🌟 Standard";
+      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
     } else if (auraPoints > 100) {
-      return "👍 Ok Ok";
-    } else if (auraPoints > 50) {
-      return "🆕 Freshie";
+      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
     } else {
-      return "😅 Newbie";
+      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
     }
   };
 
@@ -128,7 +126,7 @@ const Dashboard = ({mymail}) => {
         <HorizontalNavbar handleRefresh={handleRefresh} />
 
         <div id="dashboard-container9">
-          <h1 id="dashboard-title9">Dashboard</h1>
+        
 
           <div id="aura-points9">
             <h2 id="aura-points-title9">Aura Points</h2>

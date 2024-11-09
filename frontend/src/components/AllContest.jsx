@@ -4,6 +4,7 @@ import { EmailContext } from '../contexts/EmailContext';
 import { useNavigate } from 'react-router-dom';
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
 import Swal from 'sweetalert2'; // Import SweetAlert2
+import './AllContest.css';
 
 const AllContests = () => {
   const [contests, setContests] = useState([]);
@@ -46,11 +47,16 @@ const AllContests = () => {
         },
       });
 
-      // Display success message
+      // Display success message with dark theme styling
       Swal.fire({
         icon: 'success',
         title: 'Success!',
         text: 'Contest entered successfully!',
+        background: '#333', // Dark background
+        color: '#e5e5e5',   // Light text color
+        iconColor: '#4dd0e1', // Vibrant success icon color
+        confirmButtonColor: '#1a237e', // Button color
+        confirmButtonText: 'Awesome!',
       });
 
       navigate(`/contest/${contestId}`);
@@ -60,6 +66,11 @@ const AllContests = () => {
         icon: 'error',
         title: 'Oops...',
         text: 'Something went wrong! Please try again later.',
+        background: '#333', // Dark background
+        color: '#e5e5e5',   // Light text color
+        iconColor: '#ff5b5b', // Vibrant error icon color
+        confirmButtonColor: '#1a237e', // Button color
+        confirmButtonText: 'Try Again',
       });
     }
   };
@@ -68,35 +79,32 @@ const AllContests = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg mt-5">
-      <h2 className="text-3xl font-semibold text-center text-blue-600 mb-6">All Contests</h2>
+    <div className="container21">
+      <h2 id="title21">All Contests</h2>
 
       {contests.map((contest) => (
-        <div key={contest._id} className="bg-white p-4 mb-4 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold text-indigo-600 mb-2">{contest.contestTitle}</h3>
+        <div key={contest._id} className="contestCard21">
+          <h3 id="contestTitle21">{contest.contestTitle}</h3>
 
-          <div className="flex items-center text-gray-600 mb-1">
-            <FaCalendarAlt className="mr-2" />
-            <span>Start Date: {new Date(contest.contestDate).toLocaleString()}</span>
+          <div className="flexRow21">
+            <FaCalendarAlt className="infoIcon21" />
+            <span className="infoText21 paddingLeft21">Start Date: {new Date(contest.contestDate).toLocaleString()}</span>
           </div>
 
-          <div className="flex items-center text-gray-600 mb-1">
-            <FaClock className="mr-2" />
-            <span>Duration: {contest.duration} minutes</span>
+          <div className="flexRow21">
+            <FaClock className="infoIcon21" />
+            <span className="infoText21 paddingLeft21">Duration: {contest.duration} minutes</span>
           </div>
 
-          <div className="flex items-center text-gray-600 mb-2">
-            <span>Total Questions: {contest.totalQuestions}</span>
+          <div className="flexRow21">
+            <span className="infoText21">Total Questions: {contest.totalQuestions}</span>
           </div>
 
           <button
+            id="enterButton21"
             onClick={() => handleEnterContest(contest._id)}
             disabled={!isContestActive(contest.contestDate, contest.duration)}
-            className={`px-4 py-2 mt-3 font-semibold text-white rounded-lg ${
-              isContestActive(contest.contestDate, contest.duration)
-                ? 'bg-green-500 hover:bg-green-600'
-                : 'bg-gray-400 cursor-not-allowed'
-            }`}
+            className={isContestActive(contest.contestDate, contest.duration) ? 'activeButton' : 'inactiveButton'}
           >
             {isContestActive(contest.contestDate, contest.duration) ? 'Enter Contest' : 'Contest Not Active'}
           </button>
@@ -105,4 +113,5 @@ const AllContests = () => {
     </div>
   );
 };
+
 export default AllContests;

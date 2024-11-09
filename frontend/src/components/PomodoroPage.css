@@ -1,0 +1,237 @@
+#pomodoro-container25 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #1e1e2f;
+    box-shadow: 0 0 20px 5px #ff007f; /* Neon pink shadow */
+}
+
+.pomodoro-page25 {
+    width: 90%;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: #252540;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#settings-btn25 {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff007f;
+    transition: 0.3s;
+}
+
+#settings-btn25:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 12px #ff007f;
+}
+
+#header25 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #4b84e2;
+    text-shadow: 0 0 10px #4b84e2;
+    text-align: center;
+}
+
+#mode-buttons25 {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.mode-button25 {
+    padding: 0.5rem 1.5rem;
+    color: white;
+    border: none;
+    background-color: #ff007f;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 6px #ff007f;
+    transition: 0.3s;
+    font-size: 1.1rem;
+}
+
+.mode-button25:hover {
+    background-color: #ff3399;
+    box-shadow: 0 0 8px #ff3399;
+}
+
+.active-mode25 {
+    background-color: #ff3399;
+}
+
+#timer-display25 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #4b84e2;
+    text-shadow: 0 0 10px #4b84e2;
+    text-align: center;
+}
+
+#start-pause-btn25 {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    color: white;
+    background-color: #28a745;
+    transition: 0.3s;
+}
+
+#start-pause-btn25:hover {
+    background-color: #218838;
+}
+
+#task-container25 {
+    margin-top: 2rem;
+}
+
+#task-input25 {
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+#add-task-btn25 {
+    padding: 0.5rem 1rem;
+    background-color: #ff007f;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-left: 0.22rem;
+    transition: 0.3s;
+    margin-top: 2vh;
+}
+
+#add-task-btn25:hover {
+    background-color: #ff3399;
+}
+
+#task-list25 {
+    margin-top: 1rem;
+    list-style-type: none;
+    padding: 0;
+}
+
+.task25 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: #3c3c5f;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    transition: 0.3s;
+}
+
+.task-text25 {
+    font-size: 1rem;
+}
+
+.completed-task25 .task-text25 {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.task-action-btn25 {
+    padding: 0.2rem 0.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    transition: 0.3s;
+}
+
+.complete-btn25 {
+    background-color: #28a745;
+    color: white;
+}
+
+.complete-btn25:hover {
+    background-color: #218838;
+}
+
+.undo-btn25 {
+    background-color: #dc3545;
+    color: white;
+}
+
+.undo-btn25:hover {
+    background-color: #c82333;
+}
+
+#settings-modal25 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#settings-container25 {
+    background: #252540;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 20px 5px #ff007f; /* Neon pink shadow */
+}
+
+#settings-title25 {
+    font-size: 1.8rem;
+    color: #4b84e2;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px #4b84e2;
+}
+
+.setting-field25 {
+    margin-bottom: 1rem;
+}
+
+.setting-field25 label {
+    display: block;
+    font-size: 1.1rem;
+    color: #e1e1f5;
+}
+
+.setting-field25 input[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    border-radius: 0.5rem;
+    background: #444469;
+    color: white;
+}
+
+#save-settings-btn25,
+#close-settings-btn25 {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 1rem;
+}
+
+#save-settings-btn25 {
+    background-color: #28a745;
+    color: white;
+}
+
+#close-settings-btn25 {
+    background-color: #dc3545;
+    color: white;
+}

@@ -4,6 +4,7 @@ import Navbar from './NavbarEditor';
 import Axios from 'axios';
 import spinner from './spinner.svg';
 import { useOutput } from '../contexts/OutputContext';
+import './CodeEditor.css';
 
 function CodeEditor({ initialInput }) {
     const [userCode, setUserCode] = useState(``);
@@ -17,7 +18,6 @@ function CodeEditor({ initialInput }) {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-       
         setUserInput(initialInput);
     }, [initialInput]);
 
@@ -42,7 +42,6 @@ function CodeEditor({ initialInput }) {
             console.error(err);
             setUserOutput("Error: " + (err.response ? err.response.data.error : err.message));
             setOutput("Error: " + (err.response ? err.response.data.error : err.message));
-
             setLoading(false);
         });
     }
@@ -52,13 +51,13 @@ function CodeEditor({ initialInput }) {
     }
 
     return (
-        <div className="bg-gray-900 text-white min-h-screen flex flex-col">
+        <div id="code-editor-container23" className="code-editor-container23">
             <Navbar
                 userLang={userLang} setUserLang={setUserLang}
                 userTheme={userTheme} setUserTheme={setUserTheme}
                 fontSize={fontSize} setFontSize={setFontSize}
             />
-            <div className="w-full p-4 space-y-4 bg-gray-800">
+            <div id="editor-wrapper23" className="editor-wrapper23">
                 <Editor
                     options={options}
                     height="80vh"
@@ -68,36 +67,39 @@ function CodeEditor({ initialInput }) {
                     defaultLanguage="python"
                     defaultValue="# Enter your code here"
                     onChange={(value) => { setUserCode(value) }}
-                    className="rounded-lg border border-gray-700 shadow-lg"
+                    className="editor23"
                 />
                 <button
-                    className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded shadow-lg transition duration-200"
+                    id="run-button23"
+                    className="run-button23"
                     onClick={() => compile()}
                 >
                     Run
                 </button>
             </div>
 
-            <div className="w-full p-4 space-y-4 bg-gray-700">
-                <h4 className="text-xl font-semibold mb-2">Input:</h4>
+            <div id="input-output-wrapper23" className="input-output-wrapper23">
+                <h4 id="input-label23" className="label23">Input:</h4>
                 <textarea
-                    className="p-2 h-32 rounded-lg bg-gray-800 border border-gray-600 text-white focus:outline-none focus:border-blue-500"
+                    id="input-box23"
+                    className="input-box23"
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
                 />
-                <h4 className="text-xl font-semibold mb-2">Output:</h4>
+                <h4 id="output-label23" className="label23">Output:</h4>
                 {loading ? (
-                    <div className="flex items-center justify-center h-32">
-                        <img src={spinner} alt="Loading..." className="w-10 h-10 animate-spin" />
+                    <div id="loading-spinner23" className="loading-spinner23">
+                        <img src={spinner} alt="Loading..." className="spinner-image23" />
                     </div>
                 ) : (
-                    <div className="p-4 h-32 rounded-lg bg-gray-800 border border-gray-600 text-white overflow-y-auto">
+                    <div id="output-box23" className="output-box23">
                         <pre>{userOutput}</pre>
                     </div>
                 )}
                 <button
+                    id="clear-button23"
                     onClick={() => clearOutput()}
-                    className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded shadow-lg transition duration-200"
+                    className="clear-button23"
                 >
                     Clear Output
                 </button>

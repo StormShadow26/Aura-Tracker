@@ -1,0 +1,73 @@
+.navbar-container24 {
+    background: linear-gradient(135deg, #5e4b8b, #3a2c7f); /* Gradient for a fresh purple-blue blend */
+    color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow for depth */
+    height: 3vh;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.navbar-items24 {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.select-container24 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+}
+
+.label24 {
+    font-size: 1em;
+    color: #c81efc;; /* Lighter purple color for a pop of contrast */
+    font-weight: 600;
+}
+
+.select24 .react-select__control {
+    width: 140px;
+    background-color: #4a3d71; /* Rich purplish-blue background for select input */
+    border: 2px solid #7e5cde; /* Bold border with a nice contrast */
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.select24 .react-select__menu {
+    background-color: #4a3d71;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.select24 .react-select__single-value {
+    color: #ffffff;
+}
+
+.select24 .react-select__control:hover {
+    border-color: #9e77d8; /* Soft hover effect with a brighter lavender */
+}
+
+.font-size-container24 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.font-size-slider24 {
+    width: 100px;
+    accent-color: #dc57b4; /* Smooth purple accent for slider */
+}
+
+.font-size-value24 {
+    font-size: 1em;
+    color: #c81efc; /* Matching text color for minimalistic vibe */
+    font-weight: 600;
+}

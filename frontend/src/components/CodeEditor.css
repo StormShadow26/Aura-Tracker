@@ -1,0 +1,104 @@
+.code-editor-container23 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2a2a3b, #3a2c7f); /* Gradient with darker purple-blue theme */
+    color: #ffffff;
+    padding: 20px;
+    width: 45vw;
+}
+
+.editor-wrapper23 {
+    background: #2c2a3e; /* Darker shade matching the purplish-blue theme */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
+}
+
+.editor23 {
+    border: 2px solid #4a3d71; /* Rich purplish-blue border */
+    border-radius: 8px;
+}
+
+.run-button23 {
+    margin-top: 15px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #9c77e0, #6a4fbb); /* Purple-blue gradient for button */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.run-button23:hover {
+    background: linear-gradient(135deg, #7a58e8, #5540a0); /* Lighter gradient for hover effect */
+}
+
+.input-output-wrapper23 {
+    margin-top: 20px;
+    background: #383252; /* Darker background for input-output area */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.label23 {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #c81efc; /* Bright purple color for label */
+    margin-bottom: 10px;
+}
+
+.input-box23, .output-box23 {
+    width: 80%;
+    min-height: 50px;
+    background: #2a2a3b; /* Dark background with a bluish tint */
+    color: #ffffff;
+    padding: 15px;
+    font-size: 1em;
+    border: 2px solid #4a3d71; /* Subtle purplish border */
+    border-radius: 8px;
+    resize: none;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.input-box23:focus, .output-box23:focus {
+    border-color: #9c77e0; /* Light purple-blue border when focused */
+    outline: none;
+}
+
+.loading-spinner23 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+.spinner-image23 {
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.clear-button23 {
+    padding: 12px 24px;
+    background: #9c77e0; /* Soft purple button background */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.clear-button23:hover {
+    background: #7a58e8; /* Lighter purple for hover effect */
+}
