@@ -1,4 +1,4 @@
-/* Container styling */
+/* 
 .exam-timetable-container {
     padding: 20px;
     max-width: 900px;
@@ -7,7 +7,7 @@
     color: #333;
   }
   
-  /* Heading */
+  
   .exam-timetable-container h2 {
     text-align: center;
     font-size: 1.8em;
@@ -15,7 +15,7 @@
     margin-bottom: 20px;
   }
   
-  /* Motivational Quote */
+  
   .quote-section {
     text-align: center;
     margin: 20px 0;
@@ -31,7 +31,6 @@
     color: #3d405b;
   }
   
-  /* Countdown Timer */
   .countdown-timer {
     text-align: center;
     margin: 30px 0;
@@ -43,7 +42,7 @@
     color: #e07a5f;
   }
   
-  /* Timer Boxes Styling */
+
   .timer-boxes {
     display: flex;
     justify-content: center;
@@ -77,7 +76,7 @@
     color: #f4f1de;
   }
   
-  /* Exam Timetable Grid */
+  
   .exam-timetable-grid {
     display: flex;
     overflow-x: auto;
@@ -93,7 +92,7 @@
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    flex-shrink: 0; /* Prevent tiles from shrinking */
+    flex-shrink: 0; 
   }
   
   .exam-tile:hover {
@@ -111,4 +110,4 @@
     margin: 4px 0;
     font-size: 0.9em;
   }
-  
+   */

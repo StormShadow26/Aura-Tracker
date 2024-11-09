@@ -33,6 +33,8 @@ import ProffExam from './proffcomponents/ProffExam'
 import ProffAddProjects from './proffcomponents/ProffAddProjects'
 import Exam from './components/Exam'
 import Attendance from  './components/Attendance'
+import CgTracker from './components/CgTracker'
+import Analytics from './components/Analytics';
 
 
 
@@ -89,7 +91,8 @@ function App() {
         <Route path="/ProffAddProjects" element={<ProffAddProjects/>} />
         <Route path="/exam" element={<Exam/>} />
         <Route path="/attendance/:email" element={<Attendance/>} />
-        
+        <Route path="/Goals" element={<CgTracker/>} />
+        <Route path="/analytics" element={<Analytics/>} />
         
 
         </Routes>

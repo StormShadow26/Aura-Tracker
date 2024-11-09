@@ -19,9 +19,6 @@ import {
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  
-
-
   const [data, setData] = useState({
     classes: { attended: 0, total: 0 },
     assignments: { done: 0, total: 0 },
@@ -220,84 +217,59 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div id="timetable-section9">
-            <h2 id="timetable-title9">Weekly Timetable</h2>
-            <div id="timetable-container9">
-              {Array.isArray(data.timetable) && data.timetable.length > 0 ? (
-                data.timetable.map((day, index) => (
-                  <div className="timetable-day9" key={index}>
-                    <h3>{day.day}</h3>
-                    {Array.isArray(day.classes) && day.classes.length > 0 ? (
-                      day.classes.map((classItem, i) => (
-                        <div className="class-item9" key={i}>
-                          <p>
-                            <strong>Subject:</strong> {classItem.subject}
-                          </p>
-                          <p>
-                            <strong>Time:</strong> {classItem.time.start} -{" "}
-                            {classItem.time.end}
-                          </p>
-                        </div>
-                      ))
-                    ) : (
-                      <p>No classes available for {day.day}</p>
-                    )}
-                  </div>
-                ))
-              ) : (
-                <p>No timetable available.</p>
-              )}
-            </div>
-          </div>
+          
           <div
-  id="assignments-section9"
-  className="p-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl shadow-2xl"
->
-  <h2 className="text-4xl font-extrabold text-white mb-6 text-center">
-    Assignments Added by Professor
-  </h2>
-  {assignments.length > 0 ? (
-    <div className="space-y-6">
-      {assignments
-        .filter((assignment) => new Date(assignment.deadline) >= new Date())
-        .map((assignment, index) => (
-          <div
-            key={index}
-            className="bg-white p-6 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+            id="assignments-section9"
+            className="p-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl shadow-2xl"
           >
-            <h2 className="text-2xl font-bold text-indigo-700 mb-3">
-              {assignment.subject} - Chapter: {assignment.chapter}
+            <h2 className="text-4xl font-extrabold text-white mb-6 text-center">
+              Assignments Added by Professor
             </h2>
-            <p className="text-lg text-gray-600 mb-2">
-              <strong>Deadline:</strong>{" "}
-              <span className="text-blue-500">
-                {new Date(assignment.deadline).toLocaleDateString()}
-              </span>
-            </p>
-            <p className="text-lg text-gray-600 mb-2">
-              <strong>Submitted:</strong>{" "}
-              {assignment.submitted ? (
-                <span className="text-green-500 font-semibold">Yes</span>
-              ) : (
-                <span className="text-red-500 font-semibold">No</span>
-              )}
-            </p>
-            <p className="text-lg text-gray-600 mb-2">
-              <strong>Professor:</strong> {assignment.professorName}
-            </p>
-            <p className="text-gray-700 text-lg">
-              <strong>Description:</strong> {assignment.description}
-            </p>
-            
+            {assignments.length > 0 ? (
+              <div className="space-y-6">
+                {assignments
+                  .filter(
+                    (assignment) => new Date(assignment.deadline) >= new Date()
+                  )
+                  .map((assignment, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-6 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+                    >
+                      <h2 className="text-2xl font-bold text-indigo-700 mb-3">
+                        {assignment.subject} - Chapter: {assignment.chapter}
+                      </h2>
+                      <p className="text-lg text-gray-600 mb-2">
+                        <strong>Deadline:</strong>{" "}
+                        <span className="text-blue-500">
+                          {new Date(assignment.deadline).toLocaleDateString()}
+                        </span>
+                      </p>
+                      <p className="text-lg text-gray-600 mb-2">
+                        <strong>Submitted:</strong>{" "}
+                        {assignment.submitted ? (
+                          <span className="text-green-500 font-semibold">
+                            Yes
+                          </span>
+                        ) : (
+                          <span className="text-red-500 font-semibold">No</span>
+                        )}
+                      </p>
+                      <p className="text-lg text-gray-600 mb-2">
+                        <strong>Professor:</strong> {assignment.professorName}
+                      </p>
+                      <p className="text-gray-700 text-lg">
+                        <strong>Description:</strong> {assignment.description}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            ) : (
+              <p className="text-white text-xl text-center">
+                No assignments available.
+              </p>
+            )}
           </div>
-        ))}
-    </div>
-  ) : (
-    <p className="text-white text-xl text-center">No assignments available.</p>
-  )}
-</div>
-
-
         </div>
       </div>
     </div>

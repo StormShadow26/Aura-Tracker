@@ -31,6 +31,8 @@ const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
 const {getLeaderboard}=require('../Controllers/getLeaderboard')
 const {createOrUpdateTimetable,updateDaySchedule,getTt}=require('../Controllers/TimeTableController.js')
 const {addTimetable,getTimetable}=require('../Controllers/ExamController.js');
+const {getUserData}=require('../Controllers/getEntireUser.js')
+const {updateProgress}=require('../Controllers/updateProgress.js')
 
 router.post('/welcome', submitUserDetails);
 router.post('/register', registerUser);
@@ -64,6 +66,8 @@ router.post('/createOrUpdateTimetable',createOrUpdateTimetable);
 router.post('/addTimetable',addTimetable);
 router.get('/getTimetable',getTimetable);
 router.get('/getTt/:semester/:branch',getTt);
+router.get('/getUserData/:email',getUserData);
+router.post('/updateProgress',updateProgress)
 
 
 module.exports = router;

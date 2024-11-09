@@ -5,10 +5,11 @@ import axios from 'axios';
 import CodeEditor from './CodeEditor';
 import { useOutput } from '../contexts/OutputContext';
 import { CloudCog } from 'lucide-react';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const QuestionDetail = () => {
   const { id } = useParams();
-  const email = useContext(EmailContext); // Use useContext to get the email value
+  const {email} = useContext(EmailContext); 
   const navigate = useNavigate();
   const [question, setQuestion] = useState(null);
   const { output } = useOutput();
@@ -16,12 +17,7 @@ const QuestionDetail = () => {
   const [showModal, setShowModal] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  let str = output;
-  let arr = str.split('\n').map(Number);
-  arr.pop();
-  // console.log(arr,"arrhun");
-  // console.log(question.output,"strhun");
-
+  // Function to compare output arrays
   function areArraysSame(arr1, arr2) {
     if (arr1.length !== arr2.length) return false;
     for (let i = 0; i < arr1.length; i++) {
@@ -31,22 +27,56 @@ const QuestionDetail = () => {
   }
 
   const submitHandler = async () => {
+    // Parse output from CodeEditor
+    let arr = output.split('\n').map(Number);
+    arr.pop();
+
     if (areArraysSame(arr, question.output)) {
       setIsCorrect(true);
-      console.log(timeLeft,'time');
-      console.log(email.email,'email');
+      
 
       try {
         // PUT request to update the question's solvedBy array
         await axios.put(`http://localhost:4000/api/v1/updatequestion/${id}`, {
-          email: email.email, // Using the email from the context
+          email: email, 
           timeTaken: timeLeft,
         });
+
+       
+        // Update quiz progress on the server
+      await axios.post(`http://localhost:4000/api/v1/updateProgress`, {
+        email: email,
+        field: 'problemSolving',
+        value: {
+          solved: 1,  
+        }
+      });
+       
+      
+        // Display success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Correct!',
+          text: 'You have solved the question correctly!',
+        });
+
       } catch (error) {
-        console.error('Error updating question solvedBy:', error);
+        console.error('Error updating question solvedBy or problemSolving:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Please try again later.',
+        });
       }
+
     } else {
       setIsCorrect(false);
+      // Display incorrect message
+      Swal.fire({
+        icon: 'error',
+        title: 'Incorrect!',
+        text: 'The output does not match the expected result. Try again!',
+      });
     }
     setShowModal(true);
   };
@@ -67,6 +97,11 @@ const QuestionDetail = () => {
         setTimeLeft(initialTime);
       } catch (error) {
         console.error('Error fetching question details:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Please try again later.',
+        });
       }
     };
 
@@ -75,7 +110,7 @@ const QuestionDetail = () => {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      submitHandler();
+      submitHandler(); 
     } else {
       const timer = setTimeout(() => setTimeLeft(prevTime => prevTime - 1), 1000);
       return () => clearTimeout(timer);

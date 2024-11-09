@@ -1,4 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
+import { EmailContext } from '../contexts/EmailContext';
+import { useNavigate } from 'react-router-dom';
+import { FaCalendarAlt, FaClock } from 'react-icons/fa';
+import Swal from 'sweetalert2'; 
 
 const PomodoroPage = () => {
   const [mode, setMode] = useState('Pomodoro');
@@ -16,6 +21,8 @@ const PomodoroPage = () => {
   // Task list state
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
+  const { email } = useContext(EmailContext); 
+  const navigate = useNavigate();
 
   // Update time based on mode
   const handleModeChange = (newMode) => {
@@ -29,13 +36,48 @@ const PomodoroPage = () => {
     if (isRunning && timeLeft > 0) {
       const timer = setInterval(() => setTimeLeft(prevTime => prevTime - 1), 1000);
       return () => clearInterval(timer);
+    } else if (isRunning && timeLeft === 0) {
+      // Timer completed, update sessions
+      handleTimerComplete();
     }
   }, [isRunning, timeLeft]);
 
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  // Handle timer completion and update sessions
+  const handleTimerComplete = async () => {
+    setIsRunning(false);
+
+    try {
+      await axios.post(`http://localhost:4000/api/v1/updateProgress`, {
+        email: email,
+        field: 'sessions',
+        value: {
+          count: 1,
+        },
+      });
+
+      // Display success message
+      Swal.fire({
+        icon: 'success',
+        title: 'Session Complete!',
+        text: 'Your Pomodoro session is complete!',
+      });
+
+      // Optionally: Auto-start next session based on settings
+      if (mode === 'Pomodoro' && autoStartBreaks) {
+        handleModeChange('Short Break');
+        setIsRunning(true); 
+      } else if (mode !== 'Pomodoro' && autoStartPomodoros) {
+        handleModeChange('Pomodoro');
+        setIsRunning(true); 
+      }
+    } catch (error) {
+      console.error('Error updating sessions:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please try again later.',
+      });
+    }
   };
 
   // Add new task
@@ -51,12 +93,30 @@ const PomodoroPage = () => {
     setTasks(tasks.map((task, i) => i === index ? { ...task, completed: !task.completed } : task));
   };
 
+  // Settings Modal
+  const [settingsModal, setSettingsModal] = useState(false);
+
+  const handleCloseSettings = () => {
+    setSettingsModal(false);
+  };
+
+  const handleSaveSettings = async () => {
+    // ... update settings in your database ...
+    handleCloseSettings();
+  };
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0') }`;
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white font-sans relative">
       {/* Settings button at top-right corner */}
       <button
         className="absolute top-4 right-4 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-200"
-        onClick={() => setShowSettings(true)}
+        onClick={() => setSettingsModal(true)}
       >
         Settings
       </button>
@@ -123,6 +183,72 @@ const PomodoroPage = () => {
           ))}
         </ul>
       </div>
+
+      {/* Settings Modal */}
+      {settingsModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Settings</h2>
+            <div className="mb-4">
+              <label className="block mb-2">Pomodoro Time (minutes):</label>
+              <input
+                type="number"
+                value={pomodoroTime}
+                onChange={(e) => setPomodoroTime(e.target.value)}
+                className="border rounded p-2 w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2">Short Break Time (minutes):</label>
+              <input
+                type="number"
+                value={shortBreakTime}
+                onChange={(e) => setShortBreakTime(e.target.value)}
+                className="border rounded p-2 w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block mb-2">Long Break Time (minutes):</label>
+              <input
+                type="number"
+                value={longBreakTime}
+                onChange={(e) => setLongBreakTime(e.target.value)}
+                className="border rounded p -2 w-full"
+              />
+            </div>
+            <div className="flex items-center mb-4">
+              <input
+                type="checkbox"
+                checked={autoStartBreaks}
+                onChange={() => setAutoStartBreaks(!autoStartBreaks)}
+                className="mr-2"
+              />
+              <label>Auto Start Breaks</label>
+            </div>
+            <div className="flex items-center mb-4">
+              <input
+                type="checkbox"
+                checked={autoStartPomodoros}
+                onChange={() => setAutoStartPomodoros(!autoStartPomodoros)}
+                className="mr-2"
+              />
+              <label>Auto Start Pomodoros</label>
+            </div>
+            <button
+              className="bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded"
+              onClick={handleSaveSettings}
+            >
+              Save Settings
+            </button>
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded ml-2"
+              onClick={handleCloseSettings}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

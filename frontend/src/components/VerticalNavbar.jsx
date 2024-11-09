@@ -10,8 +10,8 @@ const VerticalNavbar = () => {
   console.log(email, "= navbar wala");
 
 
-  const handleDashboard = () => navigate(`/dashboard?email=${encodeURIComponent(email)}`);
-  const handleAttendance = () => navigate(`/attendance?email=${encodeURIComponent(email)}`);
+  const handleDashboard = () => navigate(`/dashboard/email=${encodeURIComponent(email)}`);
+  const handleAttendance = () => navigate(`/attendance/${encodeURIComponent(email)}`);
   const handleAssignments = () => navigate(`/assignments/${encodeURIComponent(email)}`);
   const handleProjects = () => navigate(`/projects/${encodeURIComponent(email)}`);
   const handleTimetable = () => navigate(`/timetable/${encodeURIComponent(email)}`);
@@ -19,6 +19,8 @@ const VerticalNavbar = () => {
   const handlePomodoro=()=>navigate('/pd');
   const handleContest=()=>navigate('/contest')
   const handleExam=()=>navigate('/exam')
+  const handleGoals=()=>navigate ('/Goals')
+  const handleAnalytics=()=>navigate('/analytics');
   
 
   return (
@@ -32,7 +34,8 @@ const VerticalNavbar = () => {
       <button onClick={handleProblemset} className="navbar-button4">Problemset</button>
       <button  onClick={handlePomodoro} className="navbar-button4">Need To Focus?</button>
       <button  onClick={handleContest} className="navbar-button4">Contest</button>
-
+      <button  onClick={handleGoals} className="navbar-button4">Goals</button>
+      <button  onClick={handleAnalytics} className="navbar-button4">Analytics</button>
       
     </div>
   );

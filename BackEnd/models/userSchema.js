@@ -1,4 +1,3 @@
-// models/userSchema.js
 const mongoose = require('mongoose');
 
 // Assuming other fields are defined here as well
@@ -17,11 +16,10 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['Student', 'Professor'],
-    // required: true
+    enum: ['Student', 'Professor']
   },
   identifier: {
-    type: String, // Update to string to store studentId or professionalId
+    type: String, // Stores studentId or professionalId
     required: false
   },
   yearOfStudy: {
@@ -51,12 +49,25 @@ const userSchema = new mongoose.Schema({
     attended: Number,
     total: Number
   },
-  auraPoints:{
-    type: Number,
+  auraPoints: {
+    type: Number
   },
   projects: {
     completed: Number,
     total: Number
+  },
+  quiz: {
+    questionsAttempted: Number,
+    questionsCorrect: Number
+  },
+  problemSolving: {
+    solved: Number
+  },
+  contests: {
+    given: Number
+  },
+  sessions: {
+    count: Number
   },
   // timetable: [String], // or an array of objects depending on the structure
 });

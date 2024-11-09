@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import { EmailContext } from '../contexts/EmailContext';
 import { useNavigate } from 'react-router-dom';
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const AllContests = () => {
   const [contests, setContests] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { email } = useContext(EmailContext); // Get email from context
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -32,8 +35,33 @@ const AllContests = () => {
     return now >= startDate && now <= endDate;
   };
 
-  const handleEnterContest = (contestId) => {
-    navigate(`/contest/${contestId}`);
+  const handleEnterContest = async (contestId) => {
+    try {
+      // Update contests progress on the server
+      await axios.post(`http://localhost:4000/api/v1/updateProgress`, {
+        email: email, // Use email from context
+        field: 'contests',
+        value: {
+          given: 1,
+        },
+      });
+
+      // Display success message
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Contest entered successfully!',
+      });
+
+      navigate(`/contest/${contestId}`);
+    } catch (error) {
+      console.error('Error entering contest:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please try again later.',
+      });
+    }
   };
 
   if (loading) return <div>Loading...</div>;
@@ -77,5 +105,4 @@ const AllContests = () => {
     </div>
   );
 };
-
 export default AllContests;

@@ -38,7 +38,20 @@ const registerUser = async (req, res) => {
       timetable: [],  
       otp,
       otpExpiresAt,
-      isVerified: false
+      isVerified: false,
+      quiz: {
+        questionsAttempted: 0,
+        questionsCorrect: 0
+      },
+      problemSolving: {
+        solved: 0
+      },
+      contests: {
+        given: 0
+      },
+      sessions: {
+        count: 0
+      },
     });
 
     await newUser.save();
