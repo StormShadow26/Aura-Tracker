@@ -1,14 +1,16 @@
-
 .primary-bg {
   background-color: #14141a;
 }
 
 .card-bg {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(255, 105, 180, 0.3);
 }
 
 .highlight {
-  color: #ff6f91;
+  color: #00e6e6;
 }
 
 .text-main {
@@ -24,22 +26,20 @@
 }
 
 .gradient-primary {
-  background: linear-gradient(90deg, #6a5acd, #ff6f91);
+  background: linear-gradient(90deg, #00e6e6, #ff6f91);
 }
 
 .button-gradient {
-  background: linear-gradient(90deg, #ff6f91, #6a5acd);
+  background: linear-gradient(90deg, #ff6f91, #00e6e6);
 }
-
 
 #dashboard-main9 {
   display: flex;
   min-height: 100vh;
-  background-color: #14141a;
+  background: radial-gradient(circle, #1a1a2e, #14141a);
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
 }
-
 
 #dashboard-content9 {
   flex-grow: 1;
@@ -47,31 +47,26 @@
   margin-left: 240px;
 }
 
-
 #dashboard-container9 {
-  margin-top: 150px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
   align-items: center;
 }
-
 
 #dashboard-title9 {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #ff6f91;
   text-align: center;
   margin-bottom: 1.5rem;
   background: linear-gradient(90deg, #6a5acd, #ff6f91);
   -webkit-background-clip: text;
   color: transparent;
-  text-align: center;
 }
-
 
 #aura-points9 {
   background: linear-gradient(90deg, #6a5acd, #ff6f91);
@@ -80,7 +75,7 @@
   border-radius: 8px;
   text-align: center;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
   width: 89%;
 }
 
@@ -96,7 +91,6 @@
   margin: 0;
 }
 
-
 #charts-container9 {
   display: flex;
   gap: 2rem;
@@ -108,7 +102,7 @@
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   padding: 1rem;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 15px rgba(255, 105, 180, 0.3);
   text-align: center;
   flex: 1;
   min-width: 300px;
@@ -121,13 +115,12 @@
   text-transform: uppercase;
 }
 
-
 #timetable-section9 {
   margin-top: 2rem;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
 }
 
 #timetable-title9 {
@@ -154,14 +147,14 @@
   border-radius: 8px;
   width: 220px;
   text-align: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 15px rgba(255, 105, 180, 0.3);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .timetable-day9 h3 {
   font-size: 1.4rem;
   font-weight: 600;
-  color: white;
+  color: #ffffff;
   text-shadow: 0.5px 0.5px black;
   margin-bottom: 0.8rem;
   text-transform: uppercase;
@@ -178,21 +171,38 @@
 
 .timetable-day9:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 20px white;
+  box-shadow: 0 6px 30px #ff6f91;
 }
 
-
 .button9 {
-  background: linear-gradient(90deg, #ff6f91, #6a5acd);
+  background: linear-gradient(90deg, #ff6f91, #00e6e6);
   color: #ffffff;
   border: none;
   padding: 0.7rem 1.5rem;
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .button9:hover {
-  background: linear-gradient(90deg, #6a5acd, #ff6f91);
+  background: linear-gradient(90deg, #00e6e6, #ff6f91);
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+}
+#dashboard-title9 {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #ff6f91, #6a5acd, #00e6e6);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: neon-gradient 5s ease-in-out infinite;
+  /* text-shadow: 0 0 5px #ff6f91, 0 0 10px #ff6f91, 0 0 15px #ff6f91, 0 0 20px #ff6f91; */
+}
+
+@keyframes neon-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

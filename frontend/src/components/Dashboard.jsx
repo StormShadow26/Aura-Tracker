@@ -93,12 +93,12 @@ const Dashboard = () => {
         <HorizontalNavbar handleRefresh={handleRefresh} />
 
         <div id="dashboard-container9">
-          <h1 id="dashboard-title">Dashboard</h1>
+          <h1 id="dashboard-title9">Dashboard</h1>
 
           <div id="aura-points9">
             <h2 id="aura-points-title9">Aura Points</h2>
             <p>{data.auraPoints}</p>
-            <p id="badge-display" className="badge">
+            <p id="badge-display9" className="badge9">
               {getBadge(data.auraPoints)}
             </p>
           </div>
