@@ -84,7 +84,7 @@ const HeroPage = () => {
             {/* Team Member 1 */}
             <div className="team-member">
               <img src={googleLogo} alt="Google Logo" className="google-logo" />
-              <h3>Tanishq Gupta</h3>
+              <h3>Tanishk Gupta</h3>
               <p>Founder (CEO)</p>
               <p>Graduating from MNNIT ALLAHBAD with a degree in Computer Science</p>
             </div>

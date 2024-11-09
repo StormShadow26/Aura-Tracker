@@ -64,7 +64,7 @@ const Assignment = () => {
 
         <div id="assignmentsContainer14">
           {assignments.length > 0 ? (
-            assignments.map((assignment, index) => {
+            assignments.filter((assignment) => new Date(assignment.deadline) >= new Date()).map((assignment, index) => {
               const deadline = new Date(assignment.deadline);
               const now = new Date();
               const isDeadlinePassed = deadline < now;

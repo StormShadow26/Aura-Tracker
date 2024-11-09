@@ -27,6 +27,7 @@ const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
       yearOfStudy: "1",
+      
       department:"General Studies",
       college:"Unknown College",
       phone: null,
@@ -37,7 +38,20 @@ const registerUser = async (req, res) => {
       timetable: [],  
       otp,
       otpExpiresAt,
-      isVerified: false
+      isVerified: false,
+      quiz: {
+        questionsAttempted: 0,
+        questionsCorrect: 0
+      },
+      problemSolving: {
+        solved: 0
+      },
+      contests: {
+        given: 0
+      },
+      sessions: {
+        count: 0
+      },
     });
 
     await newUser.save();

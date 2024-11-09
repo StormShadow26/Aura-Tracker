@@ -1,32 +1,84 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { EmailContext } from '../contexts/EmailContext';
 import axios from 'axios';
 import CodeEditor from './CodeEditor';
 import { useOutput } from '../contexts/OutputContext';
+import { CloudCog } from 'lucide-react';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const QuestionDetail = () => {
   const { id } = useParams();
+  const {email} = useContext(EmailContext); 
   const navigate = useNavigate();
   const [question, setQuestion] = useState(null);
   const { output } = useOutput();
   const [timeLeft, setTimeLeft] = useState(900);
+  const [showModal, setShowModal] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
-  const submitHandler = () => {
-    if (question && question.sampleInputs && question.sampleInputs.length > 0) {
-      const allOutputsMatch = question.sampleInputs.every(sample => 
-        output.trim() === sample.output.trim()
-      );
-
-      if (allOutputsMatch) {
-        console.log("Question solved successfully!");
-      } else {
-        console.log("Output does not match the expected result.");
-      }
-    } else {
-      console.log("No sample outputs available for comparison.");
+  // Function to compare output arrays
+  function areArraysSame(arr1, arr2) {
+    if (arr1.length !== arr2.length) return false;
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) return false;
     }
+    return true;
+  }
 
-    navigate('/question');
+  const submitHandler = async () => {
+    // Parse output from CodeEditor
+    let arr = output.split('\n').map(Number);
+    arr.pop();
+
+    if (areArraysSame(arr, question.output)) {
+      setIsCorrect(true);
+      
+
+      try {
+        // PUT request to update the question's solvedBy array
+        await axios.put(`http://localhost:4000/api/v1/updatequestion/${id}`, {
+          email: email, 
+          timeTaken: timeLeft,
+        });
+
+       
+        // Update quiz progress on the server
+      await axios.post(`http://localhost:4000/api/v1/updateProgress`, {
+        email: email,
+        field: 'problemSolving',
+        value: {
+          solved: 1,  
+        }
+      });
+       
+      
+        // Display success message
+        Swal.fire({
+          icon: 'success',
+          title: 'Correct!',
+          text: 'You have solved the question correctly!',
+        });
+
+      } catch (error) {
+        console.error('Error updating question solvedBy or problemSolving:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Please try again later.',
+        });
+      }
+
+    } else {
+      setIsCorrect(false);
+      // Display incorrect message
+      Swal.fire({
+        icon: 'error',
+        title: 'Incorrect!',
+        text: 'The output does not match the expected result. Try again!',
+      });
+    }
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -36,17 +88,20 @@ const QuestionDetail = () => {
         setQuestion(response.data.data);
 
         const difficultyTimer = {
-          Easy: 300,  
+          Easy: 300,
           Medium: 900,
-          Hard: 1800,  
+          Hard: 1800,
         };
 
         const initialTime = difficultyTimer[response.data.data.difficulty] || 300;
-        console.log(initialTime,"initial hun");
         setTimeLeft(initialTime);
-        console.log(timeLeft,"timeLeft hun");
       } catch (error) {
         console.error('Error fetching question details:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Please try again later.',
+        });
       }
     };
 
@@ -55,7 +110,7 @@ const QuestionDetail = () => {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      submitHandler();
+      submitHandler(); 
     } else {
       const timer = setTimeout(() => setTimeLeft(prevTime => prevTime - 1), 1000);
       return () => clearTimeout(timer);
@@ -112,6 +167,28 @@ const QuestionDetail = () => {
       </div>
 
       <CodeEditor initialInput={initialInput} />
+
+      {/* Modal Popup */}
+      {showModal && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-sm w-full text-center">
+            <h2 className="text-2xl font-bold mb-4">
+              {isCorrect ? 'Correct!' : 'Incorrect!'}
+            </h2>
+            <p className="text-gray-600 mb-4">
+              {isCorrect
+                ? 'Congratulations, you solved the question correctly!'
+                : 'The output does not match the expected result. Try again!'}
+            </p>
+            <button
+              className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4"
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

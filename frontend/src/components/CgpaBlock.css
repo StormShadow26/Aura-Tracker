@@ -1,0 +1,163 @@
+/* .cgpa-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0 20px 0;
+    transition: all 0.4s ease;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #FFF4E6;
+    width: 600px;
+    height: 220px;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-items {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.content-items-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.subject-details {
+    background: #FFF9E1;
+    width: 600px;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    transition: max-height 0.4s ease;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subject-details::-webkit-scrollbar {
+    width: 8px;
+}
+
+.subject-details::-webkit-scrollbar-thumb {
+    background-color: #FFCE6B;
+    border-radius: 4px;
+}
+
+.noOfSbject {
+    width: 100%;
+}
+
+.noOfSbject::placeholder {
+    color: #888;
+    text-align: center;
+}
+
+.not-show {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.subject-details input {
+    border: 1.5px solid #ddd;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.subject-details input:focus {
+    border-color: #FFCE6B;
+    outline: none;
+}
+
+.subject-input {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.subject-input input {
+    margin: 6px;
+    padding: 6px;
+    font-size: 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.subject-input input:focus {
+    border-color: #FFCE6B;
+}
+
+.submit-btn {
+    padding: 8px 24px;
+    background-color: #FFCE6B;
+    color: #333;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    background-color: #E0AC47;
+}
+
+.table {
+    margin: 0 auto;
+    width: 100%;
+    border-spacing: 0;
+}
+
+
+@media only screen and (max-width: 728px) {
+    .cgpa-container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .content,
+    .subject-details {
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .subject-details input,
+    .subject-input input {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .submit-btn {
+        margin: 10px auto;
+    }
+}
+ */

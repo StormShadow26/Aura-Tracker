@@ -1,4 +1,4 @@
-const Question = require('../models/questionSchema'); 
+const {Question }= require('../models/questionSchema'); 
 
 // Controller to add a new question
 exports.addQuestion = async (req, res) => {
@@ -12,6 +12,7 @@ exports.addQuestion = async (req, res) => {
       difficulty,
       tags,
       sampleInputs
+      ,output,
     } = req.body;
 
     // Create new question
@@ -23,6 +24,7 @@ exports.addQuestion = async (req, res) => {
       constraints,
       difficulty,
       tags,
+      output,
       sampleInputs
     });
 

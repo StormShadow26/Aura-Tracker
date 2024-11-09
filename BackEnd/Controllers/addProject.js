@@ -1,6 +1,6 @@
 //step 1-Import the required schema
 const Project = require('../models/projectSchema');
-const User = require('../models/userSchema'); 
+// const User = require('../models/userSchema'); 
 
 // step-2 getting necessary data and checking all are present 
 exports.addProject = async (req, res) => {
@@ -14,15 +14,15 @@ exports.addProject = async (req, res) => {
 
 
   // step -3 findin the req user by email & incre prj cnt
-    const user = await User.findOneAndUpdate(
-      { email: email },
-      { $inc: { 'projects.total': 1 } }, 
-      { new: true } 
-    );
+    // const user = await User.findOneAndUpdate(
+    //   { email: email },
+    //   { $inc: { 'projects.total': 1 } }, 
+    //   { new: true } 
+    // );
 
-    if (!user) {
-      return res.status(404).json({ error: 'User not found.' });
-    }
+    // if (!user) {
+    //   return res.status(404).json({ error: 'User not found.' });
+    // }
 
 
     //step 4 Create new project

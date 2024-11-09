@@ -5,10 +5,10 @@ const ProffDashBoard = () => {
   const navigate = useNavigate();
 
   const handleProffAddAssign = () => navigate('/proffaddassign');
-  const handleUpdateTimetable = () => navigate('/proffupdatetimetable');
-  const handleAddTimetable = () => navigate('/proffaddtimetable');
-  const handleAddExamTimetable = () => navigate('/proffaddexam');
-  const handleAssignProject = () => navigate('/profassignproject');
+  // const handleUpdateTimetable = () => navigate('/proffupdatetimetable');
+  const handleAddTimetable = () => navigate('/ProffTimeTable');
+  const handleAddExamTimetable = () => navigate('/ProffExam');
+  const handleAssignProject = () => navigate('/ProffAddProjects');
   const handleMarkAttendance = () => navigate('/profmarkttendance');
 
   return (
@@ -19,9 +19,9 @@ const ProffDashBoard = () => {
         <button onClick={handleProffAddAssign} className="bg-blue-700 text-white py-3 px-4 rounded-lg shadow-lg hover:bg-blue-800 transition duration-200">
           Add Assignments
         </button>
-        <button onClick={handleUpdateTimetable} className="bg-violet-700 text-white py-3 px-4 rounded-lg shadow-lg hover:bg-violet-800 transition duration-200">
+        {/* <button onClick={handleUpdateTimetable} className="bg-violet-700 text-white py-3 px-4 rounded-lg shadow-lg hover:bg-violet-800 transition duration-200">
           Update Time Table
-        </button>
+        </button> */}
         <button onClick={handleAddTimetable} className="bg-orange-700 text-white py-3 px-4 rounded-lg shadow-lg hover:bg-orange-800 transition duration-200">
           Add Time Table
         </button>

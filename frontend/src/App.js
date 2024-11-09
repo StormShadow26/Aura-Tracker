@@ -27,7 +27,6 @@ import ProffDashBoard from './proffcomponents/ProffDashBoard';
 import AllContest from './components/AllContest'
 import ContestDetails from './components/ContestDetails';
 import ContestQuestionPage from  './components/ContestQuestionPage';
-import Friends from './components/Friends';
 
 
 
@@ -77,7 +76,6 @@ function App() {
         <Route path="/contest/:contestId" element={<ContestDetails/>} />
         <Route path="/contest/:contestId/:id" element={<ContestQuestionPage/>} />
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
-        <Route path="/friends" element={<Friends></Friends>}/>
         
 
         </Routes>

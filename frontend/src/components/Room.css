@@ -1,0 +1,100 @@
+/* Room page container */
+.room-container18 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background: linear-gradient(120deg, #141e30, #243b55);
+    border-radius: 15px;
+    width: 90vw;
+    max-width: 1200px;
+    height: 80vh;
+    max-height: 700px;
+    margin: auto;
+    box-shadow: 0 0 20px 4px #ff00ff;
+}
+
+/* Wrapper for centering room-container18 in the viewport */
+.page-wrapper18 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #0d0d0d; /* Dark background for entire window */
+    overflow: hidden;
+}
+
+/* Left content styling */
+.content18 {
+    width: 55%;
+    color: #ffffff;
+}
+
+/* Headings and subheadings */
+#heading18 {
+    font-size: 8vh;
+    font-weight: bold;
+    color: #08c456;
+    /* text-shadow: 0 0 8px #00ff11; */
+    margin-bottom: 10px;
+}
+
+#subheading18 {
+    font-size: 24px;
+    color: #00c8ff;
+    margin-bottom: 15px;
+    /* text-shadow: 0 0 5px #00c8ff; */
+}
+
+/* Description text */
+#description18 {
+    font-size: 18px;
+    color: #b0b3b8;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+#room-input18 {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: black;
+    border: 2px solid #ff00ff;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/* Button styling */
+#join-button18 {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(45deg, #ff00ff, #00c8ff);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 0px 8px #ff00ff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#join-button18:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 12px #ff00ff, 0 0 15px #00c8ff;
+}
+
+/* Right image styling */
+.image-container18 {
+    width: 40%;
+    text-align: right;
+}
+
+#study-image18 {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 15px #ff00ff; */
+}

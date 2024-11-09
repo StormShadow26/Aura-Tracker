@@ -1,0 +1,144 @@
+/* Main container styling */
+#container21 {
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1e1e2f, #1a1a27);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Table header */
+#header21 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(90deg, #ff5e5b, #d837a6);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Individual question entry */
+.question-entry21 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(40, 40, 55, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.question-entry21:hover {
+    background: rgba(60, 60, 80, 0.9);
+    transform: scale(1.02);
+}
+
+/* Status Icon Colors */
+.status-icon21 {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-icon21.solved {
+    color: #4caf50;
+}
+
+.status-icon21.not-solved {
+    color: #bbbbbb;
+}
+
+/* Title Styling */
+.title21 {
+    display: flex;
+    align-items: center;
+    color: #81e6f9;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.title21 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.title21 a:hover {
+    color: #ffab4c;
+}
+
+/* Daily Challenge Tag */
+.daily-challenge21 {
+    font-size: 0.8rem;
+    background: linear-gradient(90deg, #ffab4c, #ff5e5b);
+    color: #ffffff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    margin-left: 0.5rem;
+    font-weight: bold;
+}
+
+/* Solution Icon */
+.solution-icon21 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #d837a6;
+    transition: color 0.3s;
+}
+
+.solution-icon21:hover {
+    color: #ff5e5b;
+}
+
+/* Acceptance Rate Styling */
+.acceptance-rate21 {
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Difficulty Styling */
+.difficulty21 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.difficulty21.easy {
+    color: #4caf50;
+}
+
+.difficulty21.medium {
+    color: #ffeb3b;
+}
+
+.difficulty21.hard {
+    color: #f44336;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    #container21 {
+        padding: 0.5rem;
+    }
+
+    #header21, .question-entry21 {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .daily-challenge21 {
+        display: inline-block;
+        margin-left: 0;
+    }
+}
