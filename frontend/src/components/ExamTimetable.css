@@ -1,0 +1,114 @@
+/* Container styling */
+.exam-timetable-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  /* Heading */
+  .exam-timetable-container h2 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #4a4e69;
+    margin-bottom: 20px;
+  }
+  
+  /* Motivational Quote */
+  .quote-section {
+    text-align: center;
+    margin: 20px 0;
+    background-color: #f7f3e9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .motivational-quote {
+    font-size: 1.3em;
+    font-style: italic;
+    color: #3d405b;
+  }
+  
+  /* Countdown Timer */
+  .countdown-timer {
+    text-align: center;
+    margin: 30px 0;
+    padding: 10px;
+  }
+  
+  .countdown-timer h3 {
+    font-size: 1.5em;
+    color: #e07a5f;
+  }
+  
+  /* Timer Boxes Styling */
+  .timer-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .time-box {
+    background-color: #81b29a;
+    border: 3px solid #f2cc8f;
+    border-radius: 12px;
+    width: 70px;
+    padding: 10px;
+    text-align: center;
+    color: #f4f1de;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+  
+  .time-box:hover {
+    transform: scale(1.05);
+  }
+  
+  .time-value {
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+  
+  .time-label {
+    font-size: 0.8em;
+    color: #f4f1de;
+  }
+  
+  /* Exam Timetable Grid */
+  .exam-timetable-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    margin-top: 30px;
+    padding-bottom: 10px;
+  }
+  
+  .exam-tile {
+    min-width: 200px;
+    padding: 10px;
+    background-color: #f7f3e9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    flex-shrink: 0; /* Prevent tiles from shrinking */
+  }
+  
+  .exam-tile:hover {
+    transform: scale(1.05);
+  }
+  
+  .exam-tile h3 {
+    font-size: 1.1em;
+    color: #3d405b;
+    margin-bottom: 5px;
+  }
+  
+  .exam-tile p {
+    color: #333;
+    margin: 4px 0;
+    font-size: 0.9em;
+  }
+  

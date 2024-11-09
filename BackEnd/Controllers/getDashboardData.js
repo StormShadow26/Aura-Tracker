@@ -36,6 +36,10 @@ const getDashboardData = async (req, res) => {
       },
       // timetable: user.timetable,
       auraPoints:user.auraPoints,
+      department:user.department,
+      yearOfStudy:user.yearOfStudy,
+      
+
      
     };
     console.log(user);

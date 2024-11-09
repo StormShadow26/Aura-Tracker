@@ -11,8 +11,8 @@ const {submitAssignment}=require('../Controllers/submitAssignment');
 const {addProject} =require('../Controllers/addProject')
 const {getProjectsByEmail} =require('../Controllers/getProjectsByEmail')
 const {submitProject}=require('../Controllers/submitProject')
-const {updateTimetable}=require('../Controllers/updateTimetable');
-const {getTimeTable}=require('../Controllers/getTimeTable')
+// const {updateTimetable}=require('../Controllers/updateTimetable');
+// const {getTimeTable}=require('../Controllers/TimeTableController.js')
 const {updateProfile}=require('../Controllers/updateProfile')
 const {addSyllabus}=require('../Controllers/addSyllabus');
 const syllabusController = require('../Controllers/syllabusController');
@@ -29,6 +29,8 @@ const {addAssignmentProff}=require('../Controllers/addAssignmentProff.js');
 router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
 const {getLeaderboard}=require('../Controllers/getLeaderboard')
+const {createOrUpdateTimetable,updateDaySchedule,getTt}=require('../Controllers/TimeTableController.js')
+const {addTimetable,getTimetable}=require('../Controllers/ExamController.js');
 
 router.post('/welcome', submitUserDetails);
 router.post('/register', registerUser);
@@ -38,8 +40,6 @@ router.post('/verify-otp',verifyOtp);
 router.post('/assignment',addAssignment )
 router.get('/assignment/:email',getAssignmentsByEmail);
 router.post('/submit', submitAssignment)
-router.put('/timetable/:email',updateTimetable);
-router.get('/gettimetable/:email',getTimeTable);
 router.put('/profile/:email', updateProfile);
 router.post('/project',addProject)
 router.get('/project/:email',getProjectsByEmail);
@@ -59,5 +59,11 @@ router.get('/getcontests', getContests);
 router.get('/getcontests/:id', getContestById);
 router.put('/updatequestion/:id', addSolvedBy);
 router.post('/addAssignmentProff',addAssignmentProff)
+router.put('/updateDaySchedule/:semester/:branch/:day',updateDaySchedule);
+router.post('/createOrUpdateTimetable',createOrUpdateTimetable);
+router.post('/addTimetable',addTimetable);
+router.get('/getTimetable',getTimetable);
+router.get('/getTt/:semester/:branch',getTt);
+
 
 module.exports = router;

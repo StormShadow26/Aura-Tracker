@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { EmailContext } from "../contexts/EmailContext";
 import HorizontalNavbar from "./HorizontalNavbar";
 import VerticalNavbar from "./VerticalNavbar";
+import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -18,13 +19,20 @@ import {
 import "./Dashboard.css";
 
 const Dashboard = () => {
+  
+
+
   const [data, setData] = useState({
     classes: { attended: 0, total: 0 },
     assignments: { done: 0, total: 0 },
     projects: { completed: 0, total: 0 },
     timetable: [],
     auraPoints: 0,
+    department: "CSE",
+    yearOfStudy: 2,
   });
+  const [assignments, setAssignments] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { email } = useContext(EmailContext);
   const [refresh, setRefresh] = useState(false);
 
@@ -48,6 +56,8 @@ const Dashboard = () => {
             projects: result.projects,
             timetable: result.timetable,
             auraPoints: result.auraPoints,
+            department: result.department,
+            yearOfStudy: result.yearOfStudy,
           });
         } else {
           console.error("Error fetching dashboard data:", result.message);
@@ -65,6 +75,34 @@ const Dashboard = () => {
   };
 
   const COLORS = ["#ff7f50", "#6a5acd"];
+  const fetchAssignments = async () => {
+    const { department, yearOfStudy } = data; // Extract department and yearOfStudy from data
+    try {
+      const response = await axios.get(
+        `http://localhost:4000/api/v1/assignment/${department}${yearOfStudy}@gmail.com`
+      );
+      const sortedAssignments = response.data.sort(
+        (a, b) => new Date(a.deadline) - new Date(b.deadline)
+      );
+      console.log(sortedAssignments[0], "sortedAssignments");
+      setAssignments(sortedAssignments);
+      // console.log(assignments,"assgin hun")
+    } catch (error) {
+      console.error("Error fetching assignments:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const callFetchAssignments = async () => {
+      await fetchAssignments();
+    };
+
+    callFetchAssignments();
+  }, []); // Add dependencies as needed
+
+  // fetchAssignments();
 
   // Badge logic based on auraPoints
   const getBadge = (auraPoints) => {
@@ -211,6 +249,55 @@ const Dashboard = () => {
               )}
             </div>
           </div>
+          <div
+  id="assignments-section9"
+  className="p-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl shadow-2xl"
+>
+  <h2 className="text-4xl font-extrabold text-white mb-6 text-center">
+    Assignments Added by Professor
+  </h2>
+  {assignments.length > 0 ? (
+    <div className="space-y-6">
+      {assignments
+        .filter((assignment) => new Date(assignment.deadline) >= new Date())
+        .map((assignment, index) => (
+          <div
+            key={index}
+            className="bg-white p-6 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+          >
+            <h2 className="text-2xl font-bold text-indigo-700 mb-3">
+              {assignment.subject} - Chapter: {assignment.chapter}
+            </h2>
+            <p className="text-lg text-gray-600 mb-2">
+              <strong>Deadline:</strong>{" "}
+              <span className="text-blue-500">
+                {new Date(assignment.deadline).toLocaleDateString()}
+              </span>
+            </p>
+            <p className="text-lg text-gray-600 mb-2">
+              <strong>Submitted:</strong>{" "}
+              {assignment.submitted ? (
+                <span className="text-green-500 font-semibold">Yes</span>
+              ) : (
+                <span className="text-red-500 font-semibold">No</span>
+              )}
+            </p>
+            <p className="text-lg text-gray-600 mb-2">
+              <strong>Professor:</strong> {assignment.professorName}
+            </p>
+            <p className="text-gray-700 text-lg">
+              <strong>Description:</strong> {assignment.description}
+            </p>
+            
+          </div>
+        ))}
+    </div>
+  ) : (
+    <p className="text-white text-xl text-center">No assignments available.</p>
+  )}
+</div>
+
+
         </div>
       </div>
     </div>
