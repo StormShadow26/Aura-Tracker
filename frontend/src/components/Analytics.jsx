@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-// import { EmailContext } from '../contexts/EmailContext';
-// import { useParams } from 'react-router-dom';
-import { Chart } from 'react-chartjs-2'; // Install react-chartjs-2
+import { EmailContext } from '../contexts/EmailContext'; 
+import { useParams } from 'react-router-dom';
+import { Chart } from 'react-chartjs-2'; 
 import {
   FaGraduationCap,
   FaBuilding,
@@ -17,20 +17,54 @@ import {
   FaClock,
   FaTrophy,
 } from 'react-icons/fa';
-import { EmailContext } from '../contexts/EmailContext';
 
 const Analytics = () => {
-//   const { email } = useParams();
+  const { email } = useContext(EmailContext); 
   const [userData, setUserData] = useState(null);
-  const {email}=EmailContext;
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
     const fetchAnalysis = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/v1//getUserData/${email}`);
-        setUserData(response.data.userData);
-        setChartData(response.data.chartData);
+        const response = await axios.get(`http://localhost:4000/api/v1/getUserData/${email}`); 
+        setUserData(response.data); 
+
+        // Calculate chart data 
+        const assignmentCompletionRate = response.data.assignments.total === 0
+          ? 0
+          : (response.data.assignments.done / response.data.assignments.total) * 100;
+        const classAttendanceRate = response.data.classes.total === 0
+          ? 0
+          : (response.data.classes.attended / response.data.classes.total) * 100;
+        const weeklyClassAttendanceRate = response.data.weeksclasses.total === 0
+          ? 0
+          : (response.data.weeksclasses.attended / response.data.weeksclasses.total) * 100;
+        const projectCompletionRate = response.data.projects.total === 0
+          ? 0
+          : (response.data.projects.completed / response.data.projects.total) * 100;
+        const quizAccuracy = response.data.quiz.questionsAttempted === 0
+          ? 0
+          : (response.data.quiz.questionsCorrect / response.data.quiz.questionsAttempted) * 100;
+        const problemSolvingSuccessRate = response.data.problemSolving.solved === 0 
+          ? 0
+          : (response.data.problemSolving.solved / response.data.problemSolving.total) * 100;
+        const contestParticipationRate = response.data.contests.given === 0
+          ? 0
+          : (response.data.contests.given / response.data.contests.total) * 100;
+        const sessionAttendanceRate = response.data.sessions.count === 0
+          ? 0
+          : (response.data.sessions.count / response.data.sessions.total) * 100;
+
+        setChartData([
+          { name: 'Assignment Completion', value: assignmentCompletionRate },
+          { name: 'Class Attendance', value: classAttendanceRate },
+          { name: 'Weekly Class Attendance', value: weeklyClassAttendanceRate },
+          { name: 'Project Completion', value: projectCompletionRate },
+          { name: 'Quiz Accuracy', value: quizAccuracy },
+          { name: 'Problem Solving Success', value: problemSolvingSuccessRate },
+          { name: 'Contest Participation', value: contestParticipationRate },
+          { name: 'Session Attendance', value: sessionAttendanceRate }
+        ]);
       } catch (error) {
         console.error('Error fetching user analysis:', error);
       }
@@ -43,7 +77,7 @@ const Analytics = () => {
 
   // Prepare chart data for react-chartjs-2
   const chartConfig = {
-    type: 'bar', // or 'line', 'pie', etc.
+    type: 'bar', 
     data: {
       labels: chartData.map(item => item.name),
       datasets: [
@@ -54,7 +88,7 @@ const Analytics = () => {
             'rgba(255, 99, 132, 0.6)',
             'rgba(54, 162, 235, 0.6)',
             'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
+            'rgba(75, 192, 192,  0.6)',
             'rgba(153, 102, 255, 0.6)',
             'rgba(255, 159, 64, 0.6)',
             'rgba(0, 153, 0, 0.6)',
@@ -77,6 +111,10 @@ const Analytics = () => {
     options: {
       scales: {
         y: {
+          // 'linear' is not a valid scale type in Chart.js!
+          // Use 'category' or 'linear' depending on your data:
+          type: 'linear',  // For numerical data
+          // type: 'category', // For categorical data (like the labels in your chart) 
           beginAtZero: true,
           title: {
             display: true,
@@ -111,10 +149,10 @@ const Analytics = () => {
   const renderStat = (icon, label, value, description) => (
     <div className="bg-gray-800 rounded-lg p-4 mb-4 shadow-md flex items-center">
       {icon && <div className="text-4xl text-blue-500 mr-4">{icon}</div>}
-      < div className="flex-1">
+      <div className="flex-1">
         <h3 className="text-xl text-white font-semibold">{label}</h3>
         <p className="text-gray-400">{description}</p>
-        <p className="text-2xl text-white">{value}</p>
+        <p className="text-2xl text-white">{value.toFixed(2)}%</p>
       </div>
     </div>
   );
