@@ -1,0 +1,63 @@
+/* Friends.css */
+.friends-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .friends-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .friend-card {
+    width: 100%;
+    background-color: blue;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .friend-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .friend-info h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .friend-info p {
+    margin: 5px 0;
+  }
+  
+  .challenge-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .challenge-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .challenge-btn:focus {
+    outline: none;
+  }
+  
+  @media (max-width: 768px) {
+    .friend-card {
+      width: 100%;
+    }
+  }
+  

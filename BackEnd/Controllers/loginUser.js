@@ -30,8 +30,10 @@ const loginUser = async (req, res) => {
         message: "Invalid email or password",
       });
     }
-    
-    
+
+    // Store userId in session
+    req.session.userId = user._id;
+
     // Send response with user details including role
     res.status(200).json({
       status: "success",
@@ -48,6 +50,7 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (error) {
+    console.error("Error logging in user:", error);
     res.status(500).json({
       status: "error",
       message: "Server error, please try again later",

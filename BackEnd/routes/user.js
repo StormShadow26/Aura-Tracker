@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const registerUser = require('../Controllers/registerUser');
@@ -11,8 +11,8 @@ const {submitAssignment}=require('../Controllers/submitAssignment');
 const {addProject} =require('../Controllers/addProject')
 const {getProjectsByEmail} =require('../Controllers/getProjectsByEmail')
 const {submitProject}=require('../Controllers/submitProject')
-// const {updateTimetable}=require('../Controllers/updateTimetable');
-// const {getTimeTable}=require('../Controllers/TimeTableController.js')
+const {updateTimetable}=require('../Controllers/updateTimetable');
+const {getTimeTable}=require('../Controllers/getTimeTable')
 const {updateProfile}=require('../Controllers/updateProfile')
 const {addSyllabus}=require('../Controllers/addSyllabus');
 const syllabusController = require('../Controllers/syllabusController');
@@ -24,15 +24,11 @@ const {addQuestion}=require("../Controllers/addQuestion.js");
 const getQuestion = require('../Controllers/getQuestions.js');
 const { createContest, getContests } = require('../controllers/contestController'); 
 const {  getContestById } = require('../controllers/contestController');
-const { addSolvedBy}=require('../Controllers/addSolvedBy.js');
-const {addAssignmentProff}=require('../Controllers/addAssignmentProff.js');
+
+
 router.post('/welcome', submitUserDetails);
 const {incrementAuraPoints}=require('../Controllers/incrementAuraPoints')
 const {getLeaderboard}=require('../Controllers/getLeaderboard')
-const {createOrUpdateTimetable,updateDaySchedule,getTt}=require('../Controllers/TimeTableController.js')
-const {addTimetable,getTimetable}=require('../Controllers/ExamController.js');
-const {getUserData}=require('../Controllers/getEntireUser.js')
-const {updateProgress}=require('../Controllers/updateProgress.js')
 
 router.post('/welcome', submitUserDetails);
 router.post('/register', registerUser);
@@ -42,6 +38,8 @@ router.post('/verify-otp',verifyOtp);
 router.post('/assignment',addAssignment )
 router.get('/assignment/:email',getAssignmentsByEmail);
 router.post('/submit', submitAssignment)
+router.put('/timetable/:email',updateTimetable);
+router.get('/gettimetable/:email',getTimeTable);
 router.put('/profile/:email', updateProfile);
 router.post('/project',addProject)
 router.get('/project/:email',getProjectsByEmail);
@@ -59,15 +57,6 @@ router.get('/getquest/:id', getQuestion.getQuestionById);
 router.post('/createcontest', createContest);
 router.get('/getcontests', getContests);
 router.get('/getcontests/:id', getContestById);
-router.put('/updatequestion/:id', addSolvedBy);
-router.post('/addAssignmentProff',addAssignmentProff)
-router.put('/updateDaySchedule/:semester/:branch/:day',updateDaySchedule);
-router.post('/createOrUpdateTimetable',createOrUpdateTimetable);
-router.post('/addTimetable',addTimetable);
-router.get('/getTimetable',getTimetable);
-router.get('/getTt/:semester/:branch',getTt);
-router.get('/getUserData/:email',getUserData);
-router.post('/updateProgress',updateProgress)
 
 
 module.exports = router;

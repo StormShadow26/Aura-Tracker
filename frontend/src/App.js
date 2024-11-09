@@ -27,14 +27,6 @@ import ProffDashBoard from './proffcomponents/ProffDashBoard';
 import AllContest from './components/AllContest'
 import ContestDetails from './components/ContestDetails';
 import ContestQuestionPage from  './components/ContestQuestionPage';
-import ProffAddAssign from './proffcomponents/ProffAddAssign';
-import ProffTimeTable from './proffcomponents/ProffTimeTable';
-import ProffExam from './proffcomponents/ProffExam'
-import ProffAddProjects from './proffcomponents/ProffAddProjects'
-import Exam from './components/Exam'
-import Attendance from  './components/Attendance'
-import CgTracker from './components/CgTracker'
-import Analytics from './components/Analytics';
 
 
 
@@ -64,7 +56,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register onSuccess={handleRegistrationSuccess} />} />
         <Route path='/verify-otp' element={<VerifyOtp email={email}></VerifyOtp>}/>
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard email={email}/>} />
         <Route path="/assignments/:email" element={<Assignment/>} />
         <Route path="/projects/:email" element={<Project/>} />
         <Route path="/timetable/:email" element={<Timetable/>} />
@@ -83,16 +75,7 @@ function App() {
         <Route path="/contest" element={<AllContest/>} />
         <Route path="/contest/:contestId" element={<ContestDetails/>} />
         <Route path="/contest/:contestId/:id" element={<ContestQuestionPage/>} />
-
         <Route path="/classDashBoard" element={<ProffDashBoard/>} />
-        <Route path="/proffaddassign" element={<ProffAddAssign/>} />
-        <Route path="/ProffTimeTable" element={<ProffTimeTable/>} />
-        <Route path="/ProffExam" element={<ProffExam/>} />
-        <Route path="/ProffAddProjects" element={<ProffAddProjects/>} />
-        <Route path="/exam" element={<Exam/>} />
-        <Route path="/attendance/:email" element={<Attendance/>} />
-        <Route path="/Goals" element={<CgTracker/>} />
-        <Route path="/analytics" element={<Analytics/>} />
         
 
         </Routes>

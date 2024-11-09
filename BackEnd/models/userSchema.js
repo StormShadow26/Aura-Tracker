@@ -35,7 +35,10 @@ const userSchema = new mongoose.Schema({
     type: String
   },
   phone: {
-    type: String
+    type: String,
+    required: false,
+    sparse: true, // Allows multiple null values by indexing only non-null values
+    unique: true,
   },
   assignments: {
     done: Number,
@@ -49,25 +52,12 @@ const userSchema = new mongoose.Schema({
     attended: Number,
     total: Number
   },
-  auraPoints: {
-    type: Number
+  auraPoints:{
+    type: Number,
   },
   projects: {
     completed: Number,
     total: Number
-  },
-  quiz: {
-    questionsAttempted: Number,
-    questionsCorrect: Number
-  },
-  problemSolving: {
-    solved: Number
-  },
-  contests: {
-    given: Number
-  },
-  sessions: {
-    count: Number
   },
   // timetable: [String], // or an array of objects depending on the structure
 });
