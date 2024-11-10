@@ -1,113 +1,143 @@
-/* 
-.exam-timetable-container {
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-  }
-  
-  
-  .exam-timetable-container h2 {
-    text-align: center;
-    font-size: 1.8em;
-    color: #4a4e69;
-    margin-bottom: 20px;
-  }
-  
-  
-  .quote-section {
-    text-align: center;
-    margin: 20px 0;
-    background-color: #f7f3e9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .motivational-quote {
-    font-size: 1.3em;
-    font-style: italic;
-    color: #3d405b;
-  }
-  
-  .countdown-timer {
-    text-align: center;
-    margin: 30px 0;
-    padding: 10px;
-  }
-  
-  .countdown-timer h3 {
-    font-size: 1.5em;
-    color: #e07a5f;
-  }
-  
+#exam-timetable-container28 {
+  background: linear-gradient(135deg, #2a2a3b, #3a2c7f); /* Dark gradient background */
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #ffffff;
+  text-align: center;
+  min-width: 95vw;
+}
 
-  .timer-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
-  }
-  
-  .time-box {
-    background-color: #81b29a;
-    border: 3px solid #f2cc8f;
-    border-radius: 12px;
-    width: 70px;
-    padding: 10px;
-    text-align: center;
-    color: #f4f1de;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-  }
-  
-  .time-box:hover {
-    transform: scale(1.05);
-  }
-  
-  .time-value {
-    font-size: 1.8em;
-    font-weight: bold;
-  }
-  
-  .time-label {
-    font-size: 0.8em;
-    color: #f4f1de;
-  }
-  
-  
-  .exam-timetable-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    margin-top: 30px;
-    padding-bottom: 10px;
-  }
-  
-  .exam-tile {
-    min-width: 200px;
-    padding: 10px;
-    background-color: #f7f3e9;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    flex-shrink: 0; 
-  }
-  
-  .exam-tile:hover {
-    transform: scale(1.05);
-  }
-  
-  .exam-tile h3 {
-    font-size: 1.1em;
-    color: #3d405b;
-    margin-bottom: 5px;
-  }
-  
-  .exam-tile p {
-    color: #333;
-    margin: 4px 0;
-    font-size: 0.9em;
-  }
-   */
+#exam-timetable-heading28 {
+  font-size: 2em;
+  color: #9c77e0; /* Soft purple */
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#quote-section28 {
+  background: linear-gradient(135deg, #3a2c7f, #2a2a3b); /* Dark gradient background */
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.6), 0 0 30px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.6);
+}
+
+#motivational-quote28 {
+  font-size: 1.3em;
+  font-style: italic;
+  color: #f0e6ff; /* Light text color */
+}
+
+#countdown-timer28 {
+  margin: 30px 0;
+  padding: 15px;
+  color: #e07a5f;
+}
+
+#countdown-timer-heading28 {
+  font-size: 1.5em;
+  color: #f2cc8f; /* Light peach */
+}
+
+#timer-boxes28 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+#days-box28,
+#hours-box28,
+#minutes-box28,
+#seconds-box28 {
+  background: #3a2c7f; /* Dark background */
+  border: 3px solid #9c77e0; /* Soft purple border */
+  border-radius: 12px;
+  width: 70px;
+  padding: 15px;
+  text-align: center;
+  color: #f4f1de; /* Light text color */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+#days-box28:hover,
+#hours-box28:hover,
+#minutes-box28:hover,
+#seconds-box28:hover {
+  transform: scale(1.05);
+}
+
+#days-value28,
+#hours-value28,
+#minutes-value28,
+#seconds-value28 {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #f2cc8f; /* Light peach */
+}
+
+#days-label28,
+#hours-label28,
+#minutes-label28,
+#seconds-label28 {
+  font-size: 0.8em;
+  color: #f4f1de;
+}
+
+#exam-timetable-grid28 {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  margin-top: 30px;
+  padding-bottom: 10px;
+}
+
+#exam-tile-1-28,
+#exam-tile-2-28,
+#exam-tile-3-28 {
+  min-width: 220px;
+  background: linear-gradient(145deg, #3a2c7f, #2a2a3b); /* Dark gradient background */
+  border-radius: 15px;
+  padding: 20px;
+  color: #ffffff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+#exam-tile-1-28:hover,
+#exam-tile-2-28:hover,
+#exam-tile-3-28:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+#exam-subject-1-28,
+#exam-subject-2-28,
+#exam-subject-3-28 {
+  font-size: 1.2em;
+  color: #9c77e0; /* Soft purple */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#exam-date-1-28,
+#exam-date-2-28,
+#exam-date-3-28 {
+  color: #f0e6ff; /* Light text color */
+  margin: 6px 0;
+  font-size: 0.9em;
+}
+
+#exam-time-1-28,
+#exam-time-2-28,
+#exam-time-3-28 {
+  color: #f0e6ff; /* Light text color */
+  margin: 6px 0;
+  font-size: 0.9em;
+}

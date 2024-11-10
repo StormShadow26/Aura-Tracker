@@ -272,8 +272,9 @@ function App() {
           <Route path="/ProffAddProjects" element={<ProffAddProjects />} />
           <Route path="/exam" element={<Exam />} />
           <Route path="/attendance/:email" element={<Attendance />} />
-          <Route path="/Goals" element={<CgTracker />} />
+          <Route path="/cg" element={<CgTracker />} />
           <Route path="/analytics" element={<Analytics />} />
+          {/* <Route path="/cg" element={<CgTracker />} /> */}
         </Routes>
       </AnimatePresence>
     </Router>

@@ -1,15 +1,13 @@
 import React from 'react';
-// import './SubjectTable.css';
+import './SubjectTable.css';
 
-const SubjectTable = ({ subjects,sg }) => {
-
+const SubjectTable = ({ subjects, sg }) => {
   subjects = subjects.map(item => ({
     ...item,
-    credit: parseInt(item.credit, 10), // Convert credit to integer
-    grade: 0 // Add grade property with value 0
+    credit: parseInt(item.credit, 10),
+    grade: 0
   }));
 
-  
   const requiredSG = sg;
   let totalCredits = 0;
   let assumedCG = 0.0;
@@ -31,24 +29,22 @@ const SubjectTable = ({ subjects,sg }) => {
     if (i >= subjects.length) i = 0;
   }
 
-
-
   return (
-    <section>
-      <table>
+    <section id="section31" className="section">
+      <table id="table31" className="table">
         <thead>
           <tr>
-            <th>Subject Name</th>
-            <th>Credits</th>
-            <th>Expected <br />grade</th>
+            <th id="subject-name-header31" className="th">Subject Name</th>
+            <th id="credits-header31" className="th">Credits</th>
+            <th id="expected-grade-header31" className="th">Expected <br />Grade</th>
           </tr>
         </thead>
         <tbody>
           {subjects.map((subject, index) => (
             <tr key={index}>
-              <td>{subject.name}</td>
-              <td>{subject.credit}</td>
-              <td>{subject.grade}</td>
+              <td id={`subject-name${index + 1}31`} className="td">{subject.name}</td>
+              <td id={`credits${index + 1}31`} className="td">{subject.credit}</td>
+              <td id={`expected-grade${index + 1}31`} className="td">{subject.grade}</td>
             </tr>
           ))}
         </tbody>

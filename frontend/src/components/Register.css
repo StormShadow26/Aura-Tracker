@@ -56,7 +56,7 @@
 }
 
 .form-group input {
-  width: 100%;
+  width: 95%;
   padding: 0.8rem;
   border-radius: 8px;
   background: #fafafa;
@@ -69,7 +69,7 @@
   border-color: #6d5dfc;
 }
 
-#register-button {
+#register-button1 {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;

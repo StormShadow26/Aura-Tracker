@@ -71,7 +71,7 @@
     color: white;
   }
   
-  #register-button {
+  #register-button2 {
     border-color: #3b82f6;
   }
   
@@ -80,4 +80,16 @@
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
     transform: scale(1.05);
   }
-  
+  #register-button2 {
+    margin-top: 3vh;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #f54291, #5d50f5, #47eb9a);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }

@@ -95,7 +95,7 @@ const Register = ({ onSuccess }) => {
               required
             />
           </div>
-          <button type="submit" id="register-button">
+          <button type="submit" id="register-button1">
             Register
           </button>
         </form>

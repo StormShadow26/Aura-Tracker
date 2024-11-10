@@ -71,51 +71,51 @@ const ExamTimetable = ({ branch, semester }) => {
     fetchExamTimetable();
   }, [branch, semester]);
 
-  if (loading) return <p>Loading timetable...</p>;
-  if (error) return <p>{error}</p>;
-  if (exams.length === 0) return <p>No exams found for this semester and branch.</p>;
+  if (loading) return <p id="loading-message28">Loading timetable...</p>;
+  if (error) return <p id="error-message28">{error}</p>;
+  if (exams.length === 0) return <p id="no-exams-message28">No exams found for this semester and branch.</p>;
 
   return (
-    <div className="exam-timetable-container">
-      <h2>Exam Timetable for {branch} - Semester {semester}</h2>
+    <div id="exam-timetable-container28" className="exam-timetable-container">
+      <h2 id="exam-timetable-heading28">Exam Timetable for {branch} - Semester {semester}</h2>
 
       {/* Motivational Quote Section */}
-      <div className="quote-section">
-        <p className="motivational-quote">"{quote}"</p>
+      <div id="quote-section28" className="quote-section">
+        <p id="motivational-quote28" className="motivational-quote">"{quote}"</p>
       </div>
 
       {/* Countdown Timer */}
       {timeLeft && (
-        <div className="countdown-timer">
-          <h3>Time Left for Nearest Exam:</h3>
-          <div className="timer-boxes">
-            <div className="time-box">
-              <p className="time-value">{timeLeft.days}</p>
-              <p className="time-label">Days</p>
+        <div id="countdown-timer28" className="countdown-timer">
+          <h3 id="countdown-timer-heading28">Time Left for Nearest Exam:</h3>
+          <div id="timer-boxes28" className="timer-boxes">
+            <div id="days-box28" className="time-box">
+              <p id="days-value28" className="time-value">{timeLeft.days}</p>
+              <p id="days-label28" className="time-label">Days</p>
             </div>
-            <div className="time-box">
-              <p className="time-value">{timeLeft.hours}</p>
-              <p className="time-label">Hours</p>
+            <div id="hours-box28" className="time-box">
+              <p id="hours-value28" className="time-value">{timeLeft.hours}</p>
+              <p id="hours-label28" className="time-label">Hours</p>
             </div>
-            <div className="time-box">
-              <p className="time-value">{timeLeft.minutes}</p>
-              <p className="time-label">Minutes</p>
+            <div id="minutes-box28" className="time-box">
+              <p id="minutes-value28" className="time-value">{timeLeft.minutes}</p>
+              <p id="minutes-label28" className="time-label">Minutes</p>
             </div>
-            <div className="time-box">
-              <p className="time-value">{timeLeft.seconds}</p>
-              <p className="time-label">Seconds</p>
+            <div id="seconds-box28" className="time-box">
+              <p id="seconds-value28" className="time-value">{timeLeft.seconds}</p>
+              <p id="seconds-label28" className="time-label">Seconds</p>
             </div>
           </div>
         </div>
       )}
 
       {/* Exam Timetable Grid */}
-      <div className="exam-timetable-grid">
+      <div id="exam-timetable-grid28" className="exam-timetable-grid">
         {exams.map((exam, index) => (
-          <div key={index} className="exam-tile">
-            <h3>{exam.subject}</h3>
-            <p>Date: {new Date(exam.date).toLocaleDateString()}</p>
-            <p>
+          <div key={index} id={`exam-tile-${index + 1}28`} className="exam-tile">
+            <h3 id={`exam-subject-${index + 1}28`}>{exam.subject}</h3>
+            <p id={`exam-date-${index + 1}28`}>Date: {new Date(exam.date).toLocaleDateString()}</p>
+            <p id={`exam-time-${index + 1}28`}>
               Time: {exam.startTime} - {exam.endTime}
             </p>
           </div>

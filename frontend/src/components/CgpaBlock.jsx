@@ -1,27 +1,26 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import SubjectTable from './SubjectTable';
-
-// import './CgpaBlock.css'
+import './CgpaBlock.css';
 
 const CgpaBlock = ({ semName, cg, sg }) => {
-
   const [show, setShow] = useState(false);
   const [dee, setDee] = useState(false);
   const [numSubjects, setNumSubjects] = useState();
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
-    const storedSubjects = JSON.parse(localStorage.getItem('subjects'));
+    const storedSubjects = JSON.parse(localStorage.getItem('subjects30'));
     if (storedSubjects) {
       setSubjects(storedSubjects);
       setNumSubjects(storedSubjects.length);
     }
-}, []);
+  }, []);
 
   function toggleShow() {
     setShow(!show);
     setDee(false);
   }
+
   function toggleDee() {
     setShow(false);
     setDee(true);
@@ -35,16 +34,13 @@ const CgpaBlock = ({ semName, cg, sg }) => {
       setSubjects([]);
     } else {
       let newNum = parseInt(value, 10);
-
       if (newNum > 10) {
         newNum = 10;
       }
 
-      // Create an array with unique objects for each subject
       const updatedSubjects = Array.from({ length: newNum }, (_, index) => ({
-        name: subjects[index]?.name || '', // Keep existing names if any
+        name: subjects[index]?.name || '',
         credit: subjects[index]?.credit || '',
-        // Keep existing credits if any
       }));
 
       setNumSubjects(newNum);
@@ -56,7 +52,6 @@ const CgpaBlock = ({ semName, cg, sg }) => {
     const updatedSubjects = [...subjects];
     updatedSubjects[index] = { ...updatedSubjects[index], [field]: value };
     setSubjects(updatedSubjects);
-
   };
 
   const handleSubmit = () => {
@@ -68,42 +63,41 @@ const CgpaBlock = ({ semName, cg, sg }) => {
       }
     });
     if (!error) {
-      localStorage.setItem('subjects', JSON.stringify(subjects));
+      localStorage.setItem('subjects30', JSON.stringify(subjects));
       toggleDee();
     }
-
-
-
-  }
+  };
 
   return (
     <>
-      <div className="cgpa-container container">
-        <div className="content ">
-          <div className="content-items upper ">
-            <div className="content-items-item samester-name">
-              <h3>Semster : -</h3>
+      <div id="cgpa-container30" className="cgpa-container">
+        <div id="content30" className="content">
+          <div id="upper-content30" className="content-items upper">
+            <div id="semester-name30" className="content-items-item semester-name">
+              <h3>Semester:</h3>
               <span>{semName}</span>
             </div>
-            <div className='content-items-item sgpa'>
-              <h3>Sgpa : -</h3>
+            <div id="sgpa30" className="content-items-item sgpa">
+              <h3>SGPA:</h3>
               <span>{sg}</span>
             </div>
           </div>
-          <div className="content-items below ">
-            <div className="content-items-item detail-view" onClick={toggleShow} >Detail View  <i className={`${show ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'} `} ></i></div>
-            <div className='content-items-item cgpa'>
-              <h3>Cgpa : -</h3>
+          <div id="below-content30" className="content-items below">
+            <div id="detail-view30" className="content-items-item detail-view" onClick={toggleShow}>
+              Detail View <i className={`${show ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'}`} />
+            </div>
+            <div id="cgpa30" className="content-items-item cgpa">
+              <h3>CGPA:</h3>
               <span>{cg}</span>
             </div>
           </div>
         </div>
-        
 
-        
-        <div className={`${show ? 'subject-details show' : 'subject-details not-show'}`}>
+        <div id="subject-details30" className={`${show ? 'subject-details show' : 'subject-details not-show'}`}>
           <h3>
-            <input className='noOfSbject'
+            <input
+              id="num-subjects30"
+              className="noOfSubject"
               type="number"
               placeholder="ENTER NO OF SUBJECTS"
               value={numSubjects}
@@ -111,37 +105,35 @@ const CgpaBlock = ({ semName, cg, sg }) => {
             />
           </h3>
 
-          {/* Dynamically render input fields based on the number of subjects */}
           {Array.from({ length: numSubjects }).map((_, index) => (
-            <div key={index} className="subject-input">
+            <div key={index} id={`subject-input${index + 1}30`} className="subject-input">
               <input
+                id={`subject-name${index + 1}30`}
                 type="text"
                 placeholder={`Subject ${index + 1} Name`}
                 value={subjects[index]?.name || ''}
                 onChange={(e) => handleSubjectChange(index, 'name', e.target.value)}
               />
               <input
+                id={`subject-credit${index + 1}30`}
                 type="number"
                 placeholder={`Subject ${index + 1} Credit`}
                 value={subjects[index]?.credit || ''}
                 onChange={(e) => handleSubjectChange(index, 'credit', e.target.value)}
               />
             </div>
-
           ))}
-          <button className='submit-btn' onClick={handleSubmit}>Submit</button>
-
+          <button id="submit-btn30" className="submit-btn" onClick={handleSubmit}>
+            Submit
+          </button>
         </div>
 
-
-        <div className={`${dee ? 'table show' : 'table not-show'}`} >
+        <div id="table30" className={`${dee ? 'table show' : 'table not-show'}`}>
           <SubjectTable subjects={subjects} sg={sg} />
         </div>
-
-
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CgpaBlock
+export default CgpaBlock;

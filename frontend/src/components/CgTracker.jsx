@@ -1,6 +1,6 @@
-import React, { useState , useEffect } from 'react';
-// import './CgTracker.css';
-import CgpaBlock from './CgpaBlock'
+import React, { useState, useEffect } from 'react';
+import './CgTracker.css';
+import CgpaBlock from './CgpaBlock';
 
 function CgTracker() {
     const [formData, setFormData] = useState({
@@ -11,15 +11,15 @@ function CgTracker() {
     });
 
     const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false); // Loading state
-    const [showAnalysis, setShowAnalysis] = useState(false); // Show analysis state
-    const [allCG, setAllCG] = useState([]); // Store calculated CG data
+    const [loading, setLoading] = useState(false);
+    const [showAnalysis, setShowAnalysis] = useState(false);
+    const [allCG, setAllCG] = useState([]);
 
     useEffect(() => {
         const savedCGData = localStorage.getItem('calculatedCGs');
         if (savedCGData) {
-            setAllCG(JSON.parse(savedCGData)); // Set from local storage
-            setShowAnalysis(true); // Show analysis if data exists
+            setAllCG(JSON.parse(savedCGData));
+            setShowAnalysis(true);
         }
     }, []);
 
@@ -35,8 +35,8 @@ function CgTracker() {
         e.preventDefault();
         
         window.scrollBy({
-            top: 200,  // Scroll by 200px vertically
-            behavior: 'smooth'  // Smooth scrolling animation
+            top: 200,
+            behavior: 'smooth'
         });
 
         let { totalSem, currentSem, currentCG, targetCG } = formData;
@@ -46,8 +46,6 @@ function CgTracker() {
         currentCG = parseFloat(currentCG);
         targetCG = parseFloat(targetCG);
 
-
-        // Validation
         if (totalSem > 10) {
             setError('Total semesters cannot be more than 10.');
             return;
@@ -65,18 +63,15 @@ function CgTracker() {
             return;
         }
 
-        // Clear error if validation passes
         setError('');
 
         let requiredSG = ((totalSem * targetCG) - (currentCG * (currentSem - 1))) / (totalSem - currentSem + 1);
-        requiredSG = parseFloat(requiredSG.toFixed(2)); // Convert to 2 decimal places
-
+        requiredSG = parseFloat(requiredSG.toFixed(2));
 
         const calculatedCGs = [];
 
-        // Function to determine the ordinal suffix for a number
         function getOrdinalSuffix(number) {
-            if (number === 11 || number === 12 || number === 13) return 'th'; // Special case for 11th, 12th, and 13th
+            if (number === 11 || number === 12 || number === 13) return 'th';
             const lastDigit = number % 10;
             if (lastDigit === 2) return 'st';
             if (lastDigit === 3) return 'nd';
@@ -86,27 +81,24 @@ function CgTracker() {
 
         for (let i = 1; i <= totalSem - currentSem + 1; i++) {
             let nextCG = (currentCG * (currentSem - 1) + (requiredSG * i)) / (currentSem + i - 1);
-            nextCG = parseFloat(nextCG.toFixed(2)); // Convert to 2 decimal places
+            nextCG = parseFloat(nextCG.toFixed(2));
 
             const semesterNumber = currentSem + i;
             const ordinalSuffix = getOrdinalSuffix(semesterNumber);
 
             calculatedCGs.push({
-                semester: `${semesterNumber - 1}${ordinalSuffix}`, // Name of the upcoming semester with the correct suffix
-                currentSG: requiredSG, // SG is the same for each semester
-                currentCG: nextCG // CG for the respective semester
+                semester: `${semesterNumber - 1}${ordinalSuffix}`,
+                currentSG: requiredSG,
+                currentCG: nextCG
             });
         }
 
-
-        // Show loading spinner and simulate analysis
         setLoading(true);
 
         setTimeout(() => {
-            // Simulate fetching or analyzing data (after 2 seconds)
             setLoading(false);
             setShowAnalysis(true);
-            setAllCG(calculatedCGs); // Save the calculated CG data
+            setAllCG(calculatedCGs);
 
             localStorage.setItem('calculatedCGs', JSON.stringify(calculatedCGs));
         }, 2000);
@@ -114,20 +106,20 @@ function CgTracker() {
 
     return (
         <>
-            <div className='cgpa-tracker-container'>
-                <div className="text-container">
-                    <h1>Set Your Targets, <br />Achieve Your Dreams</h1>
-                    <p>Setting goals is the first step toward achievement. With our intuitive input system, you can easily define your total semesters, current semester, and target CG.</p>
+            <div id='cgpa-tracker-container29'>
+                <div id="text-container29">
+                    <h1 id="text-title29">Set Your Targets, <br />Achieve Your Dreams</h1>
+                    <p id="text-description29">Setting goals is the first step toward achievement. With our intuitive input system, you can easily define your total semesters, current semester, and target CG.</p>
                 </div>
 
-                <div className='form-container'>
-                    <h2>CGPA Calculator</h2>
-                    <form onSubmit={handleSubmit} className='form'>
-                        <label htmlFor="totalSem">Enter number of semesters : </label>
+                <div id='form-container29'>
+                    <h2 id="form-title29">CGPA Calculator</h2>
+                    <form onSubmit={handleSubmit} id='form29'>
+                        <label htmlFor="totalSem29">Enter number of semesters : </label>
                         <br />
                         <input
                             type="number"
-                            id='totalSem'
+                            id='totalSem29'
                             name='totalSem'
                             placeholder='e.g. 8'
                             required
@@ -135,11 +127,11 @@ function CgTracker() {
                             onChange={handleChange}
                         />
                         <br />
-                        <label htmlFor="currentSem">Enter your current semester : </label>
+                        <label htmlFor="currentSem29">Enter your current semester : </label>
                         <br />
                         <input
                             type="number"
-                            id='currentSem'
+                            id='currentSem29'
                             name='currentSem'
                             placeholder='e.g. 3'
                             required
@@ -147,12 +139,12 @@ function CgTracker() {
                             onChange={handleChange}
                         />
                         <br />
-                        <label htmlFor="currentCG">Enter your current CG <br />(if you are in 1st Semster then enter 0) : </label>
+                        <label htmlFor="currentCG29">Enter your current CG <br />(if you are in 1st Semester then enter 0) : </label>
                         <br />
                         <input
                             type="number"
                             step={0.01}
-                            id='currentCG'
+                            id='currentCG29'
                             name='currentCG'
                             placeholder='e.g. 6.5'
                             required
@@ -160,12 +152,12 @@ function CgTracker() {
                             onChange={handleChange}
                         />
                         <br />
-                        <label htmlFor="targetCG">Enter your target CG : </label>
+                        <label htmlFor="targetCG29">Enter your target CG : </label>
                         <br />
                         <input
                             type="number"
                             step={0.01}
-                            id='targetCG'
+                            id='targetCG29'
                             name='targetCG'
                             placeholder='e.g. 8.0'
                             required
@@ -173,21 +165,17 @@ function CgTracker() {
                             onChange={handleChange}
                         />
                         <br />
-                        <div>
-                            <button type="submit" disabled={loading}>Analyze Now</button>
+                        <div id="submit-container29">
+                            <button type="submit" id="submit-btn29" disabled={loading}>Analyze Now</button>
                         </div>
-                        {error && <p style={{ color: 'red' }}>{error}</p>}
+                        {error && <p id="error-message29">{error}</p>}
                     </form>
                 </div>
             </div>
 
-            <div className="analysis">
-
-                <h1 className='flex flex-sb flex-c'>Academic Performance Dashboard</h1>
-                {/* Display loading spinner */}
-                {loading && <p>Analysis in progress...</p>}
-
-                {/* Display analysis blocks once loading is complete */}
+            <div id="analysis29">
+                <h1 id="dashboard-title29" className='flex flex-sb flex-c'>Academic Performance Dashboard</h1>
+                {loading && <p id="loading-message29">Analysis in progress...</p>}
                 {showAnalysis && (
                     <>
                         {allCG.map((sem, index) => (

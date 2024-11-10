@@ -1,4 +1,4 @@
-/* .cgpa-container {
+#cgpa-container30 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     transition: all 0.4s ease;
 }
 
-.content {
+#content30 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -20,18 +20,22 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.content:hover {
+#content30:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 20px rgba(0, 0, 0, 0.15);
 }
 
-.content-items {
+#upper-content30,
+#below-content30 {
     display: flex;
     justify-content: space-between;
     padding: 15px 20px;
 }
 
-.content-items-item {
+#semester-name30,
+#sgpa30,
+#detail-view30,
+#cgpa30 {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -39,7 +43,7 @@
     color: #333;
 }
 
-.subject-details {
+#subject-details30 {
     background: #FFF9E1;
     width: 600px;
     padding: 15px;
@@ -52,20 +56,20 @@
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.subject-details::-webkit-scrollbar {
+#subject-details30::-webkit-scrollbar {
     width: 8px;
 }
 
-.subject-details::-webkit-scrollbar-thumb {
+#subject-details30::-webkit-scrollbar-thumb {
     background-color: #FFCE6B;
     border-radius: 4px;
 }
 
-.noOfSbject {
+#num-subjects30 {
     width: 100%;
 }
 
-.noOfSbject::placeholder {
+#num-subjects30::placeholder {
     color: #888;
     text-align: center;
 }
@@ -110,7 +114,7 @@
     border-color: #FFCE6B;
 }
 
-.submit-btn {
+#submit-btn30 {
     padding: 8px 24px;
     background-color: #FFCE6B;
     color: #333;
@@ -126,38 +130,36 @@
     justify-content: center;
 }
 
-.submit-btn:hover {
+#submit-btn30:hover {
     background-color: #E0AC47;
 }
 
-.table {
+#table30 {
     margin: 0 auto;
     width: 100%;
     border-spacing: 0;
 }
 
-
 @media only screen and (max-width: 728px) {
-    .cgpa-container {
+    #cgpa-container30 {
         width: 95%;
         padding: 0 10px;
     }
 
-    .content,
-    .subject-details {
+    #content30,
+    #subject-details30 {
         width: 100%;
         margin: 10px 0;
         padding: 15px;
     }
 
-    .subject-details input,
+    #subject-details30 input,
     .subject-input input {
         width: 100%;
         margin: 8px 0;
     }
 
-    .submit-btn {
+    #submit-btn30 {
         margin: 10px auto;
     }
 }
- */

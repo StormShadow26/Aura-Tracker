@@ -31,7 +31,7 @@ const Navbar = () => {
             Login
           </button>
           <button
-            id="register-button"
+            id="register-button2"
             onClick={RegisterHandler}
             className="navbar-button"
           >

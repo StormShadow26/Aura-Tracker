@@ -1,4 +1,4 @@
-/* .table {
+#table31 {
     width: 80%;
     max-width: 1000px;
     table-layout: fixed;
@@ -10,7 +10,9 @@
     overflow: hidden;
 }
 
-.th {
+#subject-name-header31,
+#credits-header31,
+#expected-grade-header31 {
     padding: 16px 12px;
     text-align: left;
     font-weight: 600;
@@ -34,17 +36,19 @@
     background-color: #FFF9E1;
 }
 
-.td:last-child, .th:last-child {
+.td:last-child,
+#subject-name-header31:last-child,
+#credits-header31:last-child,
+#expected-grade-header31:last-child {
     border-right: none;
 }
-
 
 .table tr:hover .td {
     background-color: #FFE8B6;
     transition: background-color 0.3s ease;
 }
 
-.section {
+#section31 {
     margin: 40px auto;
     height: 400px;
     overflow-x: auto;
@@ -55,39 +59,40 @@
     background-color: #FFF4E6;
 }
 
-
-::-webkit-scrollbar {
+#section31::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
-::-webkit-scrollbar-track {
+#section31::-webkit-scrollbar-track {
     background: #FFE8B6;
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+#section31::-webkit-scrollbar-thumb {
     background: #FFCE6B;
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+#section31::-webkit-scrollbar-thumb:hover {
     background: #E0AC47;
 }
 
-
 @media only screen and (max-width: 728px) {
-    .table {
+    #table31 {
         width: 100%;
     }
     
-    .th, .td {
+    #subject-name-header31, 
+    #credits-header31, 
+    #expected-grade-header31, 
+    .td {
         font-size: 12px;
         padding: 10px;
     }
 
-    .section {
+    #section31 {
         margin: 20px;
         height: auto;
     }
-} */
+}

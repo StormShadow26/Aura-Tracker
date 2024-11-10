@@ -83,7 +83,6 @@ const Dashboard = ({mymail}) => {
       );
       console.log(sortedAssignments[0], "sortedAssignments");
       setAssignments(sortedAssignments);
-      // console.log(assignments,"assgin hun")
     } catch (error) {
       console.error("Error fetching assignments:", error);
     } finally {
@@ -99,9 +98,6 @@ const Dashboard = ({mymail}) => {
     callFetchAssignments();
   }, []); // Add dependencies as needed
 
-  // fetchAssignments();
-
-  // Badge logic based on auraPoints
   const getBadge = (auraPoints) => {
     if (auraPoints > 500) {
       return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
@@ -126,8 +122,6 @@ const Dashboard = ({mymail}) => {
         <HorizontalNavbar handleRefresh={handleRefresh} />
 
         <div id="dashboard-container9">
-        
-
           <div id="aura-points9">
             <h2 id="aura-points-title9">Aura Points</h2>
             <p>{data.auraPoints}</p>
@@ -214,7 +208,6 @@ const Dashboard = ({mymail}) => {
               </ResponsiveContainer>
             </div>
           </div>
-
           
           <div
             id="assignments-section9"
@@ -234,6 +227,7 @@ const Dashboard = ({mymail}) => {
                       key={index}
                       className="bg-white p-6 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
                     >
+                    <div className="assignment-tile9">
                       <h2 className="text-2xl font-bold text-indigo-700 mb-3">
                         {assignment.subject} - Chapter: {assignment.chapter}
                       </h2>
@@ -256,16 +250,14 @@ const Dashboard = ({mymail}) => {
                       <p className="text-lg text-gray-600 mb-2">
                         <strong>Professor:</strong> {assignment.professorName}
                       </p>
-                      <p className="text-gray-700 text-lg">
+                      <p className="text-lg text-gray-600">
                         <strong>Description:</strong> {assignment.description}
                       </p>
-                    </div>
+                    </div></div>
                   ))}
               </div>
             ) : (
-              <p className="text-white text-xl text-center">
-                No assignments available.
-              </p>
+              <p className="text-white text-xl">No assignments available.</p>
             )}
           </div>
         </div>

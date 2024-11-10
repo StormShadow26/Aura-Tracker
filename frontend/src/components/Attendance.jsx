@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Attendance.css';
 import { useParams } from 'react-router-dom';  // Import useParams to access URL params
+import './Attendance.css';
 
 const Attendance = ({ branchName = 'CSE', semesterNumber = 2 }) => {
   const { email } = useParams();  // Access email from URL params
@@ -75,8 +76,8 @@ const Attendance = ({ branchName = 'CSE', semesterNumber = 2 }) => {
   if (syllabus.length === 0 || !userData) return <p>Loading data... 🌱</p>;
 
   return (
-    <div className="syllabus-container">
-      <h2 className="welcome-message">Welcome! Track your attendance with a smile 😊</h2>
+    <div className="syllabus-container26" id="syllabus-container26">
+      <h2 className="welcome-message26" id="welcome-message26">Welcome! Track your attendance with a smile 😊</h2>
 
       {syllabus.map((branch) =>
         branch.semesters.map((semester) =>
@@ -86,22 +87,24 @@ const Attendance = ({ branchName = 'CSE', semesterNumber = 2 }) => {
             const attendancePercentage = subjectAttendance ? calculateAttendancePercentage(subjectAttendance) : 0;
 
             return (
-              <div key={subject.id} className="subject-card">
-                <h3 className="subject-title">{subject.subjectName}</h3>
-                <div className="attendance-info">
+              <div key={subject.id} className="subject-card26" id={`subject-card-${subject.id}26`}>
+                <h3 className="subject-title26" id={`subject-title-${subject.id}26`}>{subject.subjectName}</h3>
+                <div className="attendance-info26" id={`attendance-info-${subject.id}26`}>
                   <p>Attendance: {attendancePercentage}%</p>
                 </div>
-                <div className="button-group">
+                <div className="button-group26" id={`button-group-${subject.id}26`}>
                   <button
                     onClick={() => handleAttendance(subject.id, subject.subjectName, 'Attended')}
-                    className="attended-btn"
+                    className="attended-btn26"
+                    id={`attended-btn-${subject.id}26`}
                     disabled={loading}
                   >
                     ✅ Attended
                   </button>
                   <button
                     onClick={() => handleAttendance(subject.id, subject.subjectName, 'Missed')}
-                    className="missed-btn"
+                    className="missed-btn26"
+                    id={`missed-btn-${subject.id}26`}
                     disabled={loading}
                   >
                     ❌ Missed

@@ -19,6 +19,8 @@ const VerticalNavbar = () => {
   const handleExam=()=>navigate('/exam');
   // const handleExam=()=>navigate('/exam')
   const handleFriend=()=>navigate('/friends')
+  const handleAnalysis=()=>navigate('/analytics')
+  const handleCg=()=>navigate('/cg')
   
 
   return (
@@ -32,6 +34,8 @@ const VerticalNavbar = () => {
       <button  onClick={handlePomodoro} className="navbar-button4">Need To Focus?</button>
       <button  onClick={handleContest} className="navbar-button4">Contest</button>
       <button onClick={handleFriend} className="navbar-button4" >Friends</button>
+      <button onClick={handleAnalysis} className="navbar-button4" >Analysis</button>
+      <button onClick={handleCg} className="navbar-button4" >CGPA Tracker</button>
 
       
     </div>
