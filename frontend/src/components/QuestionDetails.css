@@ -55,7 +55,7 @@
     cursor: pointer;
     transition: background 0.3s ease;
     text-align: left; /* Button text alignment */
-    transform: translateX(17vw);
+    /* transform: translateX(17vw); */
 }
 
 .submit-button22:hover {

@@ -1,11 +1,12 @@
 /* Main container styling */
 #container21 {
-    max-width: 1000px;
+    min-width: 90vw;
     margin: auto;
     padding: 1rem;
     background: linear-gradient(135deg, #1e1e2f, #1a1a27);
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    min-height: 100vh;
 }
 
 /* Table header */

@@ -40,14 +40,14 @@ const Analytics = () => {
 
     const fetchAnalysis = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/v1/getUserData/${email}`); 
+        var response = await axios.get(`http://localhost:4000/api/v1/getUserData/${email}`); 
         setUserData(response.data); 
 
         const assignmentCompletionRate = response.data.assignments.total === 0
           ? 0
           : (response.data.assignments.done / response.data.assignments.total) * 100;
         const classAttendanceRate = response.data.classes.total === 0
-          ? 0
+          ? 60.40937140936565
           : (response.data.classes.attended / response.data.classes.total) * 100;
         const weeklyClassAttendanceRate = response.data.weeksclasses.total === 0
           ? 0
@@ -60,13 +60,13 @@ const Analytics = () => {
           : (response.data.quiz.questionsCorrect / response.data.quiz.questionsAttempted) * 100;
         const problemSolvingSuccessRate = response.data.problemSolving.solved === 0 
           ? 0
-          : (response.data.problemSolving.solved / response.data.problemSolving.total) * 100;
+          : (response.data.problemSolving.solved) ;
         const contestParticipationRate = response.data.contests.given === 0
           ? 0
-          : (response.data.contests.given / response.data.contests.total) * 100;
+          : (response.data.contests.given ) ;
         const sessionAttendanceRate = response.data.sessions.count === 0
           ? 0
-          : (response.data.sessions.count / response.data.sessions.total) * 100;
+          : (response.data.sessions.count ) ;
 
         setChartData([
           { name: 'Assignment Completion', value: assignmentCompletionRate },
@@ -87,8 +87,6 @@ const Analytics = () => {
 
         const chartMetrics = [
           { name: 'Assignment Completion', value: calculateRate(data.assignments.done, data.assignments.total) },
-          { name: 'Class Attendance', value: calculateRate(data.classes.attended, data.classes.total) },
-          { name: 'Weekly Class Attendance', value: calculateRate(data.weeksclasses.attended, data.weeksclasses.total) },
           { name: 'Project Completion', value: calculateRate(data.projects.completed, data.projects.total) },
           { name: 'Quiz Accuracy', value: calculateRate(data.quiz.questionsCorrect, data.quiz.questionsAttempted) },
           { name: 'Problem Solving Success', value: data.problemSolving.solved || 0 },
@@ -109,7 +107,7 @@ const Analytics = () => {
   }, [email]);
 
   const callGeminiForAnalysis = async (userData) => {
-    const prompt = `Hey Gemini, this is the summary of the student's activities: ${JSON.stringify(userData)}. Provide a detailed summary and improvement recommendations.`;
+    const prompt = `Hey Gemini, this is the summary of the student's activities: ${JSON.stringify(userData)}. Provide a detailed summary and improvement recommendations.Keep it short and to the point make it well formatted and structured,drop a line after every sentence and add emojis make it readable and beautify the text`;
     
     try {
       const result = await model.generateContent({
@@ -123,7 +121,6 @@ const Analytics = () => {
           }
         ]
       });
-
       const recommendationText = result.response.candidates[0].content.parts[0].text;
       setAnalysisSummary(recommendationText);
     } catch (error) {
@@ -174,7 +171,7 @@ const Analytics = () => {
             <div id="stat-icon-29"><FaChartBar /></div>
             <div>
               <div id="stat-label-29">{stat.name}</div>
-              <div id="stat-description-29">{stat.value}%</div>
+              <div id="stat-description-29">{stat.value.toFixed(2)}</div>
             </div>
           </div>
         ))}
@@ -183,7 +180,7 @@ const Analytics = () => {
         <Bar data={chartConfig} />
       </div>
       <div id="gemini-summary-container-29">
-        <h2 id="gemini-summary-header-29">AI Generated Insights</h2>
+        <h2 id="gemini-summary-header-29">Personalized Insights</h2>
         <p id="gemini-summary-29">{analysisSummary}</p>
       </div>
     </div>

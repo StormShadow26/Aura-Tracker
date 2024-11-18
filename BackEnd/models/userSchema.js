@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// Assuming other fields are defined here as well
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     enum: ["Student", "Professor"],
   },
   identifier: {
-    type: String, // Stores studentId or professionalId
+    type: String, 
     required: false,
   },
   yearOfStudy: {
@@ -36,8 +36,8 @@ const userSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    sparse: true, // Allows multiple null values by indexing only non-null values
-    unique: true,
+ 
+    
   },
   assignments: {
     done: Number,
@@ -99,16 +99,16 @@ const userSchema = new mongoose.Schema({
     attendedClass: Number,
   },
 
-  // New fields for OTP verification
+  
   otp: {
-    type: String, // The OTP code
+    type: String, 
   },
   otpExpiresAt: {
-    type: Date, // The OTP expiry time
+    type: Date, 
   },
   isVerified: {
     type: Boolean,
-    default: false, // Initially false, can be updated after OTP verification
+    default: false,
   }
 });
 

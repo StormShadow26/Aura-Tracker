@@ -104,36 +104,7 @@ const BuildProfile = () => {
         <label className="label10" htmlFor="phone10">Phone:</label>
         <input className="input10" id="phone10" name="phone" value={formData.phone} onChange={handleChange} required />
 
-        <div id="timetable-container10">
-          <h2>Timetable</h2>
-          {formData.timetable.map((day, dayIndex) => (
-            <div key={day.day}>
-              <div className="day-toggle10"  onClick={() => toggleDayOpen(dayIndex)}>{day.day}</div>
-              {day.open && day.classes.map((classInfo, classIndex) => (
-                <div className="class-info10" key={classIndex}>
-                  <label className="label10" id="baigan" htmlFor={`subject${dayIndex}-${classIndex}`}>Subject:</label>
-                  <input className="input10" id={`subject${dayIndex}-${classIndex}`} value={classInfo.subject}
-                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'subject', e.target.value)} required />
-
-                  <label className="label10" id="baigan"htmlFor={`time-start${dayIndex}-${classIndex}`}>Start Time:</label>
-                  <input className="input10" id={`time-start${dayIndex}-${classIndex}`} type="time" value={classInfo.time.start}
-                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'time.start', e.target.value)} required />
-
-                  <label className="label10" id="baigan"htmlFor={`time-end${dayIndex}-${classIndex}`}>End Time:</label>
-                  <input className="input10" id={`time-end${dayIndex}-${classIndex}`} type="time" value={classInfo.time.end}
-                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'time.end', e.target.value)} required />
-
-                  <label className="label10" id="baigan"htmlFor={`location${dayIndex}-${classIndex}`}>Location:</label>
-                  <input className="input10" id={`location${dayIndex}-${classIndex}`} value={classInfo.location}
-                         onChange={(e) => handleTimetableChange(dayIndex, classIndex, 'location', e.target.value)} required />
-
-                  <button type="button" className="remove-class-button10" onClick={() => removeClass(dayIndex, classIndex)}>Remove Class</button>
-                </div>
-              ))}
-              <button type="button" className="add-class-button10" onClick={() => addClass(dayIndex)}>Add Class</button>
-            </div>
-          ))}
-        </div>
+       
         <button type="submit" className="submit-button10">Submit</button>
       </form>
     </div></div>

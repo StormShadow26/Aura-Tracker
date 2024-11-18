@@ -73,7 +73,7 @@ const HorizontalNavbar = () => {
           <a href="/leaderboard" className="navbar-button5">Leaderboard</a>
           <a href="/room" className="navbar-button5">Join Room</a>
           <a href="/mentors" className="navbar-button5">Have Doubt?</a>
-          <a href="/compete" className="navbar-button5">Challenge</a>
+          {/* <a href="/compete" className="navbar-button5">Challenge</a> */}
         </div>
         <img src={user} alt="user" className="user-logo" />
       </nav>

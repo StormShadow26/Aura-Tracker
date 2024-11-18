@@ -37,7 +37,8 @@ const { updateAttendance } = require('../controllers/attendanceController');
 const getFriends=require('../Controllers/Friends.js')
 const { sendChallengeEmail }=require('../Controllers/challengeController.js')
 const addFriend=require('../Controllers/AddFriend.js')
-
+const { searchUsersByName } = require("../Controllers/userController")
+// const {searchUserByName}=require('../Controllers/userController.js')
 
 
 router.post('/welcome', submitUserDetails);
@@ -78,5 +79,7 @@ router.post('/update-attendance', updateAttendance);
 router.post('/add-friend',addFriend);
 router.get('/friends',getFriends);
 router.post("/challenge", sendChallengeEmail);
+
+router.get('/users',searchUsersByName);
 
 module.exports = router;

@@ -18,7 +18,7 @@ import {
 } from "recharts";
 import "./Dashboard.css";
 
-const Dashboard = ({mymail}) => {
+const Dashboard = ({ mymail }) => {
   const [data, setData] = useState({
     classes: { attended: 0, total: 0 },
     assignments: { done: 0, total: 0 },
@@ -32,6 +32,12 @@ const Dashboard = ({mymail}) => {
   const [loading, setLoading] = useState(true);
   const { email } = useContext(EmailContext);
   const [refresh, setRefresh] = useState(false);
+  const [At, setAt] = useState({
+    AnalysisOfAlgorithms: { totalClass: 0, attendedClass: 0 },
+    OperationResearch: { totalClass: 0, attendedClass: 0 },
+    Oops: { totalClass: 0, attendedClass: 0 },
+    AutomataTheory: { totalClass: 0, attendedClass: 0 },
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,8 +48,13 @@ const Dashboard = ({mymail}) => {
 
       try {
         const response = await fetch(
-          `http://localhost:4000/api/v1/dashboard/${email}`
+         ` http://localhost:4000/api/v1/dashboard/${email}`
         );
+        const attendace = await axios.get(
+         ` http://localhost:4000/api/v1/getUserData/${email}`
+        );
+        setAt(attendace.data);
+        console.log(At,"At hun");
         const result = await response.json();
         console.log(result);
         if (response.ok) {
@@ -76,12 +87,11 @@ const Dashboard = ({mymail}) => {
     const { department, yearOfStudy } = data; // Extract department and yearOfStudy from data
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/v1/assignment/${department}${yearOfStudy}@gmail.com`
+       ` http://localhost:4000/api/v1/assignment/${department}${yearOfStudy}@gmail.com`
       );
       const sortedAssignments = response.data.sort(
         (a, b) => new Date(a.deadline) - new Date(b.deadline)
       );
-      console.log(sortedAssignments[0], "sortedAssignments");
       setAssignments(sortedAssignments);
     } catch (error) {
       console.error("Error fetching assignments:", error);
@@ -96,24 +106,24 @@ const Dashboard = ({mymail}) => {
     };
 
     callFetchAssignments();
-  }, []); // Add dependencies as needed
-
+  }, []); // Add dependencies as neede
   const getBadge = (auraPoints) => {
     if (auraPoints > 500) {
-      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
+      return "🏆- God Level";
     } else if (auraPoints > 400) {
-      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
+      return "🏆- Crazy";
     } else if (auraPoints > 250) {
-      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
+      return "🏆- Wow";
     } else if (auraPoints > 150) {
-      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
+      return "🏅- Standard";
     } else if (auraPoints > 100) {
-      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
+      return "🥈- Ok Ok";
+    } else if (auraPoints > 50) {
+      return "🥉- Freshie";
     } else {
-      return <img src="C:\Users\Aryan Sharma\Documents\GitHub\Aura-Tracker\frontend\src\components\newbie.png" alt="Newbie" />;
+      return "🎖️- Newbie";
     }
   };
-
   return (
     <div id="dashboard-main9">
       <VerticalNavbar />
@@ -137,10 +147,10 @@ const Dashboard = ({mymail}) => {
                 <PieChart>
                   <Pie
                     data={[
-                      { name: "Attended", value: data.classes.attended },
+                      { name: "Attended", value: At.AnalysisOfAlgorithms.attendedClass+At.AutomataTheory.attendedClass+At.Oops.attendedClass+At.OperationResearch.attendedClass },
                       {
                         name: "Remaining",
-                        value: data.classes.total - data.classes.attended,
+                        value: At.AnalysisOfAlgorithms.totalClass+At.AutomataTheory.totalClass+At.Oops.totalClass+At.OperationResearch.totalClass,
                       },
                     ]}
                     dataKey="value"
@@ -193,7 +203,7 @@ const Dashboard = ({mymail}) => {
                     {
                       name: "Projects",
                       Completed: data.projects.completed,
-                      Remaining: data.projects.total - data.projects.completed,
+                      Remaining: data.projects.total-data.projects.completed ,
                     },
                   ]}
                 >
@@ -208,7 +218,7 @@ const Dashboard = ({mymail}) => {
               </ResponsiveContainer>
             </div>
           </div>
-          
+
           <div
             id="assignments-section9"
             className="p-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-3xl shadow-2xl"
@@ -227,7 +237,6 @@ const Dashboard = ({mymail}) => {
                       key={index}
                       className="bg-white p-6 rounded-xl shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
                     >
-                    <div className="assignment-tile9">
                       <h2 className="text-2xl font-bold text-indigo-700 mb-3">
                         {assignment.subject} - Chapter: {assignment.chapter}
                       </h2>
@@ -250,14 +259,16 @@ const Dashboard = ({mymail}) => {
                       <p className="text-lg text-gray-600 mb-2">
                         <strong>Professor:</strong> {assignment.professorName}
                       </p>
-                      <p className="text-lg text-gray-600">
+                      <p className="text-gray-700 text-lg">
                         <strong>Description:</strong> {assignment.description}
                       </p>
-                    </div></div>
+                    </div>
                   ))}
               </div>
             ) : (
-              <p className="text-white text-xl">No assignments available.</p>
+              <p className="text-white text-xl text-center">
+                No assignments available.
+              </p>
             )}
           </div>
         </div>

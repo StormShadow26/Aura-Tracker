@@ -69,7 +69,7 @@ function QuizPage() {
     setScore(currentScore);
 
     try {
-      // Update quiz progress on the server
+      
       await axios.post(`http://localhost:4000/api/v1/updateProgress`, {
         email: email,
         field: 'quiz',
@@ -80,8 +80,12 @@ function QuizPage() {
       });
 
       const incrementValue = currentScore - questions.length / 2;
+        await axios.post('http://localhost:4000/api/v1/increment-aura-points', {
+                email: email,
+                incrementValue: incrementValue,
+        });
 
-      if (currentScore > questions.length - 2 && currentScore > 5) {
+      if (currentScore > questions.length - 4 && currentScore > 0) {
         Swal.fire({
           title: 'Yayyy! 🎉',
           text: `Congrats! You scored ${currentScore}. You gained ${incrementValue} aura points.`,

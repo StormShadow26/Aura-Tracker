@@ -5,7 +5,7 @@
     align-items: center;
     gap: 300px;
     padding: 80px;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(45, 11, 56);
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
@@ -18,7 +18,7 @@
 #text-title29 {
     font-size: 40px;
     line-height: 60px;
-    color: #C24914;
+    color: #41d4da;
     margin-bottom: 12px;
 }
 
@@ -32,8 +32,8 @@
     width: 500px;
     padding: 20px;
     font-size: 16px;
-    color: #C24914;
-    background: rgba(230, 230, 230, 0.7);
+    color: #0d1ca1;
+    background: rgba(216, 197, 228, 0.7);
     border-radius: 12px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3), -1px -1px 4px rgba(0, 0, 0, 0.3);
 }
@@ -46,10 +46,11 @@
 
 #form29 label {
     font-size: 20px;
+    
 }
 
 #form29 input {
-    width: 100%;
+    width: 80%;
     height: 50px;
     padding: 10px;
     margin: 10px 0;
@@ -99,5 +100,6 @@
 }
 
 #dashboard-title29 {
-    color: #682C0E;
+    color: #a0a0f9;
+    transform: translateX(31vw);
 }

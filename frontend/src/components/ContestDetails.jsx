@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaCheckCircle, FaCalendarAlt, FaLock } from 'react-icons/fa';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import './ContestDetails.css';
 
 const ContestDetails = () => {
   const { contestId } = useParams();
@@ -24,12 +25,11 @@ const ContestDetails = () => {
     fetchContest();
   }, [contestId]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <div id="loading32">Loading...</div>;
+  if (error) return <div id="error32">{error}</div>;
 
   const { contestTitle, questions } = contest;
 
-  // Function to check if the question was created today
   const isDailyChallenge = (createdAt) => {
     const today = new Date();
     const createdDate = new Date(createdAt);
@@ -37,40 +37,42 @@ const ContestDetails = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-3xl font-semibold text-blue-600 mb-4">{contestTitle}</h2>
+    <div id="container32" className="container">
+      <h2 id="contest-title32" className="contest-title">{contestTitle}</h2>
       
-      <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg">
-        <div className="grid grid-cols-5 gap-4 py-2 border-b border-gray-700">
-          <div>Status</div>
-          <div>Title</div>
-          <div>Solution</div>
-          <div>Acceptance</div>
-          <div>Difficulty</div>
+      <div id="contest-box32" className="contest-box">
+        <div id="header-row32" className="header-row">
+          <div id="status-header32">Status</div>
+          <div id="title-header32">Title</div>
+          <div id="solution-header32">Solution</div>
+          <div id="acceptance-header32">Acceptance</div>
+          <div id="difficulty-header32">Difficulty</div>
         </div>
 
         {questions.map((question) => (
-          <div key={question._id} className="grid grid-cols-5 gap-4 py-4 border-b border-gray-800">
-            <div>
+          <div key={question._id} id={`question-row${question._id}32`} className="question-row">
+            <div id={`status-icon${question._id}32`} className="status-icon">
               {question.solvedBy.length > 0 ? (
                 <FaCheckCircle className="text-green-500" />
               ) : (
                 <FaCalendarAlt className="text-gray-400" />
               )}
             </div>
-            <div className="truncate">
+            <div id={`title${question._id}32`} className="title truncate">
               <Link to={`/contest/${contestId}/${question._id}`} className="text-blue-400 hover:underline">
                 {question.title}
               </Link>
               {isDailyChallenge(question.createdAt) && (
-                <span className="ml-2 text-sm text-yellow-400">Daily Challenge</span>
+                <span id={`daily-challenge${question._id}32`} className="daily-challenge">Daily Challenge</span>
               )}
             </div>
-            <div>
+            <div id={`solution-icon${question._id}32`} className="solution-icon">
               <FaLock className="text-purple-500 cursor-pointer" />
             </div>
-            <div>{Math.round((question.successCount / question.submissionCount) * 100) || 0}%</div>
-            <div className={`font-bold ${getDifficultyColor(question.difficulty)}`}>
+            <div id={`acceptance${question._id}32`} className="acceptance">
+              {Math.round((question.successCount / question.submissionCount) * 100) || 0}%
+            </div>
+            <div id={`difficulty${question._id}32`} className={`difficulty ${getDifficultyColor(question.difficulty)}`}>
               {question.difficulty}
             </div>
           </div>

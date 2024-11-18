@@ -1,7 +1,7 @@
-// controllers/challengeController.js
+
 const nodemailer = require("nodemailer");
 
-// Configure nodemailer transporter (assuming your configuration is correct)
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
